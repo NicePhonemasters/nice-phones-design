@@ -16,6 +16,7 @@ function App() {
       </main>
       <footer>
         <p>test</p>
+        <p>newTest</p>
       </footer>
     </>
   );
