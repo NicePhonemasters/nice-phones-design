@@ -8,6 +8,7 @@ function App() {
       </header>
       <main>
         <p>test</p>
+        <p>test 3</p>
       </main>
       <footer>
         <p>test</p>
