@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "format": "prettier . --ignore-path .gitignore --write",
-    "lint": "eslint . --fix",
+    "lint": "eslint ./src --fix",
     "fix-style": "npm run format & npm run lint",
     "preview": "vite preview"
   },
@@ -38,7 +38,9 @@
     "vite": "^7.1.2"
   },
   "lint-staged": {
-    "*.{ts.tsx,js,jsx}": "npm run fix-style",
-    "*.{ts,tsx,js,jsx,json,md,css}": "prettier --write"
+    "src/**/*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
   }
 }
