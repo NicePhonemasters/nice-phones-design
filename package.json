@@ -5,22 +5,26 @@
   "type": "module",
   "scripts": {
     "prepare": "husky install",
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
     "format": "prettier . --ignore-path .gitignore --write",
     "lint": "eslint ./src --fix",
     "fix-style": "npm run format & npm run lint",
     "preview": "vite preview"
   },
   "dependencies": {
+    "eslint-config-next": "^15.5.3",
+    "next": "^15.5.3",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "sass": "^1.92.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
+    "@types/node": "24.3.3",
     "@types/react": "^19.1.10",
     "@types/react-dom": "^19.1.7",
-    "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^9.35.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-import-resolver-alias": "^1.1.2",
@@ -34,8 +38,7 @@
     "husky": "^9.1.7",
     "prettier": "^3.6.2",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.39.1",
-    "vite": "^7.1.2"
+    "typescript-eslint": "^8.39.1"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [

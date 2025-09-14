@@ -13,7 +13,7 @@ dist-ssr
 *.local
 .eslintcache
 *.tsbuildinfo
-*.vite
+*.next
 
 # Editor directories and files
 .vscode/*

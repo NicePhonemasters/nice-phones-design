@@ -1,29 +1,36 @@
 import js from '@eslint/js';
 import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
-import reactRefresh from 'eslint-plugin-react-refresh';
 import tseslint from 'typescript-eslint';
 import react from 'eslint-plugin-react';
 import { globalIgnores } from 'eslint/config';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
 import importPlugin from 'eslint-plugin-import';
+import { FlatCompat } from '@eslint/eslintrc';
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
 
-export default tseslint.config([
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const nextCompat = new FlatCompat({ baseDirectory: __dirname });
+
+export default [
   globalIgnores(['dist']),
+  ...nextCompat.config({
+    extends: [
+      'next',
+      'next/core-web-vitals',
+    ]
+  }),
+
+  js.configs.recommended,
+  ...tseslint.configs.recommended,
+  ...tseslint.configs.strict,
+  react.configs.flat.recommended,
+
   {
     files: ['src/**/*.{ts,tsx,js,jsx}'],
-    ...react.configs.flat.recommended,
-    extends: [
-      js.configs.recommended,
-      tseslint.configs.recommended,
-      tseslint.configs.strict,
-      reactHooks.configs['recommended-latest'],
-      reactRefresh.configs.vite,
-      jsxA11y.flatConfigs.recommended,
-      importPlugin.flatConfigs.recommended,
-      importPlugin.flatConfigs.typescript,
-    ],
+    
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
@@ -52,11 +59,12 @@ export default tseslint.config([
 
       'import/order': 'warn',
 
-      'react-refresh/only-export-components': [
-        'warn',
-        { allowConstantExport: true },
-      ],
+      ...reactHooks.configs['recommended-latest'].rules,
+
+      ...jsxA11y.flatConfigs.recommended.rules,
+
+      ...importPlugin.flatConfigs.recommended.rules,
     },
   },
   eslintConfigPrettier,
-]);
+];
