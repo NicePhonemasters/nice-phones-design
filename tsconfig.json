@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "/*": [
-        "public/*"
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@components/*": [
+        "components/*"
       ]
     },
     "target": "ES2017",
