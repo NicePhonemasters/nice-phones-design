@@ -29,14 +29,10 @@
       }
     }
 
-    &__icon {
-       
-    }
-
     &__lists {
         list-style: none;
         display: flex;
-        gap: 64px;
+        gap: 32px;
         padding: 0;
         margin-left: 24px;
 
@@ -133,6 +129,19 @@
 }
 }
 
+.header__burger-menu {
+  display: none;
+
+  @include on-mobile {
+  width: 48px;
+  height: 48px;
+  box-shadow: -1px 0 var(--color-surface-2) ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  }
+}
+
 .link-is-active {
     color: var(--color-white);
 
@@ -145,18 +154,5 @@
     width: 100%;
     background-color: var(--color-white);
     transition: width 0.3s ease;
-  }
-}
-
-.header__burger-menu {
-  display: none;
-
-  @include on-mobile {
-  width: 48px;
-  height: 48px;
-  box-shadow: -1px 0 var(--color-surface-2) ;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   }
 }
