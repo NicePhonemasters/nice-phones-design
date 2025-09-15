@@ -3,7 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import './header.scss';
 import '@styles/fonts.scss';
+import classNames from 'classnames';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { Menu } from './Menu/Menu';
 
 export const Header = () => {
@@ -14,6 +16,7 @@ export const Header = () => {
     { title: 'Accessories', path: '/accessories' },
   ];
   const [isOpenedMenu, setIsOpenedMenu] = useState(false);
+  const currentPath = usePathname();
 
   return (
     <>
@@ -34,7 +37,9 @@ export const Header = () => {
               return (
                 <li key={link.path}>
                   <Link
-                    className="header__nav-link uppercase-text"
+                    className={classNames('header__nav-link uppercase-text', {
+                      'link-is-active': currentPath === link.path,
+                    })}
                     href={link.path}
                   >
                     {link.title}
@@ -46,20 +51,28 @@ export const Header = () => {
         </nav>
 
         <div className="header__right">
-          <div className="header__right-favourites is-active">
-            <Link href="h">
+          <div
+            className={classNames('header__right-favourites', {
+              'link__icon-is-active': currentPath === '/favorites',
+            })}
+          >
+            <Link href="/favorites">
               <Image
                 src="/images/heart.svg"
                 width={16}
                 height={16}
-                alt="favourites"
+                alt="favoriter"
                 className="header__icon"
               />
             </Link>
           </div>
 
-          <div className="header__right-cart">
-            <Link href="h">
+          <div
+            className={classNames('header__right-cart', {
+              'link__icon-is-active': currentPath === '/shopcart',
+            })}
+          >
+            <Link href="/shopcart">
               <Image
                 src="/images/shop-cart.svg"
                 width={16}
