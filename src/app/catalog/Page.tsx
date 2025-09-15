@@ -26,8 +26,8 @@ const Catalog: React.FC = () => {
             value={sortBy}
             onChange={(e) => setSortBy(e.target.value)}
           >
-            <option value="oldest">Oldest</option>
-            <option value="new">Newest</option>
+            <option value="oldest">Sort by oldest</option>
+            <option value="new">Sort by new</option>
             <option value="priceLow">Sort by price: low</option>
             <option value="priceHigh">Sort by price: high</option>
           </select>
