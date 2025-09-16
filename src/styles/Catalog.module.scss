@@ -1,5 +1,5 @@
 .catalog {
-  padding: 20px;
+  padding: 24px 16px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -8,27 +8,44 @@
   &__top {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 8px;
   }
 
   &__title {
+    margin: 0;
     font-size: 32px;
     font-weight: bold;
-    color: var(--color-white)
+    color: var(--color-white);
   }
 
   &__subtitle {
+    margin: 0;
     color: var(--color-secondary);
+    font-size: 14px;
+    font-weight: 600;
   }
 
   &__filters {
     display: flex;
-    gap: 10px;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__filterGroup {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__filterLabel {
+    color: var(--color-secondary);
+    font-size: 12px;
+    font-weight: 700;
   }
 
   &__select {
     padding: 10px 12px;
+    width: 136px;
     font-size: 14px;
     line-height: 21px;
     font-weight: 700;
@@ -48,7 +65,7 @@
 
 .pagination {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 6px;
   margin-bottom: 20px;

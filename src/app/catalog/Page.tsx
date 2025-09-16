@@ -21,26 +21,32 @@ const Catalog: React.FC = () => {
         </div>
 
         <div className={styles.catalog__filters}>
-          <select
-            className={styles.catalog__select}
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-          >
-            <option value="oldest">Sort by oldest</option>
-            <option value="new">Sort by new</option>
-            <option value="priceLow">Sort by price: low</option>
-            <option value="priceHigh">Sort by price: high</option>
-          </select>
+          <div className={styles.catalog__filterGroup}>
+            <p className={styles.catalog__filterLabel}>Sort by</p>
+            <select
+              className={styles.catalog__select}
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+            >
+              <option value="newest">Newest</option>
+              <option value="oldest">Oldest</option>
+              <option value="priceLow">Price: low to high</option>
+              <option value="priceHigh">Price: high to low</option>
+            </select>
+          </div>
 
-          <select
-            className={styles.catalog__select}
-            value={itemsPerPage}
-            onChange={(e) => setItemsPerPage(Number(e.target.value))}
-          >
-            <option value={8}>8</option>
-            <option value={16}>16</option>
-            <option value={24}>24</option>
-          </select>
+          <div className={styles.catalog__filterGroup}>
+            <p className={styles.catalog__filterLabel}>Items on page</p>
+            <select
+              className={styles.catalog__select}
+              value={itemsPerPage}
+              onChange={(e) => setItemsPerPage(Number(e.target.value))}
+            >
+              <option value={8}>8</option>
+              <option value={16}>16</option>
+              <option value={24}>24</option>
+            </select>
+          </div>
         </div>
       </div>
 

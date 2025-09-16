@@ -1,0 +1,37 @@
+.favourites {
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--color-black);
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+    gap: 8px;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--color-white);
+  }
+
+  &__subtitle {
+    margin: 0;
+    color: var(--color-secondary);
+    font-size: 14px;
+    font-weight: 600;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 20px;
+    flex-grow: 1;
+    min-height: 400px;
+    margin-bottom: 20px;
+  }
+}
