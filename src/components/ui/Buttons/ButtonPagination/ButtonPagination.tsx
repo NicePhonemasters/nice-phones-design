@@ -1,12 +1,11 @@
-'use client';
-
 import { ToggleGroup } from 'radix-ui';
-import { useState } from 'react';
 
 import styles from '@styles/ToggleGroup.module.scss';
 
 type Props = {
   pageCount: number;
+  currentPage: number;
+  onPageChange: (page: number) => void;
 };
 
 function getNaturalNumbers(count: number) {
@@ -19,22 +18,25 @@ function getNaturalNumbers(count: number) {
   return numbers;
 }
 
-export default function ButtonPagination({ pageCount }: Props) {
+export default function ButtonPagination({
+  pageCount,
+  currentPage,
+  onPageChange,
+}: Props) {
   const pages = getNaturalNumbers(pageCount);
-  const [pageValue, setPageValue] = useState(pages[0]);
 
   return (
     <ToggleGroup.Root
       className={styles.ToggleGroup}
       type="single"
-      value={pageValue}
+      value={String(currentPage)}
     >
       {pages.map((page) => (
         <ToggleGroup.Item
           key={page}
           value={page}
           className={`${styles.ToggleGroup__item} buttons-text`}
-          onClick={() => setPageValue(page)}
+          onClick={() => onPageChange(+page)}
         >
           {page}
         </ToggleGroup.Item>
