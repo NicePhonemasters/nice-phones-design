@@ -1,6 +1,4 @@
-import '@styles/themes.scss';
 import '@styles/globals.scss';
-import '@styles/fonts.scss';
 import { Montserrat } from 'next/font/google';
 
 const montserrat = Montserrat({
