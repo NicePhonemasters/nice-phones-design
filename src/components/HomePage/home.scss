@@ -13,15 +13,17 @@
     &__slider {
         display: flex;
         flex-direction: column;
+        justify-content: center;
+        align-items: center;
 
       &-container {
         display: flex;
         width: 800px;
         height: 200px;
+        gap: 19px;
       }
 
       &__banner {
-        margin: 0 19px;
         width: 100%;
         height: auto;
       }
