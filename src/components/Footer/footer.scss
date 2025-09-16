@@ -1,0 +1,51 @@
+.footer {
+    background-color: var(--color-black);
+    width: 100%;
+    height: 96px;
+    box-shadow: 0 -1px var(--color-surface-2);
+    
+    &__content {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 152px;
+    }
+    &__logo {
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    &__lists {
+        display: flex;
+        list-style: none;
+        gap: 106px;
+    }
+
+    &__nav-link {
+      color: var(--color-white);
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: 0.3s ease;
+
+      &:hover {
+        color: var(--color-secondary);
+      }
+    }
+
+    &__right {
+        display: flex;
+
+        &-text {
+            color: var(--color-secondary);
+        }
+    }
+
+    &__button-top {
+        background-color: var(--color-placeholder)
+    }
+}
