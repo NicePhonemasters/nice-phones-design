@@ -1,12 +1,9 @@
-import { ButtonPagination } from '@components/ui/Buttons/Pagination';
+import { HomePage } from '../../components/HomePage/HomePage';
 
-function App() {
+export default function App() {
   return (
-    <main>
-      <ButtonPagination pageCount={5} />
-      <p>lublu next js 12345 12345</p>
-    </main>
+    <div>
+      <HomePage />
+    </div>
   );
 }
-
-export default App;
