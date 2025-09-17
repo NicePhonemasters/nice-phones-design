@@ -11,7 +11,7 @@ const itemImages = [
   '/iphone-hero.png',
 ];
 
-export function ItemCard() {
+function ItemCard() {
   return (
     <div className="container_item_card">
       <section className="item-card-section item-card-section-main">
