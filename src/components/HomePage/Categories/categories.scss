@@ -1,0 +1,63 @@
+@use '../../../styles/mixins.scss' as *;
+
+.home__categories {
+  @include inline-padding;
+
+  &-title {
+    color: var(--color-white);
+    margin: 0 0 24px;
+  }
+
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    @include on-mobile {
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+  }
+}
+
+.category__card {
+  flex: 1 1 clamp(180px, 30%, 368px);
+  display: flex;
+  flex-direction: column;
+  border: none;
+
+  @include on-mobile {
+    flex: none;
+    width: 90vw;
+    max-width: 400px; 
+  }
+
+  &-content {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+
+    @include on-mobile {
+      aspect-ratio: auto;
+      height: 60vw;         
+    } 
+  }
+
+  &-title {
+    color: var(--color-white);
+    text-decoration: none;
+    margin: 16px 0 4px;
+  }
+
+  &-text {
+    color: var(--color-secondary);
+    margin: 0;
+  }
+}
+
+.category__phone-image {
+  object-fit: cover; // для next/image fill
+}
