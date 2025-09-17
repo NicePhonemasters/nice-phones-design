@@ -4,50 +4,20 @@
     
     &__title {
         color: var(--color-white);
+        margin: 56px 0;
+        @include inline-padding;
+
+        @include on-tablet {
+            margin: 32px 0;
+        }
+
+        @include on-mobile {
+            margin: 24px 0;
+        }
     }
     
     &__container {
-        @include inline-padding;
+        // @include inline-padding;
     }
 
-    &__slider {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-      &-container {
-        display: flex;
-        width: 800px;
-        height: 200px;
-        gap: 19px;
-      }
-
-      &__banner {
-        width: 100%;
-        height: auto;
-      }
-
-      &-button {
-        width: 32px;
-        height: 189px;
-        background-color: var(--color-surface-2);
-        color: var(--color-white);
-        border: none;
-      }
-
-      &-dots {
-        display: flex;
-        justify-content: center; 
-        gap: 5px;
-        margin-top: 8px;
-        
-      }
-
-      &-dot {
-        background-color: var(--color-elements);
-        width: 14px;
-        height: 4px;
-      }
-    }
 }

@@ -8,7 +8,7 @@ export default function Footer() {
       <div className="footer__content">
         <Link href="/">
           <Image
-            src="/images/logo.svg"
+            src="/assets/logo.png"
             className="logo"
             width={80}
             height={26}
@@ -19,10 +19,7 @@ export default function Footer() {
         <nav className="footer__nav">
           <ul className="footer__lists">
             <li>
-              <Link
-                href="github"
-                className="footer__nav-link uppercase-text link-is-active"
-              >
+              <Link href="github" className="footer__nav-link uppercase-text">
                 Github
               </Link>
             </li>

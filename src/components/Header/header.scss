@@ -65,6 +65,15 @@
     width: 0;
     background-color: var(--color-white);
     transition: width 0.3s ease;
+
+    @include on-tablet {
+      bottom: -12px;
+    }
+
+     @include on-mobile {
+      bottom: -12px;
+    }
+
   }
 
   &:hover {
@@ -76,7 +85,6 @@
       display: flex;
       justify-content: space-between;
       margin-left: auto;
-
 
       &-favourites {
         width: 64px;

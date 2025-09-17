@@ -10,7 +10,7 @@ import { Menu } from './Menu/Menu';
 
 export const Header = () => {
   const navLinks = [
-    { title: 'Home', path: '/' },
+    { title: 'Home', path: '/', img: null },
     { title: 'Phones', path: '/phones' },
     { title: 'Tablets', path: '/tablets' },
     { title: 'Accessories', path: '/accessories' },
@@ -25,7 +25,7 @@ export const Header = () => {
           <Image
             width={80}
             height={26}
-            src="/images/logo.svg"
+            src="/assets/logo.png"
             className="header__logo"
             alt="Nice Gadgets"
           />
@@ -58,7 +58,7 @@ export const Header = () => {
           >
             <Link href="/favorites">
               <Image
-                src="/images/heart.svg"
+                src="/assets/icons/favourite-default.svg"
                 width={16}
                 height={16}
                 alt="favoriter"
@@ -74,7 +74,7 @@ export const Header = () => {
           >
             <Link href="/shopcart">
               <Image
-                src="/images/shop-cart.svg"
+                src="/assets/icons/cart-shopping.svg"
                 width={16}
                 height={16}
                 alt="cart"
@@ -85,7 +85,7 @@ export const Header = () => {
           <div className="header__burger-menu">
             {!isOpenedMenu ? (
               <Image
-                src="/images/burger-menu.svg"
+                src="/assets/icons/menu-burger.svg"
                 width={16}
                 height={16}
                 alt="burger-menu"
@@ -93,7 +93,7 @@ export const Header = () => {
               />
             ) : (
               <Image
-                src="/images/close.svg"
+                src="/assets/icons/close.svg"
                 width={16}
                 height={16}
                 alt="burger-menu"
@@ -104,7 +104,11 @@ export const Header = () => {
         </div>
       </header>
 
-      <Menu isOpenedMenu={isOpenedMenu} navLinks={navLinks} />
+      <Menu
+        isOpenedMenu={isOpenedMenu}
+        navLinks={navLinks}
+        currentPath={currentPath}
+      />
     </>
   );
 };

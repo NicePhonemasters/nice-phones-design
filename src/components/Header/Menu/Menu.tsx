@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import './menu.scss';
+import classNames from 'classnames';
 
 type NavLinks = {
   title: string;
@@ -11,8 +12,13 @@ type NavLinks = {
 type Props = {
   isOpenedMenu: boolean;
   navLinks: NavLinks[];
+  currentPath: string;
 };
-export const Menu: React.FC<Props> = ({ isOpenedMenu, navLinks }) => {
+export const Menu: React.FC<Props> = ({
+  isOpenedMenu,
+  navLinks,
+  currentPath,
+}) => {
   return (
     <div className={`burger__menu-overlay ${isOpenedMenu ? 'open' : ''}`}>
       <div className="burger__menu">
@@ -21,7 +27,9 @@ export const Menu: React.FC<Props> = ({ isOpenedMenu, navLinks }) => {
             {navLinks.map((link) => (
               <li key={link.path}>
                 <Link
-                  className="burger__menu-link uppercase-text"
+                  className={classNames('burger__menu-link uppercase-text', {
+                    'link-is-active': currentPath === link.path,
+                  })}
                   href={link.path}
                 >
                   {link.title}
@@ -33,25 +41,29 @@ export const Menu: React.FC<Props> = ({ isOpenedMenu, navLinks }) => {
 
         <div className="menu__footer">
           <div className="menu__footer-favourites">
-            <Link href="h">
+            <Link href="/favourites">
               <Image
-                src="/images/heart.svg"
+                src="/assets/icons/favourite-default.svg"
                 width={16}
                 height={16}
                 alt="favourites"
-                className="header__icon"
+                className={classNames('header__icon', {
+                  'link__icon-is-active': currentPath === '/favourites',
+                })}
               />
             </Link>
           </div>
 
           <div className="menu__footer-cart">
-            <Link href="h">
+            <Link href="/shopcart">
               <Image
-                src="/images/shop-cart.svg"
+                src="/assets/icons/cart-shopping.svg"
                 width={16}
                 height={16}
                 alt="cart"
-                className="header__icon"
+                className={classNames('header__icon', {
+                  'link__icon-is-active': currentPath === '/shopcart',
+                })}
               />
             </Link>
           </div>
