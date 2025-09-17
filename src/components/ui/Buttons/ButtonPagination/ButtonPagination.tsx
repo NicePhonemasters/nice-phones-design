@@ -1,6 +1,7 @@
 import { ToggleGroup } from 'radix-ui';
 
-import styles from '@styles/ToggleGroup.module.scss';
+import ToggleStyles from '@styles/ToggleGroup.module.scss';
+import ButtonStyles from '@styles/ToggleButton.module.scss';
 
 type Props = {
   pageCount: number;
@@ -27,7 +28,7 @@ export default function ButtonPagination({
 
   return (
     <ToggleGroup.Root
-      className={styles.ToggleGroup}
+      className={ToggleStyles.ToggleGroup}
       type="single"
       value={String(currentPage)}
     >
@@ -35,7 +36,7 @@ export default function ButtonPagination({
         <ToggleGroup.Item
           key={page}
           value={page}
-          className={`${styles.ToggleGroup__item} buttons-text`}
+          className={`${ButtonStyles.ToggleButton} buttons-text`}
           onClick={() => onPageChange(+page)}
         >
           {page}

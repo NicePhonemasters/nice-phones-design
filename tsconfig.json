@@ -7,6 +7,9 @@
       ],
       "@components/*": [
         "components/*"
+      ],
+      "@/*": [
+        "*"
       ]
     },
     "target": "ES2017",
@@ -33,6 +36,7 @@
     ]
   },
   "include": [
+    "*/svg.d.ts",
     "next-env.d.ts",
     ".next/types/**/*.ts",
     "**/*.ts",
