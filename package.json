@@ -14,7 +14,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@radix-ui/react-dialog": "^1.1.15",
     "classnames": "^2.5.1",
     "eslint-config-next": "^15.5.3",
     "next": "^15.5.3",
