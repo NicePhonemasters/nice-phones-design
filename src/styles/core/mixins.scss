@@ -5,7 +5,7 @@
 }
 
 @mixin on-tablet {
-  @media (max-width: 1200px) {
+  @media (min-width: 640px) {
     @content;
   }
 }
@@ -29,3 +29,4 @@
     padding-inline: 20px;
   }
 }
+

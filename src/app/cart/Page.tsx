@@ -6,17 +6,21 @@ const Cart: React.FC = () => {
     <div className={styles.cartWrapper}>
       <h2 className={styles.title}>Cart</h2>
 
-      {/* Грід для карток */}
-      <div className={styles.itemsGrid}>{/* Тут будуть картки товарів */}</div>
-
-      {/* Checkout блок */}
-      <div className={styles.checkout}>
-        <div className={styles.total}>
-          <span className={styles.totalPrice}>SUM</span>
-          <span className={styles.totalItems}>Total for N items</span>
+      <div className={styles.mainContent}>
+        {/* Грід для карток */}
+        <div className={styles.itemsGrid}>
+          {/* Тут будуть картки товарів */}
         </div>
-        <div className={styles.separator}></div>
-        <button className={styles.checkoutBtn}>Checkout</button>
+
+        {/* Checkout блок */}
+        <div className={styles.checkout}>
+          <div className={styles.total}>
+            <span className={styles.totalPrice}>SUM</span>
+            <span className={styles.totalItems}>Total for N items</span>
+          </div>
+          <div className={styles.separator}></div>
+          <button className={styles.checkoutBtn}>Checkout</button>
+        </div>
       </div>
     </div>
   );

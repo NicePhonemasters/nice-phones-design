@@ -20,7 +20,7 @@ const Catalog: React.FC = () => {
           <div className={styles.catalog__filterGroup}>
             <p className={styles.catalog__filterLabel}>Sort by</p>
             <select
-              className={styles.catalog__select}
+              className={`${styles.catalog__select} ${styles.catalog__selectSort}`}
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
             >
@@ -34,7 +34,7 @@ const Catalog: React.FC = () => {
           <div className={styles.catalog__filterGroup}>
             <p className={styles.catalog__filterLabel}>Items on page</p>
             <select
-              className={styles.catalog__select}
+              className={`${styles.catalog__select} ${styles.catalog__selectItems}`}
               value={itemsPerPage}
               onChange={(e) => setItemsPerPage(Number(e.target.value))}
             >

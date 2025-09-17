@@ -1,9 +1,19 @@
+@import '../styles/core/mixins.scss';
+
 .catalog {
   padding: 24px 16px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background-color: var(--color-black);
+
+  @include on-tablet {
+    padding: 40px 24px;
+  }
+
+  @include on-desktop {
+    padding: 40px 32px;
+  }
 
   &__top {
     display: flex;
@@ -12,10 +22,18 @@
   }
 
   &__title {
-    margin: 0;
     font-size: 32px;
-    font-weight: bold;
+    font-weight: 800;
+    margin-bottom: 8px;
     color: var(--color-white);
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+    }
   }
 
   &__subtitle {
@@ -30,6 +48,15 @@
     gap: 16px;
     align-items: center;
     justify-content: center;
+
+
+    @include on-tablet {
+      justify-content: flex-start;
+    }
+    
+    @include on-desktop {
+      justify-content: flex-start;
+    }
   }
 
   &__filterGroup {
@@ -45,12 +72,22 @@
 
   &__select {
     padding: 10px 12px;
-    width: 136px;
     font-size: 14px;
     line-height: 21px;
     font-weight: 700;
+    width: 136px;
     background-color: var(--color-surface-2);
     color: var(--color-white);
+  }
+
+  &__selectSort {
+    @include on-tablet {
+      width: 187px;
+    }
+  }
+
+  &__selectItems {
+    width: 136px;
   }
 
   &__grid {
