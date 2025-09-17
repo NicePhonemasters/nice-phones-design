@@ -1,0 +1,49 @@
+@import '../fonts';
+@import '../core/mixins';
+@import 'section-description';
+@import 'section-main';
+@import 'section-favourites';
+
+.container_item_card {
+  background-color: var(--color-black);
+  padding-bottom: 30px; // <--- !! delete
+  width: 100%;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 150px;
+  }
+}
+
+.item-card-section-main,
+.item-card-section-description,
+.item-card-favourites {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+.item-card-section-description {
+  @include on-desktop {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  .item-card-description {
+    grid-column: 1 / span 12;
+  }
+
+  .item-card-description__tech-specs {
+    grid-column: 14 / span 11;
+  }
+}
