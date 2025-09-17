@@ -8,16 +8,12 @@ const Catalog: React.FC = () => {
   const [sortBy, setSortBy] = useState('new');
   const [itemsPerPage, setItemsPerPage] = useState(16);
 
-  const products: object[] = [];
-
   return (
     <main className={styles.catalog}>
       <div className={styles.catalog__top}>
         <div>
           <h1 className={styles.catalog__title}>CategoryName</h1>
-          <p
-            className={styles.catalog__subtitle}
-          >{`${products.length} models`}</p>
+          <p className={styles.catalog__subtitle}>{`0 models`}</p>
         </div>
 
         <div className={styles.catalog__filters}>
@@ -50,13 +46,7 @@ const Catalog: React.FC = () => {
         </div>
       </div>
 
-      <div className={styles.catalog__grid}>
-        {products.map((product) => (
-          <div key={product.id} className="product-card">
-            {/* ProductCard компонент */}
-          </div>
-        ))}
-      </div>
+      <div className={styles.catalog__grid}></div>
       <ButtonPagination pageCount={5} />
     </main>
   );
