@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../styles/Favourites.module.scss';
+import styles from '../favourites/Favourites.module.scss';
 
 const Favourites: React.FC = () => {
   return (
