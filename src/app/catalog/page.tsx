@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import styles from '../../styles/Catalog.module.scss';
+import styles from './Catalog.module.scss';
 import { ButtonPagination } from '@components/ui/Buttons/Pagination';
 
 const Catalog: React.FC = () => {
@@ -13,7 +13,7 @@ const Catalog: React.FC = () => {
       <div className={styles.catalog__top}>
         <div>
           <h1 className={styles.catalog__title}>CategoryName</h1>
-          <p className={styles.catalog__subtitle}>{`0 models`}</p>
+          <p className={styles.catalog__subtitle}>0 models</p>
         </div>
 
         <div className={styles.catalog__filters}>
