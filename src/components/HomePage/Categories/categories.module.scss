@@ -1,14 +1,14 @@
 @use '../../../styles/mixins.scss' as *;
 
-.home__categories {
+.homeCategories {
   @include inline-padding;
 
-  &-title {
+  &Title {
     color: var(--color-white);
     margin: 0 0 24px;
   }
 
-  &-container {
+  &Container {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -22,7 +22,7 @@
   }
 }
 
-.category__card {
+.categoryCard {
   flex: 1 1 clamp(180px, 30%, 368px);
   display: flex;
   flex-direction: column;
@@ -31,10 +31,10 @@
   @include on-mobile {
     flex: none;
     width: 90vw;
-    max-width: 400px; 
+    max-width: 400px;
   }
 
-  &-content {
+  &Content {
     position: relative;
     width: 100%;
     aspect-ratio: 1 / 1;
@@ -42,22 +42,26 @@
 
     @include on-mobile {
       aspect-ratio: auto;
-      height: 60vw;         
-    } 
+      height: 60vw;
+    }
   }
 
-  &-title {
+  &Title {
     color: var(--color-white);
     text-decoration: none;
     margin: 16px 0 4px;
   }
 
-  &-text {
+  &Text {
     color: var(--color-secondary);
     margin: 0;
   }
 }
 
-.category__phone-image {
-  object-fit: cover; // для next/image fill
+.categoryPhoneImage {
+  object-fit: cover;
+}
+
+.categoryCardLink {
+  text-decoration: none;
 }

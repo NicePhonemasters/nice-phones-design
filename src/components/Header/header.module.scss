@@ -1,0 +1,158 @@
+@use '../../styles/core/mixins.scss' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  background-color: var(--color-black);
+  width: 100%;
+  height: 64px;
+  box-shadow: 0 1px var(--color-surface-2);
+  z-index: 3;
+
+  @include on-tablet {
+    height: 48px;
+  }
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+}
+
+.headerLogo {
+  width: 80px;
+  height: 26px;
+  margin: 0 24px;
+
+  @include on-tablet {
+    width: 64px;
+    height: 22px;
+    margin: 0 16px;
+  }
+}
+
+.headerLists {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  padding: 0;
+  margin-left: 24px;
+
+  @include on-tablet {
+    gap: 32px;
+  }
+
+  @include on-mobile {
+    gap: 0;
+  }
+}
+
+.headerNavLink {
+  color: var(--color-secondary);
+  text-transform: uppercase;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+
+  @include on-mobile {
+    display: none;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -23px;
+    height: 3px;
+    width: 0;
+    background-color: var(--color-white);
+    transition: width 0.3s ease;
+
+    @include on-tablet {
+      bottom: -13px;
+    }
+  }
+
+  &:hover {
+    color: var(--color-white);
+  }
+}
+
+.linkIsActive {
+  color: var(--color-white);
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -23px;
+    height: 3px;
+    width: 100%;
+    background-color: var(--color-white);
+    transition: width 0.3s ease;
+
+    @include on-tablet {
+      bottom: -13px;
+    }
+  }
+}
+
+.headerRight {
+  display: flex;
+  margin-left: auto;
+  margin-bottom: 2px;
+}
+
+.headerRightFavourites,
+.headerRightCart {
+  width: 64px;
+  height: 64px;
+  box-shadow: -1px 0 var(--color-surface-2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &:hover {
+    background-color: var(--color-icons);
+  }
+
+  @include on-tablet {
+    width: 48px;
+    height: 48px;
+  }
+
+  @include on-mobile {
+    display: none;
+  }
+}
+
+.linkIconIsActive::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 100%;
+  background-color: var(--color-white);
+  transition: width 0.3s ease;
+}
+
+.headerBurgerMenu {
+  display: none;
+
+  @include on-mobile {
+    width: 48px;
+    height: 48px;
+    box-shadow: -1px 0 var(--color-surface-2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.headerIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-white);
+}

@@ -1,0 +1,18 @@
+@use '../../styles/mixins.scss' as *;
+
+.home {
+  &Title {
+    color: var(--color-white);
+    margin: 56px 0;
+
+    @include inline-padding;
+
+    @include on-tablet {
+      margin: 32px 0;
+    }
+
+    @include on-mobile {
+      margin: 24px 0;
+    }
+  }
+}

@@ -1,0 +1,42 @@
+@use '../../../styles/mixins.scss' as *;
+
+.carousel {
+  @include inline-padding;
+  margin: 80px 0;
+
+  @include on-tablet {
+    margin: 64px 0;
+  }
+
+  @include on-mobile {
+    margin: 56px 0;
+  }
+
+  &Top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 24px;
+
+    &Title {
+      color: var(--color-white);
+      margin: 0;
+    }
+
+    &Pag {
+      display: flex;
+      gap: 16px;
+    }
+  }
+
+  &PagButton {
+    background-color: var(--color-placeholder);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 237px;
+  height: 300px;
+}

@@ -1,50 +1,60 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import './categories.scss';
+import styles from './categories.module.scss';
 
 export const Categories = () => {
   return (
-    <section className="home__categories">
-      <h2 className="home__categories-title">Shop by category</h2>
+    <section className={styles.homeCategories}>
+      <h2 className={styles.homeCategoriesTitle}>Shop by category</h2>
 
-      <div className="home__categories-container">
-        <div className="category__card">
-          <Link href="/phones" style={{ textDecoration: 'none' }}>
-            <div className="category__card-content">
+      <div className={styles.homeCategoriesContainer}>
+        <div className={styles.categoryCard}>
+          <Link href="/phones" className={styles.categoryCardLink}>
+            <div className={styles.categoryCardContent}>
               <Image
                 src="/img/category-phones2.png"
-                className="category__phone-image"
+                className={styles.categoryPhoneImage}
                 fill
                 alt="phones"
               />
             </div>
 
-            <h4 className="category__card-title">Mobile phones</h4>
+            <h4 className={styles.categoryCardTitle}>Mobile phones</h4>
+            <p className={`${styles.categoryCardText} smallText`}>0 models</p>
           </Link>
-
-          <p className="category__card-text small-text">0 models</p>
         </div>
 
-        <div className="category__card">
-          <Link href="/phones" style={{ textDecoration: 'none' }}>
-            <div className="category__card-content">
-              <Image src="/img/category-tablets2.png" fill alt="phones" />
+        <div className={styles.categoryCard}>
+          <Link href="/phones" className={styles.categoryCardLink}>
+            <div className={styles.categoryCardContent}>
+              <Image
+                src="/img/category-tablets2.png"
+                className={styles.categoryTabletImage}
+                fill
+                alt="tablets"
+              />
             </div>
 
-            <h4 className="category__card-title">Mobile phones</h4>
+            <h4 className={styles.categoryCardTitle}>Tablets</h4>
+
+            <p className={`${styles.categoryCardText} smallText`}>0 models</p>
           </Link>
-          <p className="category__card-text small-text">0 models</p>
         </div>
 
-        <div className="category__card">
-          <Link href="/phones" style={{ textDecoration: 'none' }}>
-            <div className="category__card-content">
-              <Image src="/img/category-accesories2.png" fill alt="phones" />
+        <div className={styles.categoryCard}>
+          <Link href="/phones" className={styles.categoryCardLink}>
+            <div className={styles.categoryCardContent}>
+              <Image
+                src="/img/category-accesories2.png"
+                className={styles.categoryAccessoriesImage}
+                fill
+                alt="accessories"
+              />
             </div>
 
-            <h4 className="category__card-title">Mobile phones</h4>
+            <h4 className={styles.categoryCardTitle}>Accessories</h4>
+            <p className={`${styles.categoryCardText} smallText`}>0 models</p>
           </Link>
-          <p className="category__card-text small-text">0 models</p>
         </div>
       </div>
     </section>

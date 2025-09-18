@@ -1,17 +1,21 @@
 'use client';
-import './slider.scss';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import styles from './slider.module.scss';
 
 export const Slider = () => {
   return (
-    <article className="home__slider">
-      <div className="home__slider-container">
-        <button className="home__slider-button home__slider-button--prev">
+    <article className={styles.homeSlider}>
+      <div className={styles.homeSliderContainer}>
+        <button
+          className={
+            styles.homeSliderButton + ' ' + styles.homeSliderButtonPrev
+          }
+        >
           {'<'}
         </button>
 
@@ -22,20 +26,20 @@ export const Slider = () => {
           loop
           autoplay={{ delay: 5000 }}
           navigation={{
-            prevEl: '.home__slider-button--prev',
-            nextEl: '.home__slider-button--next',
+            prevEl: '.' + styles.homeSliderButtonPrev,
+            nextEl: '.' + styles.homeSliderButtonNext,
           }}
           pagination={{
             clickable: true,
-            el: '.home__slider-dots',
-            bulletClass: 'home__slider-dot',
-            bulletActiveClass: 'home__slider-dot--active',
+            el: '.' + styles.homeSliderDots,
+            bulletClass: styles.homeSliderDot,
+            bulletActiveClass: styles.homeSliderDot + '--active',
           }}
         >
           <SwiperSlide>
             <Image
               src="/img/banner-phones2.png"
-              className="home__slider-banner"
+              className={styles.homeSliderBanner}
               fill
               alt="banner"
             />
@@ -43,8 +47,8 @@ export const Slider = () => {
 
           <SwiperSlide>
             <Image
-              src="/img/banner-accessories.png"
-              className="home__slider-banner"
+              src="/img/banner-phones.png"
+              className={styles.homeSliderBanner}
               fill
               alt="banner"
             />
@@ -52,20 +56,24 @@ export const Slider = () => {
 
           <SwiperSlide>
             <Image
-              src="/img/banner-tablets.png"
-              className="home__slider-banner"
+              src="/img/banner-image2.jpg"
+              className={styles.homeSliderBanner}
               fill
               alt="banner"
             />
           </SwiperSlide>
         </Swiper>
 
-        <button className="home__slider-button home__slider-button--next">
+        <button
+          className={
+            styles.homeSliderButton + ' ' + styles.homeSliderButtonNext
+          }
+        >
           {'>'}
         </button>
       </div>
 
-      <div className="home__slider-dots"></div>
+      <div className={styles.homeSliderDots}></div>
     </article>
   );
 };

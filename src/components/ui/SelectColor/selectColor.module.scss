@@ -1,4 +1,4 @@
-.color__round-border {
+.colorRoundBorder {
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -13,12 +13,12 @@
   }
 }
 
-.color__round-inner {
+.colorRoundInner {
   width: 28px;
   height: 28px;
   border-radius: 50%;
 }
 
-.color__round-selected {
+.colorSoundSelected {
     border: 1px solid var(--color-white);
 }
