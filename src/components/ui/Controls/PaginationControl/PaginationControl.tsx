@@ -10,8 +10,6 @@ import ArrowRight from '@/assets/icons/arrow-right.svg';
 
 type Props = {
   pageCount: number;
-  currentPage: number;
-  onPageChange: (page: number) => void;
 };
 
 function getNaturalNumbers(count: number) {
@@ -41,16 +39,18 @@ export default function PaginationControl({ pageCount }: Props) {
     handlePageChange(currentPage + 1);
   };
 
-  const leftButtonDisabled = currentPage !== 1;
-  const rightButtonDisabled = currentPage !== pageCount;
+  const leftButtonDisabled = currentPage === 1;
+  const rightButtonDisabled = currentPage === pageCount;
 
   return (
-    <div className="paginationControl">
-      <OneIconButton
-        icon={ArrowLeft}
-        disabled={leftButtonDisabled}
-        handleClick={handleLeftClick}
-      />
+    <div className={PaginationStyles.paginationControl}>
+      <div className={PaginationStyles.paginationButton}>
+        <OneIconButton
+          icon={ArrowLeft}
+          disabled={leftButtonDisabled}
+          handleClick={handleLeftClick}
+        />
+      </div>
 
       <ToggleGroup.Root
         className={PaginationStyles.toggleGroup}
@@ -69,11 +69,13 @@ export default function PaginationControl({ pageCount }: Props) {
         ))}
       </ToggleGroup.Root>
 
-      <OneIconButton
-        icon={ArrowRight}
-        disabled={rightButtonDisabled}
-        handleClick={handleRightClick}
-      />
+      <div className={PaginationStyles.paginationButton}>
+        <OneIconButton
+          icon={ArrowRight}
+          disabled={rightButtonDisabled}
+          handleClick={handleRightClick}
+        />
+      </div>
     </div>
   );
 }

@@ -52,6 +52,7 @@ export default [
         typescript: {
           project: './tsconfig.json',
           alwaysTryTypes: true,
+          extensions: ['.svg'],
         },
       },
     },

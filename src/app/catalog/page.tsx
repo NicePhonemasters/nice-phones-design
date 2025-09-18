@@ -47,11 +47,7 @@ const Catalog: React.FC = () => {
       </div>
 
       <div className={styles.catalog__grid}></div>
-      <PaginationControl
-        pageCount={5}
-        currentPage={1}
-        onPageChange={() => {}}
-      />
+      <PaginationControl pageCount={5} />
     </main>
   );
 };

@@ -26,4 +26,17 @@
   }
 }
 
+.paginationControl {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: horizontal;
+}
+
+.paginationButton {
+  height: 32px;
+  width: 32px;
+}
+
 
