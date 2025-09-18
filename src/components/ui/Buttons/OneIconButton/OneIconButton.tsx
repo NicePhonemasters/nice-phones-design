@@ -15,9 +15,9 @@ export default function OneIconButton({
     <button
       onClick={handleClick}
       disabled={disabled}
-      className={styles.OneIconButton}
+      className={styles.oneIconButton}
     >
-      <Icon alt="icon" className={styles.OneIconButton__icon} />
+      <Icon alt="icon" className={styles.oneIconButton__icon} />
     </button>
   );
 }

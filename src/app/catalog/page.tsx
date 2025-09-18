@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import styles from '../../styles/Catalog.module.scss';
-import { ButtonPagination } from '@components/ui/Buttons/Pagination';
+import { PaginationControl } from '@components/ui/Controls/PaginationControl';
 
 const Catalog: React.FC = () => {
   const [sortBy, setSortBy] = useState('new');
@@ -47,7 +47,11 @@ const Catalog: React.FC = () => {
       </div>
 
       <div className={styles.catalog__grid}></div>
-      <ButtonPagination pageCount={5} />
+      <PaginationControl
+        pageCount={5}
+        currentPage={1}
+        onPageChange={() => {}}
+      />
     </main>
   );
 };

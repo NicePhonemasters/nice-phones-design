@@ -1,7 +1,12 @@
-import { ToggleGroup } from 'radix-ui';
+'use client';
 
-//import ButtonStyles from '@styles/ToggleButton.module.scss';
-import ToggleStyles from '@styles/ToggleGroup.module.scss';
+import { ToggleGroup } from 'radix-ui';
+import { useState } from 'react';
+
+import PaginationStyles from '@styles/PaginationControl.module.scss';
+import { OneIconButton } from '@components/ui/Buttons/OneIconButton';
+import ArrowLeft from '@/assets/icons/arrow-left.svg';
+import ArrowRight from '@/assets/icons/arrow-right.svg';
 
 type Props = {
   pageCount: number;
@@ -19,29 +24,56 @@ function getNaturalNumbers(count: number) {
   return numbers;
 }
 
-export default function PaginationControl({
-  pageCount,
-  currentPage,
-  onPageChange,
-}: Props) {
+export default function PaginationControl({ pageCount }: Props) {
   const pages = getNaturalNumbers(pageCount);
+  const [currentPage, setCurrentPage] = useState(1);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    alert('TODO: pagination logic');
+  };
+
+  const handleLeftClick = () => {
+    handlePageChange(currentPage - 1);
+  };
+
+  const handleRightClick = () => {
+    handlePageChange(currentPage + 1);
+  };
+
+  const leftButtonDisabled = currentPage !== 1;
+  const rightButtonDisabled = currentPage !== pageCount;
 
   return (
-    <ToggleGroup.Root
-      className={ToggleStyles.ToggleGroup}
-      type="single"
-      value={String(currentPage)}
-    >
-      {pages.map((page) => (
-        <ToggleGroup.Item
-          key={page}
-          value={page}
-          className={`${ToggleStyles.ToggleGroup} buttons-text`}
-          onClick={() => onPageChange(+page)}
-        >
-          {page}
-        </ToggleGroup.Item>
-      ))}
-    </ToggleGroup.Root>
+    <div className="paginationControl">
+      <OneIconButton
+        icon={ArrowLeft}
+        disabled={leftButtonDisabled}
+        handleClick={handleLeftClick}
+      />
+
+      <ToggleGroup.Root
+        className={PaginationStyles.toggleGroup}
+        type="single"
+        value={String(currentPage)}
+      >
+        {pages.map((page) => (
+          <ToggleGroup.Item
+            key={page}
+            value={page}
+            className={`${PaginationStyles.toggleButton} buttons-text`}
+            onClick={() => handlePageChange(+page)}
+          >
+            {page}
+          </ToggleGroup.Item>
+        ))}
+      </ToggleGroup.Root>
+
+      <OneIconButton
+        icon={ArrowRight}
+        disabled={rightButtonDisabled}
+        handleClick={handleRightClick}
+      />
+    </div>
   );
 }
