@@ -8,6 +8,7 @@ import styles from '../../styles/Catalog.module.scss';
 import { PaginationControl } from '@components/ui/Controls/PaginationControl';
 import { DropdownSort } from '@components/ui/Dropdowns/DropdownSort';
 import { DropdownPages } from '@components/ui/Dropdowns/DropdownPages';
+import { SelectColor } from '@components/ui/SelectColor/SelectColor';
 
 const Catalog: React.FC = () => {
   // const [sortBy, setSortBy] = useState('new');
@@ -57,6 +58,7 @@ const Catalog: React.FC = () => {
 
       <div className={styles.catalog__grid}></div>
       <PaginationControl pageCount={5} />
+      <SelectColor color={'#5F7170'} productId={2} />
     </main>
   );
 };

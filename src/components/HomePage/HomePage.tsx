@@ -1,6 +1,6 @@
-import { Categories } from '@components/HomePage/Categories/Categories';
 import './home.scss';
 import { Slider } from './Slider/Slider';
+import { Categories } from '@components/HomePage/Categories/Categories';
 import { Carousel } from '@components/ui/Carousel/Carousel';
 
 export const HomePage = () => {
