@@ -10,9 +10,7 @@
     background-color: var(--color-surface-1);
     width: 32px;
     height: 32px;
-    align-content: center;
-    justify-content: center;
-
+    place-content: center center;
     border: none;
     color: var(--color-white);
     

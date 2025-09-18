@@ -1,10 +1,8 @@
-@use '../../styles/mixins.scss' as *;
-
 .home {
-    
     &__title {
         color: var(--color-white);
         margin: 56px 0;
+
         @include inline-padding;
 
         @include on-tablet {

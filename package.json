@@ -10,6 +10,7 @@
     "start": "next start",
     "format": "prettier . --ignore-path .gitignore --write",
     "lint": "eslint ./src --fix",
+    "lint:scss": "stylelint '**/*.{scss,css}' --fix",
     "fix-style": "npm run format & npm run lint",
     "preview": "vite preview"
   },
@@ -41,6 +42,9 @@
     "globals": "^16.3.0",
     "husky": "^9.1.7",
     "prettier": "^3.6.2",
+    "stylelint": "^16.24.0",
+    "stylelint-config-standard-scss": "^16.0.0",
+    "stylelint-scss": "^6.12.1",
     "tslib": "^2.8.1",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.39.1"
