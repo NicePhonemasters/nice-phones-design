@@ -36,6 +36,7 @@
   height: 31px;
   width: 108px;
   padding-bottom: 8px;
+
   &__tag {
     display: flex;
     gap: 8px;
@@ -45,6 +46,7 @@
     font-size: 22px;
     line-height: 140%;
   }
+
   &__old {
     text-decoration: line-through;
     color: #75767f;
@@ -98,7 +100,7 @@
     background-color: #905bff;
     width: 160px;
     height: 40px;
-    color: #ffffff;
+    color: #fff;
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 0;

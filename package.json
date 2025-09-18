@@ -10,6 +10,7 @@
     "start": "next start",
     "format": "prettier . --ignore-path .gitignore --write",
     "lint": "eslint ./src --fix",
+    "lint:scss": "stylelint '**/*.{scss,css}' --fix",
     "fix-style": "npm run format & npm run lint",
     "preview": "vite preview"
   },
