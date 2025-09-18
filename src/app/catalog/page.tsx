@@ -3,9 +3,10 @@
 import React, { useState } from 'react';
 import styles from '../../styles/Catalog.module.scss';
 import { PaginationControl } from '@components/ui/Controls/PaginationControl';
+import { Dropdown } from '@components/ui/Dropdown/Dropdown';
 
 const Catalog: React.FC = () => {
-  const [sortBy, setSortBy] = useState('new');
+  // const [sortBy, setSortBy] = useState('new');
   const [itemsPerPage, setItemsPerPage] = useState(16);
 
   return (
@@ -19,7 +20,7 @@ const Catalog: React.FC = () => {
         <div className={styles.catalog__filters}>
           <div className={styles.catalog__filterGroup}>
             <p className={styles.catalog__filterLabel}>Sort by</p>
-            <select
+            {/* <select
               className={`${styles.catalog__select} ${styles.catalog__selectSort}`}
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value)}
@@ -28,7 +29,9 @@ const Catalog: React.FC = () => {
               <option value="oldest">Oldest</option>
               <option value="priceLow">Price: low to high</option>
               <option value="priceHigh">Price: high to low</option>
-            </select>
+            </select> */}
+
+            <Dropdown />
           </div>
 
           <div className={styles.catalog__filterGroup}>

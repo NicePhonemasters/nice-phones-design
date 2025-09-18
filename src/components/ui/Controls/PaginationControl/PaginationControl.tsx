@@ -3,7 +3,7 @@
 import { ToggleGroup } from 'radix-ui';
 import { useState } from 'react';
 
-import PaginationStyles from '@styles/PaginationControl.module.scss';
+import PaginationStyles from './PaginationControl.module.scss';
 import { OneIconButton } from '@components/ui/Buttons/OneIconButton';
 import ArrowLeft from '@/assets/icons/arrow-left.svg';
 import ArrowRight from '@/assets/icons/arrow-right.svg';

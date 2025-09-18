@@ -28,7 +28,7 @@ export const Menu: React.FC<Props> = ({
               <li key={link.path}>
                 <Link
                   className={classNames('burger__menu-link uppercase-text', {
-                    'link-is-active': currentPath === link.path,
+                    'menu__link-is-active': currentPath === link.path,
                   })}
                   href={link.path}
                 >
