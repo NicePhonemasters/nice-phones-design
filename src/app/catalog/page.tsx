@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import styles from '../catalog/Catalog.module.scss';
+import styles from './Catalog.module.scss';
 import { ButtonPagination } from '@components/ui/Buttons/Pagination';
 
 const Catalog: React.FC = () => {
