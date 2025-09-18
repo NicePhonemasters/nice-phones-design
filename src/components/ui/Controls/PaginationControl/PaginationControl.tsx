@@ -2,11 +2,10 @@
 
 import { ToggleGroup } from 'radix-ui';
 import { useState } from 'react';
-
+import ArrowLeft from '../../../../assets/icons/arrow-left.svg';
+import ArrowRight from '../../../../assets/icons/arrow-right.svg';
 import PaginationStyles from './PaginationControl.module.scss';
 import { OneIconButton } from '@components/ui/Buttons/OneIconButton';
-import ArrowLeft from '@/assets/icons/arrow-left.svg';
-import ArrowRight from '@/assets/icons/arrow-right.svg';
 
 type Props = {
   pageCount: number;

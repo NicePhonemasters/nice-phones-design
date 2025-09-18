@@ -8,21 +8,33 @@
 	display: inline-flex;
 	align-items: center;
     justify-content: space-between;
-    width: 164px;
-    height: 40px;
 	font-size: 13px;
     padding-left: 12px;
 	background-color: var(--color-surface-2);
 	color: var(--color-white);
 	box-shadow: 0 2px 10px var(--color-black);
     border: none;
+}
 
-    @include on-tablet {
+.SelectSort {
+	width: 164px;
+    height: 40px;
+
+	 @include on-tablet {
         width: 175px;
     }
 
     @include on-mobile {
-        
+        width: 136px;
+    }
+}
+
+.SelectPages {
+	width: 128px;
+    height: 40px;
+
+	 @include on-tablet {
+        width: 136px;
     }
 }
 

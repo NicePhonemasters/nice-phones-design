@@ -1,38 +1,19 @@
-'use client';
 import './dropdown.scss';
 import React from 'react';
 import * as Select from '@radix-ui/react-select';
-import classnames from 'classnames';
-import {
-  CheckIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-} from '@radix-ui/react-icons';
+import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 
-const SelectItem = React.forwardRef<
-  HTMLDivElement,
-  React.ComponentPropsWithoutRef<typeof Select.Item>
->(({ children, className, ...props }, forwardedRef) => {
-  return (
-    <Select.Item
-      className={classnames('SelectItem', className)}
-      {...props}
-      ref={forwardedRef}
-    >
-      <Select.ItemText>{children}</Select.ItemText>
-      <Select.ItemIndicator className="SelectItemIndicator">
-        <CheckIcon />
-      </Select.ItemIndicator>
-    </Select.Item>
-  );
-});
+type Props = {
+  SelectItem: React.ForwardRefExoticComponent<
+    React.ComponentPropsWithoutRef<typeof Select.Item> &
+      React.RefAttributes<HTMLDivElement>
+  >;
+};
 
-SelectItem.displayName = 'SelectItem';
-
-export const Dropdown = () => {
+export const DropdownSort: React.FC<Props> = ({ SelectItem }) => {
   return (
     <Select.Root>
-      <Select.Trigger className="SelectTrigger" aria-label="Food">
+      <Select.Trigger className="SelectTrigger SelectSort" aria-label="sort">
         <Select.Value placeholder="Select sort" />
         <Select.Icon className="SelectIcon">
           <ChevronDownIcon />
