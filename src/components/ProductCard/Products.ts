@@ -1,4 +1,4 @@
-export const products = [
+export const product = [
   {
     id: '1',
     title: 'Apple iPhone Xs 64GB Silver (iMT9G2FS/A)',

@@ -1,19 +1,12 @@
 import Image from 'next/image';
 import React from 'react';
-import styles from '../../styles/ProductCard.module.scss';
-import { products } from './Products';
-import { ProductCardProps } from '.';
+import styles from './ProductCard.module.scss';
+import { Product } from '.';
 
-export default function ProductCard({ id }: ProductCardProps) {
-  const product = products.find((p) => p.id === id);
-
-  if (!product) {
-    return <div className={styles.placeholder}>Product not found</div>;
-  }
-
+export default function ProductCard({ product }: { product: Product }) {
   return (
     <div className={styles.productCardWrapper}>
-      <div id={product.id} className={styles.productCard}>
+      <div id={product.id.toString()} className={styles.productCard}>
         <div className={styles.imageContainer}>
           <Image src={product.imageSrc} alt={product.title} fill />
         </div>
@@ -23,37 +16,34 @@ export default function ProductCard({ id }: ProductCardProps) {
         </div>
 
         <div className={styles.price}>
-          <div className={styles.price__tag}>
+          <div className={styles.tag}>
             <p>${product.price}</p>
-            <p className={styles.price__old}>${product.oldPrice}</p>
+            <p className={styles.old}>${product.oldPrice}</p>
           </div>
         </div>
 
         <div className={styles.divider}></div>
 
         <div className={styles.specs}>
-          <div className={styles.specs__item}>
-            <span className={styles.specs__label}>Screen</span>
-            <span className={styles.specs__value}>{product.display}</span>
+          <div className={styles.item}>
+            <span className={styles.label}>Screen</span>
+            <span className={styles.value}>{product.display}</span>
           </div>
-          <div className={styles.specs__item}>
-            <span className={styles.specs__label}>Capacity</span>
-            <span className={styles.specs__value}>{product.capacity}</span>
+          <div className={styles.item}>
+            <span className={styles.label}>Capacity</span>
+            <span className={styles.value}>{product.capacity}</span>
           </div>
-          <div className={styles.specs__item}>
-            <span className={styles.specs__label}>RAM</span>
-            <span className={styles.specs__value}>{product.ram}</span>
+          <div className={styles.item}>
+            <span className={styles.label}>RAM</span>
+            <span className={styles.value}>{product.ram}</span>
           </div>
         </div>
 
         <div className={styles.buttonContainer}>
-          <button className={styles.buttonContainer__AddToCart} type="button">
+          <button className={styles.addToCart} type="button">
             Add to cart
           </button>
-          <button
-            className={styles.buttonContainer__AddTofavoutite}
-            type="button"
-          >
+          <button className={styles.addToFavourite} type="button">
             ♡
           </button>
         </div>
