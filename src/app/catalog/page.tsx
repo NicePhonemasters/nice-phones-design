@@ -4,7 +4,7 @@ import { Select } from 'radix-ui';
 import classNames from 'classnames';
 import { CheckIcon } from '@radix-ui/react-icons';
 import React from 'react';
-import styles from '../../styles/Catalog.module.scss';
+import styles from './Catalog.module.scss';
 import { PaginationControl } from '@components/ui/Controls/PaginationControl';
 import { DropdownSort } from '@components/ui/Dropdowns/DropdownSort';
 import { DropdownPages } from '@components/ui/Dropdowns/DropdownPages';
@@ -38,7 +38,7 @@ const Catalog: React.FC = () => {
       <div className={styles.catalog__top}>
         <div>
           <h1 className={styles.catalog__title}>CategoryName</h1>
-          <p className={styles.catalog__subtitle}>{`0 models`}</p>
+          <p className={styles.catalog__subtitle}>0 models</p>
         </div>
 
         <div className={styles.catalog__filters}>

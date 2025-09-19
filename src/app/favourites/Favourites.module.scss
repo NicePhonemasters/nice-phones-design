@@ -1,6 +1,4 @@
-@import '../styles/core/mixins.scss';
-
-.catalog {
+.favourites {
   padding: 24px 16px;
   display: flex;
   flex-direction: column;
@@ -18,13 +16,14 @@
   &__top {
     display: flex;
     flex-direction: column;
+    margin-bottom: 32px;
     gap: 8px;
   }
 
   &__title {
+    margin: 0;
     font-size: 32px;
     font-weight: 800;
-    margin-bottom: 8px;
     color: var(--color-white);
 
     @include on-tablet {
@@ -43,33 +42,6 @@
     font-weight: 600;
   }
 
-  &__filters {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    justify-content: center;
-
-
-    @include on-tablet {
-      justify-content: flex-start;
-    }
-    
-    @include on-desktop {
-      justify-content: flex-start;
-    }
-  }
-
-  &__filterGroup {
-    display: flex;
-    flex-direction: column;
-  }
-
-  &__filterLabel {
-    color: var(--color-secondary);
-    font-size: 12px;
-    font-weight: 700;
-  }
-
   &__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
@@ -77,25 +49,5 @@
     flex-grow: 1;
     min-height: 400px;
     margin-bottom: 20px;
-  }
-}
-
-.pagination {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 20px;
-
-  &__btn {
-    background: var(--color-placeholder);
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-
-    &:hover {
-      opacity: 0.8;
-    }
   }
 }
