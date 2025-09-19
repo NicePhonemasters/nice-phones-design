@@ -1,3 +1,4 @@
+/* eslint-disable import/no-anonymous-default-export */
 import js from '@eslint/js';
 import globals from 'globals';
 import reactHooks from 'eslint-plugin-react-hooks';
@@ -51,6 +52,7 @@ export default [
         typescript: {
           project: './tsconfig.json',
           alwaysTryTypes: true,
+          extensions: ['.svg'],
         },
       },
     },

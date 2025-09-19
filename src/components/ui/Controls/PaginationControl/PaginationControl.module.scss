@@ -1,0 +1,42 @@
+.toggleGroup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: horizontal;
+  gap: 8px;
+}
+
+.toggleButton {
+  font-family: inherit;
+  background-color: var(--color-surface-1);
+  width: 32px;
+  height: 32px;
+  align-content: center;
+  justify-content: center;
+
+  border: none;
+  color: var(--color-white);
+  
+  &:hover {
+    background-color: var(--color-elements);
+  }
+
+  &[data-state="on"] {
+    background-color: var(--color-accent);
+  }
+}
+
+.paginationControl {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: horizontal;
+}
+
+.paginationButton {
+  height: 32px;
+  width: 32px;
+}
+
+

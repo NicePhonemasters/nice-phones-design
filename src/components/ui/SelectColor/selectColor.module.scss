@@ -1,0 +1,24 @@
+.colorRoundBorder {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--color-elements);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s ease;
+
+  &:hover {
+    border: 1px solid var(--color-secondary);
+  }
+}
+
+.colorRoundInner {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}
+
+.colorSoundSelected {
+    border: 1px solid var(--color-white);
+}

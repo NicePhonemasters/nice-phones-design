@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 import Link from 'next/link';
-import Image from 'next/image';
-import './menu.scss';
 import classNames from 'classnames';
+import FavouriteIcon from '../../../assets/icons/favourite-default.svg';
+import ShopCart from '../../../assets/icons/cart-shopping.svg';
+import styles from './menu.module.scss';
 
 type NavLinks = {
   title: string;
@@ -14,22 +15,31 @@ type Props = {
   navLinks: NavLinks[];
   currentPath: string;
 };
+
 export const Menu: React.FC<Props> = ({
   isOpenedMenu,
   navLinks,
   currentPath,
 }) => {
   return (
-    <div className={`burger__menu-overlay ${isOpenedMenu ? 'open' : ''}`}>
-      <div className="burger__menu">
+    <div
+      className={classNames(styles.burgerMenuOverlay, {
+        [styles.open]: isOpenedMenu,
+      })}
+    >
+      <div className={styles.burgerMenu}>
         <nav>
-          <ul className="burger__menu-lists">
+          <ul className={styles.burgerMenuLists}>
             {navLinks.map((link) => (
               <li key={link.path}>
                 <Link
-                  className={classNames('burger__menu-link uppercase-text', {
-                    'link-is-active': currentPath === link.path,
-                  })}
+                  className={classNames(
+                    styles.burgerMenuLink,
+                    'uppercase-text',
+                    {
+                      [styles.linkIsActive]: currentPath === link.path,
+                    },
+                  )}
                   href={link.path}
                 >
                   {link.title}
@@ -39,30 +49,22 @@ export const Menu: React.FC<Props> = ({
           </ul>
         </nav>
 
-        <div className="menu__footer">
-          <div className="menu__footer-favourites">
+        <div className={styles.menuFooter}>
+          <div className={styles.menuFooterFavourites}>
             <Link href="/favourites">
-              <Image
-                src="/assets/icons/favourite-default.svg"
-                width={16}
-                height={16}
-                alt="favourites"
-                className={classNames('header__icon', {
-                  'link__icon-is-active': currentPath === '/favourites',
+              <FavouriteIcon
+                className={classNames(styles.headerIcon, {
+                  [styles.linkIconIsActive]: currentPath === '/favourites',
                 })}
               />
             </Link>
           </div>
 
-          <div className="menu__footer-cart">
+          <div className={styles.menuFooterCart}>
             <Link href="/shopcart">
-              <Image
-                src="/assets/icons/cart-shopping.svg"
-                width={16}
-                height={16}
-                alt="cart"
-                className={classNames('header__icon', {
-                  'link__icon-is-active': currentPath === '/shopcart',
+              <ShopCart
+                className={classNames(styles.headerIcon, {
+                  [styles.linkIconIsActive]: currentPath === '/shopcart',
                 })}
               />
             </Link>

@@ -1,0 +1,65 @@
+.home__categories {
+  @include inline-padding;
+
+  &Title {
+    color: var(--color-white);
+    margin: 0 0 24px;
+  }
+
+  &Container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    @include on-mobile {
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+    }
+  }
+}
+
+.categoryCard {
+  flex: 1 1 clamp(180px, 30%, 368px);
+  display: flex;
+  flex-direction: column;
+  border: none;
+
+  @include on-mobile {
+    flex: none;
+    width: 90vw;
+    max-width: 400px;
+  }
+
+  &Content {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+
+    @include on-mobile {
+      aspect-ratio: auto;
+      height: 60vw;
+    }
+  }
+
+  &Title {
+    color: var(--color-white);
+    text-decoration: none;
+    margin: 16px 0 4px;
+  }
+
+  &Text {
+    color: var(--color-secondary);
+    margin: 0;
+  }
+}
+
+.categoryPhoneImage {
+  object-fit: cover;
+}
+
+.categoryCardLink {
+  text-decoration: none;
+}
