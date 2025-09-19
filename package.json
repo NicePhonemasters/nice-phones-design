@@ -16,8 +16,12 @@
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.15",
+<<<<<<< HEAD
     "@radix-ui/react-icons": "^1.3.2",
     "@radix-ui/react-select": "^2.2.6",
+=======
+    "@reduxjs/toolkit": "^2.9.0",
+>>>>>>> 7ff8ccc (feat: added redux to packages)
     "classnames": "^2.5.1",
     "eslint-config-next": "^15.5.3",
     "gsap": "^3.13.0",
@@ -25,7 +29,11 @@
     "radix-ui": "^1.4.3",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+<<<<<<< HEAD
     "react-router-dom": "^7.9.1",
+=======
+    "react-redux": "^9.2.0",
+>>>>>>> 7ff8ccc (feat: added redux to packages)
     "sass": "^1.92.1",
     "swiper": "^12.0.1"
   },
