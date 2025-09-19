@@ -1,3 +1,15 @@
+@mixin on-mobile {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: 640px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
 .productCardWrapper {
   box-sizing: border-box;
   display: flex;
@@ -9,12 +21,12 @@
   justify-content: space-between;
   position: relative;
 
-  @media (max-width: 639px) {
+  @include on-mobile {
     width: 212px;
     min-height: 439px;
   }
 
-  @media (min-width: 640px) and (max-width: 1199px) {
+  @include on-tablet {
     width: 237px;
     min-height: 512px;
   }
@@ -28,12 +40,12 @@
   width: 208px;
   height: 196px;
 
-  @media (max-width: 639px) {
+  @include on-mobile {
     width: 148px;
     height: 129px;
   }
 
-  @media (min-width: 640px) and (max-width: 1199px) {
+  @include on-tablet {
     width: 173px;
     height: 181px;
   }
@@ -47,11 +59,11 @@
   line-height: 21px;
   color: #f1f2f9;
 
-  @media (max-width: 639px) {
+  @include on-mobile {
     width: 148px;
   }
 
-  @media (min-width: 640px) and (max-width: 1199px) {
+  @include on-tablet {
     width: 173px;
   }
 }
@@ -59,8 +71,6 @@
 .price {
   box-sizing: border-box;
   display: flex;
-  height: 31px;
-  width: 108px;
   padding-bottom: 8px;
   width: auto;
   height: auto;
@@ -74,12 +84,12 @@
     font-size: 22px;
     line-height: 140%;
 
-    @media (max-width: 639px) {
+    @include on-mobile {
       width: 51px;
       height: 31px;
     }
 
-    @media (min-width: 640px) and (max-width: 1199px) {
+    @include on-tablet {
       width: 51px;
       height: 31px;
     }
@@ -97,11 +107,11 @@
   width: 208px;
   border: 1px solid #3b3e4a;
 
-  @media (max-width: 639px) {
+  @include on-mobile {
     width: 148px;
   }
 
-  @media (min-width: 640px) and (max-width: 1199px) {
+  @include on-tablet {
     width: 173px;
   }
 }
@@ -113,11 +123,11 @@
   gap: 8px;
   padding-top: 16px;
 
-  @media (max-width: 639px) {
+  @include on-mobile {
     width: 148px;
   }
 
-  @media (min-width: 640px) and (max-width: 1199px) {
+  @include on-tablet {
     width: 173px;
   }
 
@@ -148,12 +158,12 @@
   display: flex;
   gap: 8px;
 
-  @media (max-width: 639px) {
+  @include on-mobile {
     width: 148px;
     height: 40px;
   }
 
-  @media (min-width: 640px) and (max-width: 1199px) {
+  @include on-tablet {
     width: 173px;
     height: 40px;
   }
@@ -170,11 +180,12 @@
     outline: none;
     padding: 0;
 
-    @media (max-width: 639px) {
+    @include on-mobile {
       width: 100px;
       height: 40px;
     }
-    @media (min-width: 640px) and (max-width: 1199px) {
+
+    @include on-tablet {
       width: 125px;
       height: 40px;
     }
@@ -196,12 +207,12 @@
     outline: none;
     padding: 0;
 
-    @media (max-width: 639px) {
+    @include on-mobile {
       width: 40px;
       height: 40px;
     }
 
-    @media (min-width: 640px) and (max-width: 1199px) {
+    @include on-tablet {
       width: 40px;
       height: 40px;
     }
