@@ -1,44 +1,44 @@
-import './footer.scss';
 import Image from 'next/image';
 import Link from 'next/link';
+import styles from './footer.module.scss';
 
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="footer__content">
+    <footer className={styles.footer}>
+      <div className={styles.footerContent}>
         <Link href="/">
           <Image
             src="/assets/logo.png"
-            className="logo"
+            className={styles.footerLogo}
             width={80}
             height={26}
             alt="Nice Gadgets"
           />
         </Link>
 
-        <nav className="footer__nav">
-          <ul className="footer__lists">
+        <nav className={styles.footerNav}>
+          <ul className={styles.footerLists}>
             <li>
-              <Link href="github" className="footer__nav-link uppercase-text">
+              <Link href="github" className={styles.footerNavLink}>
                 Github
               </Link>
             </li>
             <li>
-              <Link href="contacts" className="footer__nav-link uppercase-text">
+              <Link href="contacts" className={styles.footerNavLink}>
                 Contacts
               </Link>
             </li>
             <li>
-              <Link href="rights" className="footer__nav-link uppercase-text">
+              <Link href="rights" className={styles.footerNavLink}>
                 Rights
               </Link>
             </li>
           </ul>
         </nav>
 
-        <div className="footer__right">
-          <p className="footer__right-text small-text">Back to top</p>
-          <button className="footer__button-top">q</button>
+        <div className={styles.footerRight}>
+          <p className={styles.footerRightText}>Back to top</p>
+          <button className={styles.footerButtonTop}>↑</button>
         </div>
       </div>
     </footer>

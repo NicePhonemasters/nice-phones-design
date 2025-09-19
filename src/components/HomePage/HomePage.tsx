@@ -1,6 +1,6 @@
-import { Categories } from '@components/HomePage/Categories/Categories';
-import './home.scss';
+import styles from './home.module.scss';
 import { Slider } from './Slider/Slider';
+import { Categories } from '@components/HomePage/Categories/Categories';
 import { Carousel } from '@components/ui/Carousel/Carousel';
 
 export const HomePage = () => {
@@ -17,19 +17,19 @@ export const HomePage = () => {
   ];
 
   return (
-    <section className="home">
-      <div className="home__container">
-        <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
+    <section className={styles.home}>
+      <div className={styles.homeContainer}>
+        <h1 className={styles.homeTitle}>Welcome to Nice Gadgets store!</h1>
 
         <Slider />
 
-        <section className="home__carusel-new-models">
+        <section className={styles.homeCarouselNewModels}>
           <Carousel title="Brand new models" items={items} />
         </section>
 
         <Categories />
 
-        <section className="home__carusel-hot-prices">
+        <section className={styles.homeCarouselHotPrices}>
           <Carousel title="Hot prices" items={items} />
         </section>
       </div>

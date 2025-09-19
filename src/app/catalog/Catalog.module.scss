@@ -68,26 +68,6 @@
     font-weight: 700;
   }
 
-  &__select {
-    padding: 10px 12px;
-    font-size: 14px;
-    line-height: 21px;
-    font-weight: 700;
-    width: 136px;
-    background-color: var(--color-surface-2);
-    color: var(--color-white);
-  }
-
-  &__selectSort {
-    @include on-tablet {
-      width: 187px;
-    }
-  }
-
-  &__selectItems {
-    width: 136px;
-  }
-
   &__grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
