@@ -1,10 +1,4 @@
-<<<<<<< HEAD:src/components/HomePage/Categories/categories.module.scss
-@use '../../../styles/mixins.scss' as *;
-
-.homeCategories {
-=======
 .home__categories {
->>>>>>> main:src/components/HomePage/Categories/categories.scss
   @include inline-padding;
 
   &Title {
