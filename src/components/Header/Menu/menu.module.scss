@@ -3,7 +3,7 @@
   top: 0;
   right: -100%;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   transition: right 0.3s ease;
   z-index: 2;
 
@@ -18,18 +18,16 @@
   height: 100%;
   box-shadow: 0 -1px var(--color-surface-2);
   background-color: var(--color-black);
-  padding-top: 72px;
 }
 
 .burgerMenuLists {
-  flex: 1;
   display: flex;
   flex-direction: column;
   list-style: none;
   gap: 16px;
   text-align: center;
   padding: 0;
-  margin: 0;
+  margin:72px 0;
 }
 
 .burgerMenuLink {
@@ -49,7 +47,8 @@
 }
 
 .menuFooter {
-  margin-top: 420px;
+  flex-shrink: 0;
+  margin-top: auto;
   display: flex;
   justify-content: center;
   box-shadow: 0 -1px var(--color-surface-2);
@@ -103,4 +102,10 @@
   width: 100%;
   background-color: var(--color-white);
   transition: width 0.3s ease;
+}
+
+.headerIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-white);
 }

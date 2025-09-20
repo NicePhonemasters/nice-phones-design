@@ -4,13 +4,9 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
-
-import FavouriteIcon from '../../assets/icons/favourite-default.svg';
-import ShopCart from '../../assets/icons/cart-shopping.svg';
-import BurgerMenu from '../../assets/icons/menu-burger.svg';
-import Close from '../../assets/icons/close.svg';
 import styles from './header.module.scss';
 import { Menu } from './Menu/Menu';
+import { HeaderActions } from './HeaderActions/HeaderActions';
 
 export const Header = () => {
   const navLinks = [
@@ -57,42 +53,11 @@ export const Header = () => {
               ))}
             </ul>
           </nav>
-
-          <div className={styles.headerRight}>
-            <div
-              className={classNames(styles.headerRightFavourites, {
-                [styles.linkIconIsActive]: currentPath === '/favorites',
-              })}
-            >
-              <Link href="/favorites">
-                <FavouriteIcon className={styles.headerIcon} />
-              </Link>
-            </div>
-
-            <div
-              className={classNames(styles.headerRightCart, {
-                [styles.linkIconIsActive]: currentPath === '/shopcart',
-              })}
-            >
-              <Link href="/shopcart">
-                <ShopCart className={styles.headerIcon} />
-              </Link>
-            </div>
-
-            <div className={styles.headerBurgerMenu}>
-              {!isOpenedMenu ? (
-                <BurgerMenu
-                  className={styles.headerIcon}
-                  onClick={() => setIsOpenedMenu(true)}
-                />
-              ) : (
-                <Close
-                  className={styles.headerIcon}
-                  onClick={() => setIsOpenedMenu(false)}
-                />
-              )}
-            </div>
-          </div>
+          <HeaderActions
+            currentPath={currentPath}
+            isOpenedMenu={isOpenedMenu}
+            setIsOpenedMenu={setIsOpenedMenu}
+          />
         </div>
       </header>
 

@@ -18,11 +18,9 @@
 
 @mixin inline-padding {
   @include on-desktop{
-     padding-inline: 152px;
+    padding-inline: 152px;
   }
    
-  
-
   @include on-tablet {
     padding-inline: 24px;
   }

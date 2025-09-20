@@ -1,0 +1,51 @@
+.headerActions {
+  display: flex;
+  margin-left: auto;
+
+  @include on-tablet {
+    margin-bottom: 2px;
+  }
+}
+
+.headerActionsFavourites,
+.headerActionsCart {
+  width: 64px;
+  height: 64px;
+  box-shadow: -1px 0 var(--color-surface-2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  &:hover {
+    background-color: var(--color-icons);
+  }
+
+  @include on-tablet {
+    width: 48px;
+    height: 48px;
+  }
+
+  @include on-mobile {
+    display: none;
+  }
+}
+
+.headerBurgerMenu {
+  display: none;
+
+  @include on-mobile {
+    width: 48px;
+    height: 48px;
+    box-shadow: -1px 0 var(--color-surface-2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.headerIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--color-white);
+}

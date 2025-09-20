@@ -55,6 +55,11 @@
     background-color: var(--color-elements);
     width: 14px;
     height: 4px;
+    
+    @include on-desktop {
+      width: 2%;
+    }
+   
 
     &--active {
       background-color: var(--color-white);

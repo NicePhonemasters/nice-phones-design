@@ -2,7 +2,6 @@
 
 import { Select } from 'radix-ui';
 import classNames from 'classnames';
-import { CheckIcon } from '@radix-ui/react-icons';
 import React from 'react';
 import styles from './Catalog.module.scss';
 import { PaginationControl } from '@components/ui/Controls/PaginationControl';
@@ -25,9 +24,7 @@ const Catalog: React.FC = () => {
         ref={forwardedRef}
       >
         <Select.ItemText>{children}</Select.ItemText>
-        <Select.ItemIndicator className="SelectItemIndicator">
-          <CheckIcon />
-        </Select.ItemIndicator>
+        <Select.ItemIndicator className="SelectItemIndicator"></Select.ItemIndicator>
       </Select.Item>
     );
   });
@@ -64,28 +61,3 @@ const Catalog: React.FC = () => {
 };
 
 export default Catalog;
-
-{
-  /* <select
-              className={`${styles.catalog__select} ${styles.catalog__selectSort}`}
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-            >
-              <option value="newest">Newest</option>
-              <option value="oldest">Oldest</option>
-              <option value="priceLow">Price: low to high</option>
-              <option value="priceHigh">Price: high to low</option>
-            </select> */
-}
-
-{
-  /* <select
-              className={`${styles.catalog__select} ${styles.catalog__selectItems}`}
-              value={itemsPerPage}
-              onChange={(e) => setItemsPerPage(Number(e.target.value))}
-            >
-              <option value={8}>8</option>
-              <option value={16}>16</option>
-              <option value={24}>24</option>
-            </select> */
-}
