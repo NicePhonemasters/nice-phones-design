@@ -1,4 +1,4 @@
-.home__categories {
+.homeCategories {
   @include inline-padding;
 
   &Title {
@@ -62,4 +62,22 @@
 
 .categoryCardLink {
   text-decoration: none;
+}
+
+.categoryCard {
+  perspective: 1000px; 
+  cursor: pointer;
+
+  .categoryCardContent {
+    overflow: hidden;
+    border-radius: 16px;
+  }
+
+  &:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  }
+}
+
+.categoryImage {
+  transition: transform 0.3s;
 }

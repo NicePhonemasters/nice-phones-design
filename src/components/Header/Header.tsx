@@ -49,69 +49,75 @@ export const Header = () => {
 
   return (
     <>
-      <header className="header">
-        <div ref={logoRef}>
-          <Link href="/">
-            <Image
-              width={80}
-              height={26}
-              src="/assets/logo.png"
-              className="header__logo"
-              alt="Nice Gadgets"
-            />
-          </Link>
-        </div>
-
-        <nav className="header__nav">
-          <ul ref={navRef} className="header__lists">
-            {navLinks.map((link) => (
-              <li key={link.path}>
-                <Link
-                  className={classNames('header__nav-link uppercase-text', {
-                    'link-is-active': currentPath === link.path,
-                  })}
-                  href={link.path}
-                >
-                  {link.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <div ref={rightRef} className="header__right">
-          <div
-            className={classNames('header__right-favourites', {
-              'link__icon-is-active': currentPath === '/favorites',
-            })}
-          >
-            <Link href="/favorites">
-              <FavouriteIcon className={styles.headerIcon} />
+      <header className={styles.header}>
+        <div className={styles.headerContainer}>
+          <div ref={logoRef}>
+            <Link href="/">
+              <Image
+                width={80}
+                height={26}
+                src="/assets/logo.png"
+                className={styles.headerLogo}
+                alt="Nice Gadgets"
+              />
             </Link>
           </div>
 
-          <div
-            className={classNames(styles.headerRightCart, {
-              [styles.linkIconIsActive]: currentPath === '/shopcart',
-            })}
-          >
-            <Link href="/shopcart">
-              <ShopCart className={styles.headerIcon} />
-            </Link>
-          </div>
+          <nav className={styles.headerNav}>
+            <ul className={styles.headerLists} ref={navRef}>
+              {navLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    href={link.path}
+                    className={classNames(
+                      styles.headerNavLink,
+                      'uppercase-text',
+                      {
+                        [styles.linkIsActive]: currentPath === link.path,
+                      },
+                    )}
+                  >
+                    {link.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-          <div className={styles.headerBurgerMenu}>
-            {!isOpenedMenu ? (
-              <BurgerMenu
-                className={styles.headerIcon}
-                onClick={() => setIsOpenedMenu(true)}
-              />
-            ) : (
-              <Close
-                className={styles.headerIcon}
-                onClick={() => setIsOpenedMenu(false)}
-              />
-            )}
+          <div className={styles.headerRight} ref={rightRef}>
+            <div
+              className={classNames(styles.headerRightFavourites, {
+                [styles.linkIconIsActive]: currentPath === '/favorites',
+              })}
+            >
+              <Link href="/favorites">
+                <FavouriteIcon className={styles.headerIcon} />
+              </Link>
+            </div>
+
+            <div
+              className={classNames(styles.headerRightCart, {
+                [styles.linkIconIsActive]: currentPath === '/shopcart',
+              })}
+            >
+              <Link href="/shopcart">
+                <ShopCart className={styles.headerIcon} />
+              </Link>
+            </div>
+
+            <div className={styles.headerBurgerMenu}>
+              {!isOpenedMenu ? (
+                <BurgerMenu
+                  className={styles.headerIcon}
+                  onClick={() => setIsOpenedMenu(true)}
+                />
+              ) : (
+                <Close
+                  className={styles.headerIcon}
+                  onClick={() => setIsOpenedMenu(false)}
+                />
+              )}
+            </div>
           </div>
         </div>
       </header>

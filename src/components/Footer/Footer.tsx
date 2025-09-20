@@ -40,8 +40,8 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="footer" ref={footerRef}>
-      <div className="footer__content">
+    <footer className={styles.footer} ref={footerRef}>
+      <div className={styles.footerContent}>
         <Link href="/" ref={logoRef}>
           <Image
             src="/assets/logo.png"
@@ -52,8 +52,8 @@ export default function Footer() {
           />
         </Link>
 
-        <nav className="footer__nav">
-          <ul ref={navRef} className="footer__lists">
+        <nav className={styles.footerNav}>
+          <ul className={styles.footerLists} ref={navRef}>
             <li>
               <Link href="github" className={styles.footerNavLink}>
                 Github
@@ -72,9 +72,9 @@ export default function Footer() {
           </ul>
         </nav>
 
-        <div ref={rightRef} className="footer__right">
-          <p className="footer__right-text small-text">Back to top</p>
-          <button className="footer__button-top">q</button>
+        <div className={styles.footerRight} ref={rightRef}>
+          <p className={styles.footerRightText}>Back to top</p>
+          <button className={styles.footerButtonTop}>↑</button>
         </div>
       </div>
     </footer>
