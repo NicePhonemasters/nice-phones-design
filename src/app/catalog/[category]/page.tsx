@@ -2,9 +2,7 @@
 
 import { Select } from 'radix-ui';
 import classNames from 'classnames';
-import { CheckIcon } from '@radix-ui/react-icons';
 import React from 'react';
-
 import styles from './Catalog.module.scss';
 import { PaginationControl } from '@components/ui/Controls/PaginationControl';
 import { DropdownSort } from '@components/ui/Dropdowns/DropdownSort';
@@ -26,15 +24,12 @@ const Catalog: React.FC = () => {
         ref={forwardedRef}
       >
         <Select.ItemText>{children}</Select.ItemText>
-        <Select.ItemIndicator className="SelectItemIndicator">
-          <CheckIcon />
-        </Select.ItemIndicator>
+        <Select.ItemIndicator className="SelectItemIndicator"></Select.ItemIndicator>
       </Select.Item>
     );
   });
 
   SelectItem.displayName = 'SelectItem';
-
   return (
     <main className={styles.catalog}>
       <div className={styles.catalog__top}>

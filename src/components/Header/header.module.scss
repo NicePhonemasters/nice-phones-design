@@ -10,6 +10,10 @@
   @include on-tablet {
     height: 48px;
   }
+
+  @include on-mobile {
+    height: 48px;
+  }
 }
 
 .headerContainer {
@@ -95,36 +99,6 @@
   }
 }
 
-.headerRight {
-  display: flex;
-  margin-left: auto;
-  margin-bottom: 2px;
-}
-
-.headerRightFavourites,
-.headerRightCart {
-  width: 64px;
-  height: 64px;
-  box-shadow: -1px 0 var(--color-surface-2);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-
-  &:hover {
-    background-color: var(--color-icons);
-  }
-
-  @include on-tablet {
-    width: 48px;
-    height: 48px;
-  }
-
-  @include on-mobile {
-    display: none;
-  }
-}
-
 .linkIconIsActive::after {
   content: '';
   position: absolute;
@@ -136,21 +110,3 @@
   transition: width 0.3s ease;
 }
 
-.headerBurgerMenu {
-  display: none;
-
-  @include on-mobile {
-    width: 48px;
-    height: 48px;
-    box-shadow: -1px 0 var(--color-surface-2);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
-.headerIcon {
-  width: 16px;
-  height: 16px;
-  color: var(--color-white);
-}
