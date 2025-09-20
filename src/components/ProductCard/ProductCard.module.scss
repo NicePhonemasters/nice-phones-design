@@ -1,14 +1,35 @@
+@mixin on-mobile {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: 640px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
 .productCardWrapper {
   box-sizing: border-box;
   display: flex;
   width: 272px;
-  height: 506px;
-  padding: 32px;
-  padding-top: 16px;
+  min-height: 506px;
+  padding: 32px 32px 80px;
   gap: 8px;
   background-color: #161827;
   justify-content: space-between;
   position: relative;
+
+  @include on-mobile {
+    width: 212px;
+    min-height: 439px;
+  }
+
+  @include on-tablet {
+    width: 237px;
+    min-height: 512px;
+  }
 }
 
 .imageContainer {
@@ -18,6 +39,16 @@
   justify-content: center;
   width: 208px;
   height: 196px;
+
+  @include on-mobile {
+    width: 148px;
+    height: 129px;
+  }
+
+  @include on-tablet {
+    width: 173px;
+    height: 181px;
+  }
 }
 
 .title {
@@ -26,18 +57,25 @@
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
-  letter-spacing: 0;
   color: #f1f2f9;
+
+  @include on-mobile {
+    width: 148px;
+  }
+
+  @include on-tablet {
+    width: 173px;
+  }
 }
 
 .price {
   box-sizing: border-box;
   display: flex;
-  height: 31px;
-  width: 108px;
   padding-bottom: 8px;
+  width: auto;
+  height: auto;
 
-  &__tag {
+  .tag {
     display: flex;
     gap: 8px;
     align-items: center;
@@ -45,9 +83,19 @@
     font-weight: 800;
     font-size: 22px;
     line-height: 140%;
+
+    @include on-mobile {
+      width: 51px;
+      height: 31px;
+    }
+
+    @include on-tablet {
+      width: 51px;
+      height: 31px;
+    }
   }
 
-  &__old {
+  .old {
     text-decoration: line-through;
     color: #75767f;
     font-weight: 600;
@@ -58,6 +106,14 @@
   box-sizing: border-box;
   width: 208px;
   border: 1px solid #3b3e4a;
+
+  @include on-mobile {
+    width: 148px;
+  }
+
+  @include on-tablet {
+    width: 173px;
+  }
 }
 
 .specs {
@@ -67,24 +123,30 @@
   gap: 8px;
   padding-top: 16px;
 
-  &__item {
+  @include on-mobile {
+    width: 148px;
+  }
+
+  @include on-tablet {
+    width: 173px;
+  }
+
+  .item {
     display: flex;
     justify-content: space-between;
     font-size: 12px;
     line-height: 21px;
-    letter-spacing: 0;
     font-weight: 600;
   }
 
-  &__label {
-    color: #75767F;
+  .label {
+    color: #75767f;
   }
 
-  &__value {
-    color: #F1F2F9;
+  .value {
+    color: #f1f2f9;
   }
 }
-
 
 .buttonContainer {
   position: absolute;
@@ -96,42 +158,67 @@
   display: flex;
   gap: 8px;
 
-  &__AddToCart {
+  @include on-mobile {
+    width: 148px;
+    height: 40px;
+  }
+
+  @include on-tablet {
+    width: 173px;
+    height: 40px;
+  }
+
+  .addToCart {
     background-color: #905bff;
     width: 160px;
     height: 40px;
     color: #fff;
     font-size: 14px;
-    line-height: 21px;
-    letter-spacing: 0;
     font-weight: 700;
-    font-family: inherit;
     cursor: pointer;
     border: none;
     outline: none;
     padding: 0;
+
+    @include on-mobile {
+      width: 100px;
+      height: 40px;
+    }
+
+    @include on-tablet {
+      width: 125px;
+      height: 40px;
+    }
+
+    &:hover {
+      background-color: #5236a0;
+    }
   }
 
-  &__AddToCart:hover {
-    background-color: #5236a0;
-  }
-
-  &__AddTofavoutite {
+  .addToFavourite {
     color: white;
     background-color: #323542;
     width: 40px;
     height: 40px;
     font-size: 28px;
     line-height: 11px;
-    letter-spacing: 0;
-    font-weight: 400;
     cursor: pointer;
     border: none;
     outline: none;
     padding: 0;
-  }
 
-  &__AddTofavoutite:hover {
-    background-color: #4b4e61;
+    @include on-mobile {
+      width: 40px;
+      height: 40px;
+    }
+
+    @include on-tablet {
+      width: 40px;
+      height: 40px;
+    }
+
+    &:hover {
+      background-color: #4b4e61;
+    }
   }
 }
