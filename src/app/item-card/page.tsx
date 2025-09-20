@@ -1,57 +1,57 @@
-'use client';
+// 'use client';
 
-import '../../styles/itemCard/itemCard.scss';
+// import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import styles from '../item-card/itemCard-styles/itemCard.module.scss';
+import { Phone } from '../../types/interfaces';
+import ItemCardGallery from '../item-card/components/ItemCardGallery';
 
-const itemImages = [
-  '/iphone-hero.png',
-  '/iphone-hero.png',
-  '/iphone-hero.png',
-  '/iphone-hero.png',
-  '/iphone-hero.png',
-];
+async function getPhone(phoneId: string): Promise<Phone | null> {
+  const res = await fetch('http://localhost:3000/api/phones.json');
+  const data: Phone[] = await res.json();
+  return data.find((p) => p.id === phoneId) || null;
+}
 
-function ItemCard() {
+export default async function ItemCard() {
+  const phoneId = 'apple-iphone-14-128gb-midnight';
+  const phone = await getPhone(phoneId);
+
+  if (!phone) {
+    return <p>Phone not found</p>;
+  }
+
+  // const heroImage = "/" + (phone.images?.[0] || "img/placeholder.png");
+  const images = phone.images?.map((img) => '/' + img) || [];
+
   return (
-    <div className="container_item_card">
-      <section className="item-card-section item-card-section-main">
-        <h3 className="item_card__title">
-          Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-        </h3>
-        <div className="item_card">
-          <div className="item_card__image">
-            <Image
-              className="item_card__image-hero"
-              src="/iphone-hero.png"
-              alt="main-image"
-              width={275}
-              height={275}
-            />
-          </div>
-          <ul className="item_card__image-list">
-            {itemImages.map((image, i) => (
-              <li className="item_card__image-list-item" key={i}>
-                <Image
-                  className="item_card__image-small"
-                  src={image}
-                  alt={`item-image-${i + 1}`}
-                  width={50}
-                  height={50}
-                />
-              </li>
-            ))}
-          </ul>
-          <div className="item_card__info">
-            <div className="item_card__info-colour-section">
-              <div className="item_card__info-colour-section__text">
-                <p className="item_card__info-colour-section__label">
+    <div className={styles.container_item_card}>
+      <section
+        className={`${styles['item_card-section']} ${styles['item_card-section-main']}`}
+      >
+        <h3 className={styles['item_card__title']}>{phone.name}(iMT9G2FS/A)</h3>
+        <div className={styles.item_card}>
+          <ItemCardGallery images={images} />
+          <div className={styles['item_card__info']}>
+            <div className={styles['item_card__info-colour-section']}>
+              <div className={styles['item_card__info-colour-section__text']}>
+                <p className={styles['item_card__info-colour-section__label']}>
                   Available colors
                 </p>
-                <p className="item_card__info-colour-section__id">ID: 802390</p>
+                <p className={styles['item_card__info-colour-section__id']}>
+                  ID: 802390
+                </p>
               </div>
-              <div className="item_card__info-colour-section__color">
-                <ul className="item_card__info-colour-section__color-list">
-                  <li className="item_card__info-colour-section__color-list-item">
+              <div className={styles['item_card__info-colour-section__color']}>
+                <ul
+                  className={
+                    styles['item_card__info-colour-section__color-list']
+                  }
+                >
+                  <li
+                    className={
+                      styles['item_card__info-colour-section__color-list-item']
+                    }
+                  >
                     <Image
                       src={'/color-btn-gold.png'}
                       alt="item-card-item"
@@ -59,15 +59,24 @@ function ItemCard() {
                       height={30}
                     />
                   </li>
-                  <li className="item_card__info-colour-section__color-list-item">
+                  <li
+                    className={
+                      styles['item_card__info-colour-section__color-list-item']
+                    }
+                  >
                     <Image
                       src={'/color-btn-green.png'}
                       alt="item-card-item"
                       width={30}
                       height={30}
+                      layout="intrinsic"
                     />
                   </li>
-                  <li className="item_card__info-colour-section__color-list-item">
+                  <li
+                    className={
+                      styles['item_card__info-colour-section__color-list-item']
+                    }
+                  >
                     <Image
                       src={'/color-btn-grey.png'}
                       alt="item-card-item"
@@ -75,7 +84,11 @@ function ItemCard() {
                       height={30}
                     />
                   </li>
-                  <li className="item_card__info-colour-section__color-list-item">
+                  <li
+                    className={
+                      styles['item_card__info-colour-section__color-list-item']
+                    }
+                  >
                     <Image
                       src={'/color-btn-white.png'}
                       alt="item-card-item"
@@ -86,36 +99,50 @@ function ItemCard() {
                 </ul>
               </div>
             </div>
-            <div className="item_card__info-capacity-section">
-              <p className="item_card__info-capacity-section-text">
+            <div className={styles['item_card__info-capacity-section']}>
+              <p className={styles['item_card__info-capacity-section-text']}>
                 Select capacity
               </p>
-              <ul className="item_card__info-capacity-section-list">
-                <li className="item_card__info-capacity-section-list-item">
+              <ul className={styles['item_card__info-capacity-section-list']}>
+                <li
+                  className={
+                    styles['item_card__info-capacity-section-list-item']
+                  }
+                >
                   64 GB
                 </li>
-                <li className="item_card__info-capacity-section-list-item">
+                <li
+                  className={
+                    styles['item_card__info-capacity-section-list-item']
+                  }
+                >
                   256 GB
                 </li>
-                <li className="item_card__info-capacity-section-list-item">
+                <li
+                  className={
+                    styles['item_card__info-capacity-section-list-item']
+                  }
+                >
                   512 GB
                 </li>
               </ul>
             </div>
-            <div className="item_card__info-price">
-              <p className="item_card__info-price-text">$799</p>
-              <p className="item_card__info-price-discount">$1199</p>
+            <div className={styles['item_card__info-price']}>
+              <p className={styles['item_card__info-price-text']}>$799</p>
+              <p className={styles['item_card__info-price-discount']}>$1199</p>
             </div>
-            <div className="item_card__info-buy-section">
+            <div className={styles['item_card__info-buy-section']}>
               <button
                 type="button"
-                className="item_card__info-buy-section-button-buy"
+                className={styles['item_card__info-buy-section-button-buy']}
               >
                 {/* Add to cart */}
               </button>
               <button
                 type="button"
-                className="item_card__info-buy-section-button-favourites"
+                className={
+                  styles['item_card__info-buy-section-button-favourites']
+                }
               >
                 <Image
                   src="/like-icon.png"
@@ -125,8 +152,8 @@ function ItemCard() {
                 />
               </button>
             </div>
-            <div className="item_card__info-description">
-              <dl className="item_card__info-description-list">
+            <div className={styles['item_card__info-description']}>
+              <dl className={styles['item_card__info-description-list']}>
                 <dt>Screen</dt>
                 <dd>6.5” OLED</dd>
                 <dt>Resolution</dt>
@@ -140,13 +167,15 @@ function ItemCard() {
           </div>
         </div>
       </section>
-      <section className="item-card-section item-card-section-description">
-        <div className="item-card-description">
-          <h4 className="item-card-description__title">About</h4>
-          <h5 className="item-card-description__subtitle">
+      <section
+        className={`${styles['item-card-section']} ${styles['item-card-section-description']}`}
+      >
+        <div className={styles['item-card-description']}>
+          <h4 className={styles['item-card-description__title']}>About</h4>
+          <h5 className={styles['item-card-description__subtitle']}>
             And then there was Pro
           </h5>
-          <p className="item-card-description__text">
+          <p className={styles['item-card-description__text']}>
             A transformative triple-camera system that adds tons of capability
             without complexity. <br />
             An unprecedented leap in battery life. And a mind-blowing chip that
@@ -154,8 +183,8 @@ function ItemCard() {
             smartphone can do. Welcome to the first iPhone powerful enough to be
             called Pro.
           </p>
-          <h5 className="item-card-description__subtitle">Camera</h5>
-          <p className="item-card-description__text">
+          <h5 className={styles['item-card-description__subtitle']}>Camera</h5>
+          <p className={styles['item-card-description__text']}>
             Meet the first triple-camera system to combine cutting-edge
             technology with the legendary simplicity of iPhone. Capture up to
             four times more scene. Get beautiful images in drastically lower
@@ -163,11 +192,11 @@ function ItemCard() {
             with the same tools you love for photos. You’ve never shot with
             anything like it.
           </p>
-          <h5 className="item-card-description__subtitle">
+          <h5 className={styles['item-card-description__subtitle']}>
             Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it.
             Love it.
           </h5>
-          <p className="item-card-description__text">
+          <p className={styles['item-card-description__text']}>
             iPhone 11 Pro lets you capture videos that are beautifully true to
             life, with greater detail and smoother motion. Epic processing power
             means it can shoot 4K video with extended dynamic range and
@@ -176,86 +205,119 @@ function ItemCard() {
             tools to play with.
           </p>
         </div>
-        <div className="item-card-description__tech-specs">
-          <h4 className="item-card-description__tech-spec-title">Tech specs</h4>
-          <div className="item-card-description__tech-specs-list">
-            <div className="item-card-description__tech-specs-row">
-              <div className="item-card-description__tech-specs-name">
+
+        <div className={styles['item-card-description__tech-specs']}>
+          <h4 className={styles['item-card-description__tech-spec-title']}>
+            Tech specs
+          </h4>
+          <div className={styles['item-card-description__tech-specs-list']}>
+            <div className={styles['item-card-description__tech-specs-row']}>
+              <div className={styles['item-card-description__tech-specs-name']}>
                 Screen
               </div>
-              <div className="item-card-description__tech-specs-value">
+              <div
+                className={styles['item-card-description__tech-specs-value']}
+              >
                 6.5” OLED
               </div>
             </div>
 
-            <div className="item-card-description__tech-specs-row">
-              <div className="item-card-description__tech-specs-name">
+            <div className={styles['item-card-description__tech-specs-row']}>
+              <div className={styles['item-card-description__tech-specs-name']}>
                 Resolution
               </div>
-              <div className="item-card-description__tech-specs-value">
+              <div
+                className={styles['item-card-description__tech-specs-value']}
+              >
                 2688x1242
               </div>
             </div>
 
-            <div className="item-card-description__tech-specs-row">
-              <div className="item-card-description__tech-specs-name">
+            <div className={styles['item-card-description__tech-specs-row']}>
+              <div className={styles['item-card-description__tech-specs-name']}>
                 Processor
               </div>
-              <div className="item-card-description__tech-specs-value">
+              <div
+                className={styles['item-card-description__tech-specs-value']}
+              >
                 Apple A12 Bionic
               </div>
             </div>
 
-            <div className="item-card-description__tech-specs-row">
-              <div className="item-card-description__tech-specs-name">RAM</div>
-              <div className="item-card-description__tech-specs-value">
+            <div className={styles['item-card-description__tech-specs-row']}>
+              <div className={styles['item-card-description__tech-specs-name']}>
+                RAM
+              </div>
+              <div
+                className={styles['item-card-description__tech-specs-value']}
+              >
                 3 GB
               </div>
             </div>
 
-            <div className="item-card-description__tech-specs-row">
-              <div className="item-card-description__tech-specs-name">
+            <div className={styles['item-card-description__tech-specs-row']}>
+              <div className={styles['item-card-description__tech-specs-name']}>
                 Built in memory
               </div>
-              <div className="item-card-description__tech-specs-value">
+              <div
+                className={styles['item-card-description__tech-specs-value']}
+              >
                 64 GB
               </div>
             </div>
 
-            <div className="item-card-description__tech-specs-row">
-              <div className="item-card-description__tech-specs-name">
+            <div className={styles['item-card-description__tech-specs-row']}>
+              <div className={styles['item-card-description__tech-specs-name']}>
                 Camera
               </div>
-              <div className="item-card-description__tech-specs-value">
+              <div
+                className={styles['item-card-description__tech-specs-value']}
+              >
                 12 Mp + 12 Mp + 12 Mp (Triple)
               </div>
             </div>
 
-            <div className="item-card-description__tech-specs-row">
-              <div className="item-card-description__tech-specs-name">Zoom</div>
-              <div className="item-card-description__tech-specs-value">
+            <div className={styles['item-card-description__tech-specs-row']}>
+              <div className={styles['item-card-description__tech-specs-name']}>
+                Zoom
+              </div>
+              <div
+                className={styles['item-card-description__tech-specs-value']}
+              >
                 Optical, 2x
               </div>
             </div>
 
-            <div className="item-card-description__tech-specs-row">
-              <div className="item-card-description__tech-specs-name">Cell</div>
-              <div className="item-card-description__tech-specs-value">
+            <div className={styles['item-card-description__tech-specs-row']}>
+              <div className={styles['item-card-description__tech-specs-name']}>
+                Cell
+              </div>
+              <div
+                className={styles['item-card-description__tech-specs-value']}
+              >
                 GSM, LTE, UMTS
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="item-card-section item-card-favourites">
-        <div className="item-card-favourites__title-and-buttons">
-          <h3 className="item-card-favourites__title">You may also like</h3>
-          <div className="item-card-favourites__buttons">
-            <button className="item-card-favourites__buttons-prev"></button>
-            <button className="item-card-favourites__buttons-next"></button>
+      <section
+        className={`${styles['item-card-section']} ${styles['item-card-favourites']}`}
+      >
+        <div className={styles['item-card-favourites__title-and-buttons']}>
+          <h3 className={styles['item-card-favourites__title']}>
+            You may also like
+          </h3>
+          <div className={styles['item-card-favourites__buttons']}>
+            <button
+              className={styles['item-card-favourites__buttons-prev']}
+            ></button>
+            <button
+              className={styles['item-card-favourites__buttons-next']}
+            ></button>
           </div>
         </div>
-        <div className="item-card-favourites__slider">
+        <div className={styles['item-card-favourites__slider']}>
           <div
             className="placeholder"
             style={{
@@ -269,5 +331,3 @@ function ItemCard() {
     </div>
   );
 }
-
-export default ItemCard;
