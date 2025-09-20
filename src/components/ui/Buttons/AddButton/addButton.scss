@@ -1,0 +1,25 @@
+@use '../../../../styles/mixins.scss' as *;
+
+.addButton {
+    background-color: var(--color-accent);
+    color: var(--color-white);
+    width: clamp(100px, 50%, 160px);
+    height: 40px;
+    border: none;
+
+    @include on-tablet {
+        width: 125px;
+    }
+
+    @include on-mobile {
+        width: 100px;
+    }
+
+    &:hover {
+        background-color: var(--color-accent-2);
+    }
+
+    &Active {
+        background-color: var(--color-surface-2);
+    }
+}

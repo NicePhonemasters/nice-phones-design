@@ -1,10 +1,9 @@
 'use client';
-
 import { ToggleGroup } from 'radix-ui';
 import { useState } from 'react';
-import ArrowLeft from '../../../../assets/icons/arrow-left.svg';
-import ArrowRight from '../../../../assets/icons/arrow-right.svg';
 import PaginationStyles from './PaginationControl.module.scss';
+import ArrowLeft from '@/assets/icons/arrow-left.svg';
+import ArrowRight from '@/assets/icons/arrow-right.svg';
 import { OneIconButton } from '@components/ui/Buttons/OneIconButton';
 
 type Props = {

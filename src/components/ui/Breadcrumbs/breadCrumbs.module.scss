@@ -1,0 +1,29 @@
+.breadCrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    @include inline-padding
+}
+
+.homeIcon {
+    width: 16px;
+    height: 16px;
+    color: var(--color-white);
+}
+
+.arrowRight {
+    width: 16px;
+    height: 16px;
+    color: var(--color-icons);
+}
+
+.breadcrumbLink {
+    color: var(--color-white);
+    text-decoration: none;
+}
+
+.activeBreadcrumbLink {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
