@@ -1,6 +1,4 @@
-import { product } from './Products';
-
-export const products = product;
+import { products } from './Products';
 
 export type Product = (typeof products)[number];
 

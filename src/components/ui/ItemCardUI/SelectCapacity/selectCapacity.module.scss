@@ -1,0 +1,9 @@
+.capacityBlock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    padding-inline: 8px;
+    color: var(--color-white);
+    border: 1px solid var(--color-icons);
+}

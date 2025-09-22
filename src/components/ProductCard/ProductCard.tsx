@@ -3,6 +3,7 @@ import React from 'react';
 import Link from 'next/link';
 
 import styles from './ProductCard.module.scss';
+import { AddButton } from '@components/ui/Buttons/AddButton/AddButton';
 import { ItemCard } from '@/types/ItemCard';
 import FavouriteDefaultIcon from '@/assets/icons/favourite-default.svg';
 
@@ -45,9 +46,7 @@ export default function ProductCard({ product }: { product: ItemCard }) {
           </div>
         </Link>
         <div className={styles.buttonContainer}>
-          <button className={styles.addToCart} type="button">
-            Add to cart
-          </button>
+          <AddButton callback={null} />
           <button
             className={styles.buttonContainer__AddTofavoutite}
             type="button"

@@ -1,0 +1,38 @@
+.shopCartItem {
+    display: flex;
+    flex: row;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-surface-1);
+    width: 100%;
+    height: 128px;
+    gap: 24px;
+    padding-inline: 24px;
+    
+    @include on-mobile {
+        height: 160px;
+    }
+
+    &Icon {
+        color: var(--color-icons);
+        width: 16px;
+        height: 16px;
+    }
+
+    &Title {
+        color: var(--color-white);
+    }
+
+    &Counter {
+        display: flex;
+        gap: 13px;
+    }
+
+    &Count {
+        color: var(--color-white);
+    }
+
+    &TotalPrice {
+        color: var(--color-white);
+    }
+}

@@ -35,13 +35,13 @@
   &Lists {
     display: flex;
     list-style: none;
-    gap: 13px;
+    gap: 106px;
     padding: 0;
 
     @include on-mobile {
       flex-direction: column;
       margin: 32px 0;
-      gap: 16px;
+      gap: 13px;
     }
   }
 

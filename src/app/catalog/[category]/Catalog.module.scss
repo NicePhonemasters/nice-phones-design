@@ -1,22 +1,19 @@
 .catalog {
-  padding: 24px 16px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background-color: var(--color-black);
+  margin-top: 40px;
 
-  @include on-tablet {
-    padding: 40px 24px;
+  @include on-mobile {
+    margin-top: 24px;
   }
 
-  @include on-desktop {
-    padding: 40px 32px;
-  }
-
+  @include inline-padding;
+  
   &__top {
     display: flex;
     flex-direction: column;
-    gap: 8px;
   }
 
   &__title {
@@ -24,6 +21,7 @@
     font-weight: 800;
     margin-bottom: 8px;
     color: var(--color-white);
+    margin: 0 0 8px ;
 
     @include on-tablet {
       font-size: 48px;
@@ -46,6 +44,11 @@
     gap: 16px;
     align-items: center;
     justify-content: center;
+    margin-top: 40px;
+    
+    @include on-mobile {
+      margin-top: 32px;
+    }
 
 
     @include on-tablet {
@@ -66,6 +69,7 @@
     color: var(--color-secondary);
     font-size: 12px;
     font-weight: 700;
+    margin: 0 0 4px;
   }
 
   &__grid {
@@ -74,7 +78,7 @@
     gap: 20px;
     flex-grow: 1;
     min-height: 400px;
-    margin-bottom: 20px;
+    margin: 20px 0;
   }
 }
 

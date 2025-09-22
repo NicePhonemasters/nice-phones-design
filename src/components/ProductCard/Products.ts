@@ -1,4 +1,6 @@
-export const product = [
+/* TODO: delete this file after connecting to the api */
+
+export const products = [
   {
     id: 1,
     title: 'Apple iPhone Xs 64GB Silver (iMT9G2FS/A)',

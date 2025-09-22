@@ -51,7 +51,7 @@ export const Header = () => {
 
   return (
     <>
-      <header className={styles.header}>
+      <header className={styles.header} id="header">
         <div className={styles.headerContainer}>
           <div ref={logoRef}>
             <Link href="/">

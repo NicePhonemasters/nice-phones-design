@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import styles from './Cart.module.scss';
+import { ShopCartItem } from '@components/ui/ShopCartItem/ShopCartItem';
 
 const Cart: React.FC = () => {
   const cartRef = useRef<HTMLDivElement>(null);
@@ -41,7 +42,7 @@ const Cart: React.FC = () => {
         <div className={styles.itemsGrid}>
           {/* Тут будуть картки товарів */}
         </div>
-
+        <ShopCartItem title="phone" price={200} />
         {/* Checkout блок */}
         <div className={styles.checkout}>
           <div className={styles.total}>

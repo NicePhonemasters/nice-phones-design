@@ -1,9 +1,13 @@
 import './addButton.scss';
 
 type Props = {
-  callback: () => void;
+  callback?: () => void;
 };
 
-export const AddButton: React.FC<Props> = () => {
-  return <button className="addButton">Add to cart</button>;
+export const AddButton = ({ callback }: Props) => {
+  return (
+    <button className="addButton" onClick={() => callback}>
+      Add to cart
+    </button>
+  );
 };

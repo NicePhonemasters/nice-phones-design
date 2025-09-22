@@ -6,6 +6,9 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { OneIconButton } from '../Buttons/OneIconButton';
+import ArrowLeft from '../../../assets/icons/arrow-left.svg';
+import ArrowRight from '../../../assets/icons/arrow-right.svg';
 import styles from './carousel.module.scss';
 import ProductCard from '@components/ProductCard/ProductCard';
 
@@ -21,12 +24,9 @@ export const Carousel: React.FC<Props> = ({ title, items }) => {
         <h2 className={styles.carouselTopTitle}>{title}</h2>
 
         <div className={styles.carouselTopPag}>
-          <button className={`${styles.carouselPagButton} carouselButtonPrev`}>
-            {'<'}
-          </button>
-          <button className={`${styles.carouselPagButton} carouselButtonNext`}>
-            {'>'}
-          </button>
+          <OneIconButton icon={ArrowLeft} styleName={'carouselButtonPrev'} />
+
+          <OneIconButton icon={ArrowRight} styleName={'carouselButtonNext'} />
         </div>
       </div>
 

@@ -6,7 +6,10 @@ import { useLayoutEffect, useRef } from 'react';
 // eslint-disable-next-line import/no-named-as-default
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import classNames from 'classnames';
+import ArrowUp from '../../assets/icons/arrow-up.svg';
 import styles from './footer.module.scss';
+import { OneIconButton } from '@components/ui/Buttons/OneIconButton';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -44,10 +47,6 @@ export default function Footer() {
     return () => ctx.revert();
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <footer className={styles.footer} ref={footerRef}>
       <div className={styles.footerContent}>
@@ -63,28 +62,36 @@ export default function Footer() {
         <nav className={styles.footerNav}>
           <ul className={styles.footerLists} ref={navRef}>
             <li>
-              <Link href="github" className={styles.footerNavLink}>
+              <Link
+                href="github"
+                className={classNames(styles.footerNavLink, 'uppercase-text')}
+              >
                 Github
               </Link>
             </li>
             <li>
-              <Link href="contacts" className={styles.footerNavLink}>
+              <Link
+                href="contacts"
+                className={classNames(styles.footerNavLink, 'uppercase-text')}
+              >
                 Contacts
               </Link>
             </li>
             <li>
-              <Link href="rights" className={styles.footerNavLink}>
+              <Link
+                href="rights"
+                className={classNames(styles.footerNavLink, 'uppercase-text')}
+              >
                 Rights
               </Link>
             </li>
           </ul>
         </nav>
 
-        <div className={styles.footerRight} ref={rightRef}>
-          <p className={styles.footerRightText}>Back to top</p>
-          <button className={styles.footerButtonTop} onClick={scrollToTop}>
-            ↑
-          </button>
+        <div className={styles.footerRight}>
+          <Link href="#header">
+            <OneIconButton icon={ArrowUp} />
+          </Link>
         </div>
       </div>
     </footer>

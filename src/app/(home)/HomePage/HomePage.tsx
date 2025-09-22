@@ -1,7 +1,7 @@
+import { products } from '../../../components/ProductCard/Products';
 import styles from './home.module.scss';
 import { Slider } from './Slider/Slider';
-import { products } from '@components/ProductCard/Products';
-import { Categories } from '@components/HomePage/Categories/Categories';
+import { Categories } from '@/app/(home)/HomePage/Categories/Categories';
 import { Carousel } from '@components/ui/Carousel/Carousel';
 
 export const HomePage = () => {
