@@ -1,7 +1,9 @@
 'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
+// eslint-disable-next-line import/no-named-as-default
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './footer.module.scss';
@@ -14,38 +16,44 @@ export default function Footer() {
   const navRef = useRef<HTMLUListElement | null>(null);
   const rightRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    if (!footerRef.current) return;
+
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: footerRef.current,
-          start: 'top 95%',
-          toggleActions: 'play none none reverse',
-        },
-        defaults: { ease: 'power3.out', duration: 0.8 },
+        defaults: { ease: 'power3.out', duration: 0.6 },
       });
 
-      tl.from(footerRef.current, { opacity: 0, scale: 0.95 })
-
-        .from(logoRef.current, { y: 20, opacity: 0 }, '-=0.3')
+      tl.from(footerRef.current, { opacity: 0, scale: 0.97 })
+        .from(logoRef.current, { y: 30, opacity: 0, rotationX: 15 }, '-=0.3')
         .from(
           navRef.current?.children || [],
           { y: 20, opacity: 0, stagger: 0.15 },
-          '-=0.2',
+          '-=0.4',
         )
-        .from(rightRef.current, { y: 20, opacity: 0 }, '-=0.2');
-    });
+        .from(rightRef.current, { y: 20, opacity: 0, rotationX: 10 }, '-=0.3');
+
+      ScrollTrigger.create({
+        trigger: footerRef.current,
+        start: 'top bottom-=50',
+        animation: tl,
+        once: true, // важливо!
+      });
+    }, footerRef);
 
     return () => ctx.revert();
   }, []);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className={styles.footer} ref={footerRef}>
       <div className={styles.footerContent}>
-        <Link href="/" ref={logoRef}>
+        <Link href="/" ref={logoRef} className={styles.footerLogoLink}>
           <Image
             src="/assets/logo.png"
-            className={styles.footerLogo}
             width={80}
             height={26}
             alt="Nice Gadgets"
@@ -74,7 +82,9 @@ export default function Footer() {
 
         <div className={styles.footerRight} ref={rightRef}>
           <p className={styles.footerRightText}>Back to top</p>
-          <button className={styles.footerButtonTop}>↑</button>
+          <button className={styles.footerButtonTop} onClick={scrollToTop}>
+            ↑
+          </button>
         </div>
       </div>
     </footer>
