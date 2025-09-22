@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { ItemCard } from '@/types/itemcard';
+import { ItemCard } from '@/types/ItemCard';
 
 type FavouritesState = {
   items: ItemCard[];

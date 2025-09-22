@@ -4,6 +4,7 @@ import { Select } from 'radix-ui';
 import classNames from 'classnames';
 import { CheckIcon } from '@radix-ui/react-icons';
 import React from 'react';
+
 import styles from './Catalog.module.scss';
 import { PaginationControl } from '@components/ui/Controls/PaginationControl';
 import { DropdownSort } from '@components/ui/Dropdowns/DropdownSort';
