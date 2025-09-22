@@ -57,15 +57,15 @@ export default [
       },
     },
     rules: {
-      'react/react-in-jsx-scope': 'off',
-
-      'import/order': 'warn',
-
       ...reactHooks.configs['recommended-latest'].rules,
-
+      
       ...jsxA11y.flatConfigs.recommended.rules,
-
+      
       ...importPlugin.flatConfigs.recommended.rules,
+      
+      'react/react-in-jsx-scope': 'off',
+      'import/order': 'warn',
+      'import/named': 'off',
     },
   },
   eslintConfigPrettier,
