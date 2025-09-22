@@ -10,7 +10,7 @@ import { SortType, isSortType } from '@/types/SortType';
 
 export async function GET(
   req: Request,
-  { params }: { params: { category: string } },
+  { params }: { params: Promise<{ category: string }> },
 ) {
   const requestUrl = new URL(req.url);
   const { category } = await params;

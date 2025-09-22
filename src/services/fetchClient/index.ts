@@ -1,11 +1,13 @@
 import { Categories } from '@/types/Categories';
+import { DetailedItem } from '@/types/DetailedItem';
+import { ItemCard } from '@/types/ItemCard';
 import { SortType } from '@/types/SortType';
 
 const client = {
-  async get(url: string) {
+  async get<T>(url: string) {
     const response = await fetch(url, {
       method: 'GET',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { Accept: 'application/json' },
       cache: 'no-store',
     });
 
@@ -13,7 +15,7 @@ const client = {
       throw new Error(`API Error: ${response.status} ${response.statusText}`);
     }
 
-    return response.json();
+    return response.json() as Promise<T>;
   },
 };
 
@@ -23,25 +25,30 @@ type PaginatedSearchParams = {
   perPage: string;
 };
 
+type paginatedApi = {
+  totalItems: number;
+  items: ItemCard[];
+};
+
 export async function getPaginatedItems(
   category: Categories,
   searchParams: PaginatedSearchParams,
 ) {
   const urlSearchParams = new URLSearchParams(searchParams);
 
-  return await client.get(`/api/${category}?${urlSearchParams}`);
+  return await client.get<paginatedApi>(`/api/${category}?${urlSearchParams}`);
 }
 
 export async function getSpecificItems(...rest: number[]) {
   const urlSearchParams = new URLSearchParams({ ids: rest.join(',') });
 
-  return await client.get(`/api/items?${urlSearchParams}`);
+  return await client.get<ItemCard[]>(`/api/items?${urlSearchParams}`);
 }
 
 export async function getGeneralCategory(category: Categories) {
-  return await client.get(`/api/${category}`);
+  return await client.get<ItemCard[]>(`/api/${category}`);
 }
 
 export async function getDetailedItem(category: Categories, itemId: string) {
-  return await client.get(`/api/${category}/${itemId}`);
+  return await client.get<DetailedItem>(`/api/${category}/${itemId}`);
 }

@@ -10,10 +10,10 @@ export async function GET(
   {
     params,
   }: {
-    params: {
+    params: Promise<{
       category: string;
       itemId: string;
-    };
+    }>;
   },
 ) {
   const { category, itemId } = await params;
