@@ -1,5 +1,14 @@
 .cartWrapper {
   @include inline-padding;
+  margin-bottom: 80px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-mobile {
+    margin-bottom: 56px;
+  }
 }
 
 .title {
@@ -18,9 +27,16 @@
 }
 
 .mainContent {
-  @include on-desktop {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  @include on-mobile {
+    flex-direction: column;
     gap: 32px;
   }
 }
@@ -28,18 +44,30 @@
 .itemsList {
   display: flex;
   flex-direction: column;
+  flex: 1;
+  min-width: 300px;
   gap: 16px;
 }
 
 .checkout {
+  height: 206px;
+  width: 30%;
+  max-width: 368px;
   border: 1px solid var(--color-secondary);
-  padding: 16px 0 24px;
+  padding: 16px 24px 24px;
+  flex-shrink: 0;
+  box-sizing: border-box;
   text-align: center;
 
-  @include on-desktop {
-    width: 30%;
-    max-width: 368px;
-    flex-shrink: 0;
+  @include on-tablet {
+    height: 190px;
+    max-width: none;
+    width: 100%;
+  }
+
+  @include on-mobile {
+    max-width: none;
+    width: 100%;
   }
 }
 
@@ -63,40 +91,5 @@
 .separator {
   border-top: 1px solid var(--color-secondary);
   margin: 16px auto;
-  width: 60%;
-  max-width: 544px;
-
-  @include on-tablet {
-    width: 100%;
-  }
-
-  @include on-desktop {
-    width: 60%;
-  }
-}
-
-.checkoutBtn {
-  background-color: var(--color-placeholder);
-  width: 60%;
-  max-width: 544px;
-  height: 48px;
-  border: none;
-  padding: 13.5px 0;
-  color: white;
-  font-size: 14px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.3s ease;
-
-  @include on-tablet {
-    width: 100%;
-  }
-
-  @include on-desktop {
-    width: 60%;
-  }
-
-  &:hover {
-    background-color: var(--color-placeholder);
-  }
+  width: 100%;
 }

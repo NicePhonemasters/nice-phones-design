@@ -46,7 +46,7 @@ export default function ProductCard({ product }: { product: ItemCard }) {
           </div>
         </Link>
         <div className={styles.buttonContainer}>
-          <AddButton callback={null} />
+          <AddButton />
           <button
             className={styles.buttonContainer__AddTofavoutite}
             type="button"

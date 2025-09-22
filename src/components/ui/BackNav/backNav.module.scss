@@ -1,10 +1,22 @@
 .backNav {
-display: flex;
-align-items: center;
-gap: 4px;
+max-width: 66px;
+margin: 40px 0 16px;
+
+@include inline-padding;
+
+@include on-mobile {
+  margin: 24px 0 16px;
 }
 
-.backNavText {
-    color: var(--color--white);
-    
+  &Content {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--color-white);
+    cursor: pointer;
+
+    &:hover {
+    color: var(--color-accent);
+  }
+  }
 }

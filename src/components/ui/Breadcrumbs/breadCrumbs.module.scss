@@ -3,6 +3,9 @@
     align-items: center;
     gap: 8px;
     margin-top: 24px;
+    overflow: hidden;
+    white-space: nowrap;
+
     @include inline-padding
 }
 
@@ -16,14 +19,18 @@
     width: 16px;
     height: 16px;
     color: var(--color-icons);
+    flex-shrink: 0;
 }
 
 .breadcrumbLink {
     color: var(--color-white);
     text-decoration: none;
-}
-
-.activeBreadcrumbLink {
-    color: var(--color-secondary);
-    text-decoration: none;
+    
+    &Active {
+      color: var(--color-secondary);
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      display: inline-block;
+    }
 }

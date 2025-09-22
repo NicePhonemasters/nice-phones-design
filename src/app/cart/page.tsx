@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import styles from './Cart.module.scss';
 import { ShopCartItem } from '@components/ui/ShopCartItem/ShopCartItem';
+import { AddButton } from '@components/ui/Buttons/AddButton/AddButton';
 
 const Cart: React.FC = () => {
   const cartRef = useRef<HTMLDivElement>(null);
@@ -38,21 +39,34 @@ const Cart: React.FC = () => {
       <h2 className={styles.title}>Cart</h2>
 
       <div className={styles.mainContent}>
-        {/* Грід для карток */}
-        <div className={styles.itemsGrid}>
+        <div className={styles.itemsList}>
           {/* Тут будуть картки товарів */}
+          <ShopCartItem
+            title="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)"
+            price={200}
+          />
+          <ShopCartItem
+            title="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)"
+            price={200}
+          />
+          <ShopCartItem
+            title="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)"
+            price={200}
+          />
+          <ShopCartItem
+            title="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)"
+            price={200}
+          />
         </div>
-        <ShopCartItem title="phone" price={200} />
+
         {/* Checkout блок */}
         <div className={styles.checkout}>
           <div className={styles.total}>
             <span className={styles.totalPrice}>SUM</span>
             <span className={styles.totalItems}>Total for N items</span>
           </div>
-          <div className={styles.separator}></div>
-          <button ref={checkoutBtnRef} className={styles.checkoutBtn}>
-            Checkout
-          </button>
+          <div className={styles.separator} />
+          <AddButton />
         </div>
       </div>
     </div>

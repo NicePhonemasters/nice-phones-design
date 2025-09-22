@@ -1,31 +1,48 @@
 .shopCartItem {
     display: flex;
-    flex: row;
-    justify-content: center;
     align-items: center;
     background-color: var(--color-surface-1);
     width: 100%;
     height: 128px;
     gap: 24px;
-    padding-inline: 24px;
-    
-    @include on-mobile {
-        height: 160px;
-    }
+    justify-content: space-between;
 
+    @include on-mobile {
+      height: 160px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    
     &Icon {
         color: var(--color-icons);
         width: 16px;
         height: 16px;
+        margin-left: 24px;
+        
+        @include on-mobile {
+            margin-left: 16px;
+        }
+    }
+
+    &Image {
+        width: 80px;
+        height: 80px;
     }
 
     &Title {
-        color: var(--color-white);
+      color: var(--color-white);
+      flex: 1;
+      word-wrap: break-word;
     }
 
     &Counter {
         display: flex;
+        align-items: center;
         gap: 13px;
+        
+        @include on-mobile {
+            margin-left: 16px;
+        }
     }
 
     &Count {
@@ -34,5 +51,10 @@
 
     &TotalPrice {
         color: var(--color-white);
+        margin-right: 24px;
+
+        @include on-mobile {
+            margin-right: 16px;
+        }
     }
 }

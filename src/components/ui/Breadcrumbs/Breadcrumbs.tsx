@@ -28,7 +28,7 @@ export const Breadcrumbs = () => {
               {lastLink ? (
                 <span
                   className={classNames(
-                    styles.activeBreadcrumbLink,
+                    styles.breadcrumbLinkActive,
                     'small-text',
                   )}
                 >

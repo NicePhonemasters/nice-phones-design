@@ -16,6 +16,7 @@ export const ShopCartItem = ({ title, image, price }: Props) => {
   return (
     <div className={styles.shopCartItem}>
       <CloseIcon className={styles.shopCartItemIcon} />
+
       <Image
         src={image}
         alt="Product image"
@@ -28,13 +29,15 @@ export const ShopCartItem = ({ title, image, price }: Props) => {
         {title}
       </p>
 
-      <div className={styles.shopCartItem}>
+      <div className={styles.shopCartItemCounter}>
         <OneIconButton icon={MinusIcon} />
         <p className={styles.shopCartItemCount}>1</p>
         <OneIconButton icon={PlusIcon} />
       </div>
 
-      <p className={styles.shopCartItemTotalPrice}>{`$ ${price}`}</p>
+      <div>
+        <p className={styles.shopCartItemTotalPrice}>{`$ ${price}`}</p>
+      </div>
     </div>
   );
 };
