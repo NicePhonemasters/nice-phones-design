@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  margin-bottom: 56px;
 
   @include mixins.on-tablet {
     display: grid;
@@ -70,13 +71,6 @@
     }
   }
 
-  &__gallery {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-
   &__image-wrap {
     display: flex;
     justify-content: center;
@@ -88,8 +82,6 @@
     width: 275px;
     height: 275px;
     position: relative;
-    aspect-ratio: 1 / 1;
-    width: 100%;
 
     @include mixins.on-tablet {
       width: 275px;
@@ -130,10 +122,6 @@
 
   &__image-list-item {
     border: 1px solid var(--color-icons);
-  }
-
-  &__image-list-button {
-    background: transparent;
     position: relative;
     width: 50px;
     height: 50px;
@@ -142,7 +130,6 @@
       width: 80px;
       height: 80px;
     }
-
   }
 
   &__image-small {
@@ -239,7 +226,7 @@
     margin-bottom: 16px;
   }
 
-  &__info-price-text {
+  &__info-price-discount {
     color: var(--color-white);
     font-size: 32px;
     font-weight: 800;
@@ -247,7 +234,7 @@
     margin: 0;
   }
 
-  &__info-price-discount {
+  &__info-price-regular {
     display: flex;
     align-items: center;
     text-decoration: line-through;
@@ -305,5 +292,6 @@
     color: var(--color-white);
     font-weight: 700;
     font-size: 12px;
+    white-space: nowrap;
   }
 }
