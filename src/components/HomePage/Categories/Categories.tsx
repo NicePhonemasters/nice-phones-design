@@ -21,12 +21,17 @@ export const Categories = () => {
         start: 'top 80%',
         toggleActions: 'play none none reverse',
       },
-      y: 50,
+      y: 80,
       opacity: 0,
-      stagger: 0.15,
-      duration: 0.8,
+      stagger: 0.2,
+      duration: 1,
       ease: 'power3.out',
+      force3D: true,
     });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -87,6 +92,7 @@ export const Categories = () => {
                   alt={cat.title}
                   fill
                   className={styles.categoryImage}
+                  onLoadingComplete={() => ScrollTrigger.refresh()}
                 />
               </div>
               <h4 className={styles.categoryCardTitle}>{cat.title}</h4>
