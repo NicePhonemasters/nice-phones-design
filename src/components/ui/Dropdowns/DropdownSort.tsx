@@ -2,15 +2,9 @@ import './dropdown.scss';
 import React from 'react';
 import * as Select from '@radix-ui/react-select';
 import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
+import { SelectItem } from './SelectItem';
 
-type Props = {
-  SelectItem: React.ForwardRefExoticComponent<
-    React.ComponentPropsWithoutRef<typeof Select.Item> &
-      React.RefAttributes<HTMLDivElement>
-  >;
-};
-
-export const DropdownSort: React.FC<Props> = ({ SelectItem }) => {
+export const DropdownSort: React.FC = () => {
   return (
     <Select.Root>
       <Select.Trigger className="SelectTrigger SelectSort" aria-label="sort">
