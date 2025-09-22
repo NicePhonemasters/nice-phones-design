@@ -10,7 +10,6 @@ export default function ItemCardLayout({
     <>
       <Breadcrumbs />
       <BackNav />
-
       {children}
     </>
   );

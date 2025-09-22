@@ -18,6 +18,7 @@ import ProductCard from '@components/ProductCard/ProductCard';
 import { products } from '@components/ProductCard/Products';
 
 const Catalog: React.FC = () => {
+  //TODO: rework
   // const [sortBy, setSortBy] = useState('new');
   // const [itemsPerPage, setItemsPerPage] = useState(16);
 
