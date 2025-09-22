@@ -8,6 +8,7 @@ import gsap from 'gsap';
 
 import styles from './header.module.scss';
 import { Menu } from './Menu/Menu';
+import { Links } from '@/types/Links';
 
 import FavouriteIcon from '@/assets/icons/favourite-default.svg';
 import ShopCart from '@/assets/icons/cart-shopping.svg';
@@ -16,10 +17,10 @@ import Close from '@/assets/icons/close.svg';
 
 export const Header = () => {
   const navLinks = [
-    { title: 'Home', path: '/' },
-    { title: 'Phones', path: '/phones' },
-    { title: 'Tablets', path: '/tablets' },
-    { title: 'Accessories', path: '/accessories' },
+    { title: 'Home', path: Links.Home },
+    { title: 'Phones', path: Links.PhoneCatalog },
+    { title: 'Tablets', path: Links.TabletCatalog },
+    { title: 'Accessories', path: Links.AccessoriesCatalog },
   ];
 
   const [isOpenedMenu, setIsOpenedMenu] = useState(false);
@@ -87,20 +88,20 @@ export const Header = () => {
           <div className={styles.headerRight} ref={rightRef}>
             <div
               className={classNames(styles.headerRightFavourites, {
-                [styles.linkIconIsActive]: currentPath === '/favorites',
+                [styles.linkIconIsActive]: currentPath === Links.Favourites,
               })}
             >
-              <Link href="/favorites">
+              <Link href={Links.Favourites}>
                 <FavouriteIcon className={styles.headerIcon} />
               </Link>
             </div>
 
             <div
               className={classNames(styles.headerRightCart, {
-                [styles.linkIconIsActive]: currentPath === '/shopcart',
+                [styles.linkIconIsActive]: currentPath === Links.Cart,
               })}
             >
-              <Link href="/shopcart">
+              <Link href={Links.Cart}>
                 <ShopCart className={styles.headerIcon} />
               </Link>
             </div>

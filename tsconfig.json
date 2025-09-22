@@ -1,15 +1,15 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": ".",
     "paths": {
       "@styles/*": [
-        "styles/*"
+        "src/styles/*"
       ],
       "@components/*": [
-        "components/*"
+        "src/components/*"
       ],
       "@/*": [
-        "*"
+        "src/*"
       ]
     },
     "target": "ES2017",
@@ -18,6 +18,7 @@
       "dom.iterable",
       "esnext"
     ],
+    "forceConsistentCasingInFileNames": true,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,

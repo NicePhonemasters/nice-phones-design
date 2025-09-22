@@ -1,24 +1,24 @@
 import Image from 'next/image';
 import React from 'react';
 import styles from './ProductCard.module.scss';
-import { Product } from '.';
+import { ItemCard } from '@/types/ItemCard';
 
-export default function ProductCard({ product }: { product: Product }) {
+export default function ProductCard({ product }: { product: ItemCard }) {
   return (
     <div className={styles.productCardWrapper}>
       <div id={product.id.toString()} className={styles.productCard}>
         <div className={styles.imageContainer}>
-          <Image src={product.imageSrc} alt={product.title} fill />
+          <Image src={product.image} alt={product.name} fill />
         </div>
 
         <div className={styles.title}>
-          <p>{product.title}</p>
+          <p>{product.name}</p>
         </div>
 
         <div className={styles.price}>
           <div className={styles.tag}>
             <p>${product.price}</p>
-            <p className={styles.old}>${product.oldPrice}</p>
+            <p className={styles.old}>${product.fullPrice}</p>
           </div>
         </div>
 
@@ -27,7 +27,7 @@ export default function ProductCard({ product }: { product: Product }) {
         <div className={styles.specs}>
           <div className={styles.item}>
             <span className={styles.label}>Screen</span>
-            <span className={styles.value}>{product.display}</span>
+            <span className={styles.value}>{product.screen}</span>
           </div>
           <div className={styles.item}>
             <span className={styles.label}>Capacity</span>
