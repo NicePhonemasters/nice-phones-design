@@ -2,15 +2,15 @@
 
 import Image from 'next/image';
 import styles from '../../item-card/itemCard-styles/itemCard.module.scss';
-import { Product } from '@/types/interfaces';
+import { DetailedItem } from '@/types/DetailedItem';
 
 interface PhoneGalleryProps {
-  phone: Product;
+  phone: DetailedItem;
 }
 
 export default function PhoneGallery({ phone }: PhoneGalleryProps) {
-  const heroImage = '/' + (phone.images?.[0] || 'img/placeholder.png');
-  const images = phone.images?.map((img) => '/' + img) || [];
+  const heroImage = phone.images?.[0] || 'img/placeholder.png';
+  const images = phone.images?.map((img) => img) || [];
 
   return (
     <>

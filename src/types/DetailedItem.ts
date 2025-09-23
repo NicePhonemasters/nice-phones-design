@@ -20,4 +20,6 @@ export type DetailedItem = {
   processor: string;
   ram: string;
   cell: string[];
+  camera: string;
+  zoom: string;
 };

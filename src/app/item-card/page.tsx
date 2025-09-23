@@ -1,28 +1,12 @@
 import Image from 'next/image';
 import styles from '../item-card/itemCard-styles/itemCard.module.scss';
-import { Product } from '../../types/interfaces';
 import PhoneGallery from './components/PhoneGallery';
-
-async function getAllProducts(): Promise<Product[]> {
-  const urls = [
-    'http://localhost:3000/api/phones.json',
-    'http://localhost:3000/api/tablets.json',
-    'http://localhost:3000/api/accessories.json',
-  ];
-
-  const responses = await Promise.all(urls.map((url) => fetch(url)));
-  const allDataArrays = await Promise.all(responses.map((res) => res.json()));
-  return allDataArrays.flat();
-}
-
-async function getProduct(productId: string): Promise<Product | null> {
-  const products = await getAllProducts();
-  return products.find((p) => p.id === productId) || null;
-}
+import { getDetailedItem } from '@/services/fetchClient';
+import { Categories } from '@/types/Categories';
 
 export default async function ItemCard() {
   const productId = 'apple-watch-series-4-40mm-silver';
-  const product = await getProduct(productId);
+  const product = await getDetailedItem(Categories.Accessories, productId);
 
   if (!product) {
     return <p>product not found</p>;
