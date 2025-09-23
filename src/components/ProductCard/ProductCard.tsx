@@ -2,7 +2,7 @@
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
-
+import classNames from 'classnames';
 import styles from './ProductCard.module.scss';
 import { AddButton } from '@components/ui/Buttons/AddButton/AddButton';
 import { ItemCard } from '@/types/ItemCard';
@@ -12,20 +12,17 @@ export default function ProductCard({ product }: { product: ItemCard }) {
   return (
     <div className={styles.productCardWrapper}>
       <div className={styles.productCard}>
-        <Link href="/" className={styles.productCardLink}>
+        <Link href="/" className={styles.productCardGeneralLink}>
           <div className={styles.imageContainer}>
             <Image src={product.image} alt={product.name} fill />
           </div>
+          <p className={classNames(styles.title, 'body-text')}>
+            {product.name}
+          </p>
 
-          <div className={styles.title}>
-            <p>{product.name}</p>
-          </div>
-
-          <div className={styles.price}>
-            <div className={styles.priceTag}>
-              <p>${product.price}</p>
-              <p className={styles.priceOld}>${product.fullPrice}</p>
-            </div>
+          <div className={styles.priceTag}>
+            <p className={styles.priceRegular}>${product.price}</p>
+            <p className={styles.priceOld}>${product.fullPrice}</p>
           </div>
 
           <div className={styles.divider}></div>
@@ -47,10 +44,7 @@ export default function ProductCard({ product }: { product: ItemCard }) {
         </Link>
         <div className={styles.buttonContainer}>
           <AddButton />
-          <button
-            className={styles.buttonContainer__AddTofavoutite}
-            type="button"
-          >
+          <button className={styles.addToFavourite} type="button">
             <FavouriteDefaultIcon />
           </button>
         </div>
