@@ -23,22 +23,21 @@ export async function GET(
   if (sortBy || currentPage || perPage) {
     const sorting = sortBy ? sortBy : SortType.None;
 
-    if (
-      !isSortType(sorting) ||
-      !currentPage ||
-      !perPage ||
-      Number.isNaN(+currentPage) ||
-      Number.isNaN(+perPage)
-    ) {
+    if (!isSortType(sorting) || !perPage || Number.isNaN(+perPage)) {
       return NextResponse.json(
         { error: 'Incorrect request parameters' },
         { status: 400 },
       );
     }
 
+    let actualCurrentPage = +currentPage;
+    if (Number.isNaN(actualCurrentPage)) {
+      actualCurrentPage = 1;
+    }
+
     const responseJson = prepareCatalogBackendData(category, {
       sortType: sorting,
-      currentPage: +currentPage,
+      currentPage: actualCurrentPage,
       perPage: +perPage,
     });
 

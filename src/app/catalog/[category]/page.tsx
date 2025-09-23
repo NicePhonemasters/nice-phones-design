@@ -8,7 +8,7 @@ import { DropdownPages } from '@components/ui/Dropdowns/DropdownPages';
 import ProductCard from '@components/ProductCard/ProductCard';
 import { getPaginatedItems } from '@/services/fetchClient';
 import { Categories, isCategory } from '@/types/Categories';
-import { isSortType, SortType } from '@/types/SortType';
+import { SortType } from '@/types/SortType';
 
 type Props = {
   params: Promise<{
@@ -43,12 +43,7 @@ async function Catalog({ params, searchParams }: Props) {
   const currentPage = (awaitedSearchParmas.currentPage as string) ?? '1';
   const perPage = (awaitedSearchParmas.perPage as string) ?? '8';
 
-  if (!isSortType(sortBy)) {
-    notFound();
-    return;
-  }
-
-  const sorting = sortBy;
+  const sorting = sortBy as SortType;
 
   const fetchData = await getPaginatedItems(category as Categories, {
     sortBy: sorting,
@@ -59,6 +54,10 @@ async function Catalog({ params, searchParams }: Props) {
   const products = fetchData.data;
   const totalItems = fetchData.totalItems;
   const pageCount = Math.ceil(totalItems / +perPage);
+  const actualCurrentPage =
+    +currentPage > pageCount || +currentPage < 1 || Number.isNaN(currentPage)
+      ? 1
+      : +currentPage;
 
   const textCategory = getCategoryPretty(category);
 
@@ -90,7 +89,10 @@ async function Catalog({ params, searchParams }: Props) {
           return <ProductCard key={product.id} product={product} />;
         })}
       </div>
-      <PaginationControl pageCount={pageCount} currentPage={+currentPage} />
+      <PaginationControl
+        pageCount={pageCount}
+        currentPage={actualCurrentPage}
+      />
     </main>
   );
 }

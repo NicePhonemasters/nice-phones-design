@@ -5,12 +5,14 @@ import * as Select from '@radix-ui/react-select';
 import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { SelectItem } from './SelectItem';
-import { SortType } from '@/types/SortType';
+import { isSortType, SortType } from '@/types/SortType';
 
 export const DropdownSort: React.FC = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const sortValue = searchParams.get('sortBy') ?? SortType.YearDesc;
+  const sortValue = isSortType(searchParams.get('sortBy'))
+    ? searchParams.get('sortBy')
+    : SortType.YearAsc;
 
   const handleChange = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());
