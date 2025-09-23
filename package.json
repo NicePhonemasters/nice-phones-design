@@ -21,6 +21,7 @@
     "@reduxjs/toolkit": "^2.9.0",
     "classnames": "^2.5.1",
     "eslint-config-next": "^15.5.3",
+    "framer-motion": "^12.23.19",
     "gsap": "^3.13.0",
     "next": "^15.5.3",
     "radix-ui": "^1.4.3",

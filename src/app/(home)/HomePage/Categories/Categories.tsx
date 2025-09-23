@@ -21,7 +21,6 @@ export const Categories = () => {
       const cards = Array.from(container.children) as HTMLElement[];
       if (cards.length === 0) return;
 
-      // одночасна анімація
       gsap.from(cards, {
         scrollTrigger: {
           trigger: container,
