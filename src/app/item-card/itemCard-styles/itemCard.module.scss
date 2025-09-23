@@ -1,20 +1,15 @@
-@import 'section-description';
-@import 'section-main';
-@import 'section-favourites';
+@use 'section-description';
+@use 'section-main';
+@use 'section-favourites';
+@use '../../../styles/core/mixins.scss' as *;
 
 .container_item_card {
   background-color: var(--color-black);
-  padding-bottom: 30px; // <--- !! delete
   width: 100%;
+  padding-inline: 16px;
   box-sizing: border-box;
 
-  @include on-tablet {
-    padding-inline: 24px;
-  }
-
-  @include on-desktop {
-    padding-inline: 150px;
-  }
+  @include inline-padding;
 }
 
 .item-card-section-main,

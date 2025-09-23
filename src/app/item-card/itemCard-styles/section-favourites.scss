@@ -1,13 +1,15 @@
+@use '../../../styles/mixins.scss';
+
 .item-card-favourites {
   display: flex;
   flex-direction: column;
   gap: 24px;
 
-  @include on-tablet {
+  @include mixins.on-tablet {
     gap: 28px;
   }
 
-  @include on-desktop {
+  @include mixins.on-desktop {
     gap: 28px;
   }
 

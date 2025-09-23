@@ -1,9 +1,4 @@
-type Description = {
-  title: string;
-  text: string[];
-};
-
-export type DetailedItem = {
+export interface Product {
   id: string;
   namespaceId: string;
   name: string;
@@ -14,12 +9,15 @@ export type DetailedItem = {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: Description[];
+  description: {
+    title: string;
+    text: string[];
+  }[];
   screen: string;
   resolution: string;
   processor: string;
   ram: string;
-  cell: string[];
   camera: string;
   zoom: string;
-};
+  cell: string[];
+}
