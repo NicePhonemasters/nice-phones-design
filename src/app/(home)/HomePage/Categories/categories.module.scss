@@ -1,5 +1,4 @@
 .homeCategories {
-
   &Title {
     color: var(--color-white);
     margin: 0 0 24px;
@@ -24,6 +23,9 @@
   display: flex;
   flex-direction: column;
   border: none;
+  perspective: 1000px;
+  cursor: pointer;
+  overflow: hidden;
 
   @include on-mobile {
     flex: none;
@@ -64,16 +66,22 @@
 }
 
 .categoryCard {
-  perspective: 1000px; 
+  perspective: 1000px;
   cursor: pointer;
 
   .categoryCardContent {
     overflow: hidden;
     border-radius: 16px;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transition: transform 0.12s;
   }
 
-  &:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  &:hover .categoryCardContent {
+    transform: rotateX(var(--rotate-x, 0deg)) rotateY(var(--rotate-y, 0deg))
+      scale(1.05);
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+    background-color: transparent;
   }
 }
 
