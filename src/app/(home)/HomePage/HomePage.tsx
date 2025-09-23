@@ -1,4 +1,3 @@
-import { products } from '../../../components/ProductCard/Products';
 import styles from './home.module.scss';
 import { Slider } from './Slider/Slider';
 import { Categories } from '@/app/(home)/HomePage/Categories/Categories';
@@ -9,14 +8,10 @@ export const HomePage = () => {
     <section className={styles.home}>
       <div className={styles.homeContainer}>
         <h1 className={styles.homeTitle}>Welcome to Nice Gadgets store!</h1>
-
         <Slider />
-
-        <Carousel title="Brand new models" items={products} />
-
+        <Carousel title="Brand new models" items={[]} />
         <Categories />
-
-        <Carousel title="Hot prices" items={products} />
+        <Carousel title="Hot prices" items={[]} /> {/* TODO: ADD ITEMS HERE */}
       </div>
     </section>
   );
