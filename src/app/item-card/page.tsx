@@ -3,6 +3,7 @@ import styles from '../item-card/itemCard-styles/itemCard.module.scss';
 import PhoneGallery from './components/PhoneGallery';
 import { getDetailedItem } from '@/services/fetchClient';
 import { Categories } from '@/types/Categories';
+import { Carousel } from '@components/ui/Carousel/Carousel';
 
 export default async function ItemCard() {
   const productId = 'apple-watch-series-4-40mm-silver';
@@ -192,16 +193,7 @@ export default async function ItemCard() {
             ></button>
           </div>
         </div>
-        <div className={styles['item-card-favourites__slider']}>
-          <div
-            className="placeholder"
-            style={{
-              backgroundColor: 'var(--color-placeholder)',
-              width: '100%',
-              height: '30vh',
-            }}
-          ></div>
-        </div>
+        <Carousel title="You may also like" items={[]} /> {/* TODO : NEED TO ADD ACTUAL LOGIC HERE */}
       </section>
     </div>
   );

@@ -17,16 +17,17 @@
 }
 
 @mixin inline-padding {
+  
   @include on-desktop {
-    padding-inline: 120px;
+    padding-inline: 8%;
   }
 
   @include on-tablet {
-    padding-inline: 72px;
+    padding-inline: 24px;
   }
 
   @include on-mobile {
-    padding-inline: 20px;
+    padding-inline: 16px;
   }
 }
 

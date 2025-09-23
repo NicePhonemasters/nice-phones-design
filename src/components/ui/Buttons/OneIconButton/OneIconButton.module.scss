@@ -1,9 +1,13 @@
 .oneIconButton {
+  display: flex;
+  justify-content: center;
   background-color: var(--color-surface-2);
-  width: 100%;
-  height: 100%;
-  align-content: center;
-  color: var(--color-white);  
+  width: 32px;
+  height: 32px;
+  align-items: center;
+  color: var(--color-white); 
+  cursor: pointer;
+
 
   border: none;
     
@@ -15,5 +19,9 @@
     background-color: var(--color-black);
     border: 1px solid var(--color-elements);
     color: var(--color-icons);
+  }
+
+  &__icon {
+    color: var(--color-white);
   }
 }

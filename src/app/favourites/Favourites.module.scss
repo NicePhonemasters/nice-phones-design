@@ -5,13 +5,7 @@
   min-height: 100vh;
   background-color: var(--color-black);
 
-  @include on-tablet {
-    padding: 40px 24px;
-  }
-
-  @include on-desktop {
-    padding: 40px 32px;
-  }
+  @include inline-padding;
 
   &__top {
     display: flex;

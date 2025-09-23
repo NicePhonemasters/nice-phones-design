@@ -32,6 +32,11 @@
   align-items: center;
   justify-content: center;
   flex-direction: horizontal;
+  margin: 40px 0 80px;
+
+  @include on-mobile {
+    margin: 40px 0 64px;
+  }
 }
 
 .paginationButton {

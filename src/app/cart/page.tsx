@@ -1,45 +1,63 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+// import gsap from 'gsap';
 import styles from './Cart.module.scss';
+import { ShopCartItem } from '@components/ui/ShopCartItem/ShopCartItem';
+import { AddButton } from '@components/ui/Buttons/AddButton/AddButton';
 
 const Cart: React.FC = () => {
-  const cartRef = useRef<HTMLDivElement>(null);
-  const checkoutBtnRef = useRef<HTMLButtonElement>(null);
+  //*TODO: Узнать у Димы нужна ли эта логика здесь и не стоит ли его перенести в компонент AddButton
 
-  useEffect(() => {
-    if (cartRef.current) {
-      gsap.fromTo(
-        cartRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-      );
-    }
+  // const cartRef = useRef<HTMLDivElement>(null);
+  // const checkoutBtnRef = useRef<HTMLButtonElement>(null);
 
-    if (checkoutBtnRef.current) {
-      gsap.fromTo(
-        checkoutBtnRef.current,
-        { scale: 0.8, opacity: 0 },
-        {
-          scale: 1,
-          opacity: 1,
-          duration: 0.5,
-          delay: 0.5,
-          ease: 'back.out(1.7)',
-        },
-      );
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (cartRef.current) {
+  //     gsap.fromTo(
+  //       cartRef.current,
+  //       { opacity: 0, y: 50 },
+  //       { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+  //     );
+  //   }
+
+  //   if (checkoutBtnRef.current) {
+  //     gsap.fromTo(
+  //       checkoutBtnRef.current,
+  //       { scale: 0.8, opacity: 0 },
+  //       {
+  //         scale: 1,
+  //         opacity: 1,
+  //         duration: 0.5,
+  //         delay: 0.5,
+  //         ease: 'back.out(1.7)',
+  //       },
+  //     );
+  //   }
+  // }, []);
 
   return (
-    <div ref={cartRef} className={styles.cartWrapper}>
+    <div className={styles.cartWrapper}>
       <h2 className={styles.title}>Cart</h2>
 
       <div className={styles.mainContent}>
-        {/* Грід для карток */}
-        <div className={styles.itemsGrid}>
+        <div className={styles.itemsList}>
           {/* Тут будуть картки товарів */}
+          <ShopCartItem
+            title="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)"
+            price={200}
+          />
+          <ShopCartItem
+            title="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)"
+            price={200}
+          />
+          <ShopCartItem
+            title="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)"
+            price={200}
+          />
+          <ShopCartItem
+            title="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)"
+            price={200}
+          />
         </div>
 
         {/* Checkout блок */}
@@ -48,10 +66,8 @@ const Cart: React.FC = () => {
             <span className={styles.totalPrice}>SUM</span>
             <span className={styles.totalItems}>Total for N items</span>
           </div>
-          <div className={styles.separator}></div>
-          <button ref={checkoutBtnRef} className={styles.checkoutBtn}>
-            Checkout
-          </button>
+          <div className={styles.separator} />
+          <AddButton />
         </div>
       </div>
     </div>

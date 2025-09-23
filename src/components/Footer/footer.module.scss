@@ -3,7 +3,7 @@
   width: 100%;
   height: 96px;
   box-shadow: 0 -1px var(--color-surface-2);
-  z-index: 100;
+  z-index: 1;
 
   @include on-mobile {
     height: 257px;
@@ -35,13 +35,13 @@
   &Lists {
     display: flex;
     list-style: none;
-    gap: 13px;
+    gap: 106px;
     padding: 0;
 
     @include on-mobile {
       flex-direction: column;
       margin: 32px 0;
-      gap: 16px;
+      gap: 13px;
     }
   }
 
@@ -63,10 +63,5 @@
     &Text {
       color: var(--color-secondary);
     }
-  }
-
-  &ButtonTop {
-    background-color: var(--color-placeholder);
-    margin-left: 16px;
   }
 }

@@ -1,4 +1,4 @@
-import styles from '@styles/TwoIconButton.module.scss';
+import styles from './TwoIconButton.module.scss';
 
 type Props = {
   iconSelected: React.ElementType;

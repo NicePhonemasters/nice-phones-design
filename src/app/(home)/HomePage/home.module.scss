@@ -1,9 +1,9 @@
 .home {
+  @include inline-padding;
+  
   &Title {
     color: var(--color-white);
     margin: 56px 0;
-
-    @include inline-padding;
 
     @include on-tablet {
       margin: 32px 0;

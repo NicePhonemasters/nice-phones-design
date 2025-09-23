@@ -6,34 +6,34 @@ import { Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import Image from 'next/image';
-
+import { OneIconButton } from '../Buttons/OneIconButton';
+import ArrowLeft from '../../../assets/icons/arrow-left.svg';
+import ArrowRight from '../../../assets/icons/arrow-right.svg';
 import styles from './carousel.module.scss';
+import ProductCard from '@components/ProductCard/ProductCard';
+import { ItemCard } from '@/types/ItemCard';
 
 type Props = {
   title: string;
-  items: string[];
+  items: ItemCard[];
 };
 
 export const Carousel: React.FC<Props> = ({ title, items }) => {
   return (
-    <div className={styles.carousel}>
+    <section className={styles.carousel}>
       <div className={styles.carouselTop}>
         <h2 className={styles.carouselTopTitle}>{title}</h2>
 
         <div className={styles.carouselTopPag}>
-          <button className={`${styles.carouselPagButton} carouselButtonPrev`}>
-            {'<'}
-          </button>
-          <button className={`${styles.carouselPagButton} carouselButtonNext`}>
-            {'>'}
-          </button>
+          <OneIconButton icon={ArrowLeft} styleName={'carouselButtonPrev'} />
+
+          <OneIconButton icon={ArrowRight} styleName={'carouselButtonNext'} />
         </div>
       </div>
 
       <Swiper
         modules={[Navigation]}
-        spaceBetween={10}
+        spaceBetween={20}
         slidesPerView={4}
         navigation={{
           prevEl: '.carouselButtonPrev',
@@ -55,15 +55,12 @@ export const Carousel: React.FC<Props> = ({ title, items }) => {
       >
         {items.map((item) => {
           return (
-            <SwiperSlide key={item}>
-              <div className={styles.card}>
-                <Image src={item} width={208} height={176} alt="alt" />
-                <p style={{ color: '#ed31f1' }}>placeholder</p>
-              </div>
+            <SwiperSlide key={item.id}>
+              <ProductCard product={item} />
             </SwiperSlide>
           );
         })}
       </Swiper>
-    </div>
+    </section>
   );
 };

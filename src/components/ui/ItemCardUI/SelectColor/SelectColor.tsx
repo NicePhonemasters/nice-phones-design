@@ -5,7 +5,7 @@ import styles from './selectColor.module.scss';
 
 type Props = {
   color: string;
-  productId: number | null;
+  productId?: number;
 };
 
 export const SelectColor: React.FC<Props> = ({ color, productId }) => {

@@ -8,6 +8,7 @@ import gsap from 'gsap';
 
 import styles from './header.module.scss';
 import { Menu } from './Menu/Menu';
+import { HeaderActions } from './HeaderActions/HeaderActions';
 import { Links } from '@/types/Links';
 
 import FavouriteIcon from '@/assets/icons/favourite-default.svg';
@@ -50,7 +51,7 @@ export const Header = () => {
 
   return (
     <>
-      <header className={styles.header}>
+      <header className={styles.header} id="header">
         <div className={styles.headerContainer}>
           <div ref={logoRef}>
             <Link href="/">
@@ -120,6 +121,11 @@ export const Header = () => {
               )}
             </div>
           </div>
+          <HeaderActions
+            currentPath={currentPath}
+            isOpenedMenu={isOpenedMenu}
+            setIsOpenedMenu={setIsOpenedMenu}
+          />
         </div>
       </header>
 

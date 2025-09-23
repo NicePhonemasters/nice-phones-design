@@ -1,23 +1,27 @@
-import styles from '@styles/OneIconButton.module.scss';
+'use client';
+import classNames from 'classnames';
+import styles from './OneIconButton.module.scss';
 
 type Props = {
-  icon: React.ElementType;
-  disabled: boolean;
-  handleClick: () => void;
+  icon: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+  disabled?: boolean;
+  handleClick?: () => void;
+  styleName?: string;
 };
 
 export default function OneIconButton({
   icon: Icon,
   disabled,
   handleClick,
+  styleName,
 }: Props) {
   return (
     <button
       onClick={handleClick}
       disabled={disabled}
-      className={styles.oneIconButton}
+      className={classNames(styles.oneIconButton, styleName)}
     >
-      <Icon alt="icon" className={styles.oneIconButton__icon} />
+      <Icon className={styles.oneIconButton__icon} />
     </button>
   );
 }
