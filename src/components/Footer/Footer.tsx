@@ -40,7 +40,7 @@ export default function Footer() {
         trigger: footerRef.current,
         start: 'top bottom-=50',
         animation: tl,
-        once: true, // важливо!
+        once: true,
       });
     }, footerRef);
 
