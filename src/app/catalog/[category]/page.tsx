@@ -7,9 +7,11 @@ import styles from './Catalog.module.scss';
 import { PaginationControl } from '@components/ui/Controls/PaginationControl';
 import { DropdownSort } from '@components/ui/Dropdowns/DropdownSort';
 import { DropdownPages } from '@components/ui/Dropdowns/DropdownPages';
-import { SelectColor } from '@components/ui/SelectColor/SelectColor';
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import ProductCard from '@components/ProductCard/ProductCard';
 
 const Catalog: React.FC = () => {
+  //TODO: rework
   // const [sortBy, setSortBy] = useState('new');
   // const [itemsPerPage, setItemsPerPage] = useState(16);
 
@@ -55,34 +57,8 @@ const Catalog: React.FC = () => {
 
       <div className={styles.catalog__grid}></div>
       <PaginationControl pageCount={5} />
-      <SelectColor color={'#5F7170'} productId={2} />
     </main>
   );
 };
 
 export default Catalog;
-
-{
-  /* <select
-              className={`${styles.catalog__select} ${styles.catalog__selectSort}`}
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value)}
-            >
-              <option value="newest">Newest</option>
-              <option value="oldest">Oldest</option>
-              <option value="priceLow">Price: low to high</option>
-              <option value="priceHigh">Price: high to low</option>
-            </select> */
-}
-
-{
-  /* <select
-              className={`${styles.catalog__select} ${styles.catalog__selectItems}`}
-              value={itemsPerPage}
-              onChange={(e) => setItemsPerPage(Number(e.target.value))}
-            >
-              <option value={8}>8</option>
-              <option value={16}>16</option>
-              <option value={24}>24</option>
-            </select> */
-}
