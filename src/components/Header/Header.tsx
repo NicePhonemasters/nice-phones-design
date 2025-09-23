@@ -11,11 +11,6 @@ import { Menu } from './Menu/Menu';
 import { HeaderActions } from './HeaderActions/HeaderActions';
 import { Links } from '@/types/Links';
 
-import FavouriteIcon from '@/assets/icons/favourite-default.svg';
-import ShopCart from '@/assets/icons/cart-shopping.svg';
-import BurgerMenu from '@/assets/icons/menu-burger.svg';
-import Close from '@/assets/icons/close.svg';
-
 export const Header = () => {
   const navLinks = [
     { title: 'Home', path: Links.Home },
@@ -86,41 +81,6 @@ export const Header = () => {
             </ul>
           </nav>
 
-          <div className={styles.headerRight} ref={rightRef}>
-            <div
-              className={classNames(styles.headerRightFavourites, {
-                [styles.linkIconIsActive]: currentPath === Links.Favourites,
-              })}
-            >
-              <Link href={Links.Favourites}>
-                <FavouriteIcon className={styles.headerIcon} />
-              </Link>
-            </div>
-
-            <div
-              className={classNames(styles.headerRightCart, {
-                [styles.linkIconIsActive]: currentPath === Links.Cart,
-              })}
-            >
-              <Link href={Links.Cart}>
-                <ShopCart className={styles.headerIcon} />
-              </Link>
-            </div>
-
-            <div className={styles.headerBurgerMenu}>
-              {!isOpenedMenu ? (
-                <BurgerMenu
-                  className={styles.headerIcon}
-                  onClick={() => setIsOpenedMenu(true)}
-                />
-              ) : (
-                <Close
-                  className={styles.headerIcon}
-                  onClick={() => setIsOpenedMenu(false)}
-                />
-              )}
-            </div>
-          </div>
           <HeaderActions
             currentPath={currentPath}
             isOpenedMenu={isOpenedMenu}

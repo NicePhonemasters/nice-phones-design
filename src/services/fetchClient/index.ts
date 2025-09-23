@@ -2,10 +2,13 @@ import { Categories } from '@/types/Categories';
 import { DetailedItem } from '@/types/DetailedItem';
 import { ItemCard } from '@/types/ItemCard';
 import { SortType } from '@/types/SortType';
+import { getBaseUrl } from '@/utils/getBaseUrl';
 
 const client = {
   async get<T>(url: string) {
-    const response = await fetch(url, {
+    const baseUrl = getBaseUrl();
+
+    const response = await fetch(`${baseUrl}/${url}`, {
       method: 'GET',
       headers: { Accept: 'application/json' },
       cache: 'no-store',
