@@ -1,56 +1,43 @@
-// 'use client';
-
-// import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import styles from '../item-card/itemCard-styles/itemCard.module.scss';
-import { Phone } from '../../types/interfaces';
+import { Product } from '../../types/interfaces';
+import PhoneGallery from './components/PhoneGallery';
 
-async function getPhone(phoneId: string): Promise<Phone | null> {
-  const res = await fetch('http://localhost:3000/api/phones.json');
-  const data: Phone[] = await res.json();
-  return data.find((p) => p.id === phoneId) || null;
+async function getAllProducts(): Promise<Product[]> {
+  const urls = [
+    'http://localhost:3000/api/phones.json',
+    'http://localhost:3000/api/tablets.json',
+    'http://localhost:3000/api/accessories.json',
+  ];
+
+  const responses = await Promise.all(urls.map((url) => fetch(url)));
+  const allDataArrays = await Promise.all(responses.map((res) => res.json()));
+  return allDataArrays.flat();
+}
+
+async function getProduct(productId: string): Promise<Product | null> {
+  const products = await getAllProducts();
+  return products.find((p) => p.id === productId) || null;
 }
 
 export default async function ItemCard() {
-  const phoneId = 'apple-iphone-12-128gb-black';
-  const phone = await getPhone(phoneId);
+  const productId = 'apple-watch-series-4-40mm-silver';
+  const product = await getProduct(productId);
 
-  if (!phone) {
-    return <p>Phone not found</p>;
+  if (!product) {
+    return <p>product not found</p>;
   }
-
-  const heroImage = '/' + (phone.images?.[0] || 'img/placeholder.png');
-  const images = phone.images?.map((img) => '/' + img) || [];
 
   return (
     <div className={styles.container_item_card}>
       <section
         className={`${styles['item_card-section']} ${styles['item_card-section-main']}`}
       >
-        <h3 className={styles['item_card__title']}>{phone.name}(iMT9G2FS/A)</h3>
+        <h3 className={styles['item_card__title']}>
+          {product.name}(iMT9G2FS/A)
+        </h3>
         <div className={styles.item_card}>
-          <div className={styles['item_card__image-wrap']}>
-            <div className={styles['item_card__image']}>
-              <Image
-                className={styles['item_card__image-hero']}
-                src={heroImage}
-                alt="main-image"
-                fill
-              />
-            </div>
-          </div>
-          <ul className={styles['item_card__image-list']}>
-            {images.map((image, i) => (
-              <li className={styles['item_card__image-list-item']} key={i}>
-                <Image
-                  className={styles['item_card__image-small']}
-                  src={image}
-                  alt={`item-image-${i + 1}`}
-                  fill
-                />
-              </li>
-            ))}
-          </ul>
+          <PhoneGallery phone={product} />
           <div className={styles['item_card__info']}>
             <div className={styles['item_card__info-colour-section']}>
               <div className={styles['item_card__info-colour-section__text']}>
@@ -67,7 +54,7 @@ export default async function ItemCard() {
                     styles['item_card__info-colour-section__color-list']
                   }
                 >
-                  {phone.colorsAvailable.map((color) => (
+                  {product.colorsAvailable.map((color) => (
                     <li
                       key={color}
                       className={
@@ -92,7 +79,7 @@ export default async function ItemCard() {
                 Select capacity
               </p>
               <ul className={styles['item_card__info-capacity-section-list']}>
-                {phone.capacityAvailable.map((cap) => (
+                {product.capacityAvailable.map((cap) => (
                   <li
                     key={cap}
                     className={
@@ -106,10 +93,10 @@ export default async function ItemCard() {
             </div>
             <div className={styles['item_card__info-price']}>
               <p className={styles['item_card__info-price-discount']}>
-                ${phone.priceDiscount}
+                ${product.priceDiscount}
               </p>
               <p className={styles['item_card__info-price-regular']}>
-                ${phone.priceRegular}
+                ${product.priceRegular}
               </p>
             </div>
             <div className={styles['item_card__info-buy-section']}>
@@ -136,13 +123,13 @@ export default async function ItemCard() {
             <div className={styles['item_card__info-description']}>
               <dl className={styles['item_card__info-description-list']}>
                 <dt>Screen</dt>
-                <dd>{phone.screen}</dd>
+                <dd>{product.screen}</dd>
                 <dt>Resolution</dt>
-                <dd>{phone.resolution}</dd>
+                <dd>{product.resolution}</dd>
                 <dt>Processor</dt>
-                <dd>{phone.processor}</dd>
+                <dd>{product.processor}</dd>
                 <dt>RAM</dt>
-                <dd>{phone.ram}</dd>
+                <dd>{product.ram}</dd>
               </dl>
             </div>
           </div>
@@ -154,7 +141,7 @@ export default async function ItemCard() {
         <div className={styles['item-card-description']}>
           <h4 className={styles['item-card-description__title']}>About</h4>
 
-          {phone.description?.map((section, i) => (
+          {product.description?.map((section, i) => (
             <div key={i}>
               <h5 className={styles['item-card-description__subtitle']}>
                 {section.title}
@@ -173,14 +160,14 @@ export default async function ItemCard() {
           </h4>
           <div className={styles['item-card-description__tech-specs-list']}>
             {[
-              { name: 'Screen', value: phone.screen },
-              { name: 'Resolution', value: phone.resolution },
-              { name: 'Processor', value: phone.processor },
-              { name: 'RAM', value: phone.ram },
-              { name: 'Built in memory', value: phone.capacity },
-              { name: 'Camera', value: phone.camera },
-              { name: 'Zoom', value: phone.zoom },
-              { name: 'Cell', value: phone.cell?.join(', ') },
+              { name: 'Screen', value: product.screen },
+              { name: 'Resolution', value: product.resolution },
+              { name: 'Processor', value: product.processor },
+              { name: 'RAM', value: product.ram },
+              { name: 'Built in memory', value: product.capacity },
+              { name: 'Camera', value: product.camera },
+              { name: 'Zoom', value: product.zoom },
+              { name: 'Cell', value: product.cell?.join(', ') },
             ]
               .filter((spec) => spec.value)
               .map((spec) => (
