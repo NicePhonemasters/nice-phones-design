@@ -58,7 +58,7 @@ async function Catalog({ params, searchParams }: Props) {
 
   const products = fetchData.data;
   const totalItems = fetchData.totalItems;
-  const pageCount = Math.trunc(totalItems / +perPage);
+  const pageCount = Math.ceil(totalItems / +perPage);
 
   const textCategory = getCategoryPretty(category);
 
