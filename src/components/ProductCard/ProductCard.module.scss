@@ -34,11 +34,13 @@
 
 .imageContainer {
   position: relative;
-  object-fit: cover;
   box-sizing: border-box;
-  justify-content: center;
   width: 208px;
   height: 196px;
+
+    img {
+    object-fit: contain;
+  }
 
   @include on-mobile {
     width: 148px;

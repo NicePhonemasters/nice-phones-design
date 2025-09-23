@@ -1,7 +1,10 @@
-import { products } from './Products';
-
-export type Product = (typeof products)[number];
-
-export interface ProductProp {
-  product: Product;
-}
+export type Product = {
+  id: string;
+  name: string;
+  price: number;
+  fullPrice: number;
+  screen: string;
+  capacity: string;
+  ram: string;
+  image: string;
+};
