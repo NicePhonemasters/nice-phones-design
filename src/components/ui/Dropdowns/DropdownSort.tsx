@@ -3,20 +3,22 @@ import './dropdown.scss';
 import React from 'react';
 import * as Select from '@radix-ui/react-select';
 import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { useSearchParams, useRouter, usePathname } from 'next/navigation';
 import { SelectItem } from './SelectItem';
 import { SortType } from '@/types/SortType';
 
 export const DropdownSort: React.FC = () => {
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
-  const sortValue = searchParams.get('sort');
+  const sortValue = searchParams.get('sort') ?? SortType.None;
 
   const handleChange = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set('sort', value);
-    // params.set('page', '1');
-    router.push(`/catalog/phones?${params.toString()}`);
+    params.set('page', '1');
+
+    router.replace(`${pathname}?${params.toString()}`);
   };
 
   return (

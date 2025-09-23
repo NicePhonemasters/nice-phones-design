@@ -1,9 +1,9 @@
 import React from 'react';
+import products from '../../api/data/products.json';
 import styles from './Catalog.module.scss';
 import { PaginationControl } from '@components/ui/Controls/PaginationControl';
 import { DropdownSort } from '@components/ui/Dropdowns/DropdownSort';
 import { DropdownPages } from '@components/ui/Dropdowns/DropdownPages';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import ProductCard from '@components/ProductCard/ProductCard';
 
 const Catalog: React.FC = () => {
@@ -30,7 +30,11 @@ const Catalog: React.FC = () => {
         </div>
       </div>
 
-      <div className={styles.catalog__grid}></div>
+      <div className={styles.catalog__grid}>
+        {products.map((product) => {
+          return <ProductCard key={product.id} product={product} />;
+        })}
+      </div>
       <PaginationControl pageCount={5} />
     </main>
   );
