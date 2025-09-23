@@ -31,7 +31,7 @@ export default function ProductCard({ product }: { product: ItemCard }) {
           <div className={styles.divider}></div>
 
           <div className={styles.specs}>
-            <div className={styles.specsItems}>
+            <div className={styles.specsItem}>
               <span className={styles.specsLabel}>Screen</span>
               <span className={styles.specsValue}>{product.screen}</span>
             </div>
