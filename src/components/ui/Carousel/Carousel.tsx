@@ -1,6 +1,7 @@
-/* eslint-disable react/prop-types */
+ 
 'use client';
 
+import { useEffect, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/css';
@@ -11,14 +12,33 @@ import ArrowLeft from '../../../assets/icons/arrow-left.svg';
 import ArrowRight from '../../../assets/icons/arrow-right.svg';
 import styles from './carousel.module.scss';
 import ProductCard from '@components/ProductCard/ProductCard';
-import { ItemCard } from '@/types/ItemCard';
+import { Phone } from '@/types/types';
+import { CarouselTypes } from '@/types/CarouselTypes';
 
 type Props = {
   title: string;
-  items: ItemCard[];
+  type: CarouselTypes;
 };
 
-export const Carousel: React.FC<Props> = ({ title, items }) => {
+export const Carousel: React.FC<Props> = ({ title, type }: Props) => {
+  const [items, setItems] = useState<Phone[]>([]);
+  //TODO: нужен-ли здесь лоудер? //
+  // const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // setLoading(true);
+    fetch(`/api/carousel/${type}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setItems(data);
+        // setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        // setLoading(false);
+      });
+  }, [type]);
+
   return (
     <section className={styles.carousel}>
       <div className={styles.carouselTop}>
@@ -53,13 +73,15 @@ export const Carousel: React.FC<Props> = ({ title, items }) => {
           1800: { slidesPerView: 6 },
         }}
       >
-        {items.map((item) => {
-          return (
+        {Array.isArray(items) && items.length > 0 ? (
+          items.map((item) => (
             <SwiperSlide key={item.id}>
-              <ProductCard product={item} />
+              <ProductCard item={item} />
             </SwiperSlide>
-          );
-        })}
+          ))
+        ) : (
+          <p>Loading...</p>
+        )}
       </Swiper>
     </section>
   );
