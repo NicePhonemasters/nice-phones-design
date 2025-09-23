@@ -1,12 +1,24 @@
 import React from 'react';
-import products from '../../api/data/products.json';
 import styles from './Catalog.module.scss';
 import { PaginationControl } from '@components/ui/Controls/PaginationControl';
 import { DropdownSort } from '@components/ui/Dropdowns/DropdownSort';
 import { DropdownPages } from '@components/ui/Dropdowns/DropdownPages';
 import ProductCard from '@components/ProductCard/ProductCard';
+import { getGeneralCategory } from '@/services/fetchClient';
+import { Categories } from '@/types/Categories';
 
-const Catalog: React.FC = () => {
+type Props = {
+  params: {
+    category: string;
+  };
+};
+
+async function Catalog({ params }: Props) {
+  const awaitedParams = await params;
+  const products = await getGeneralCategory(
+    awaitedParams.category as Categories,
+  );
+
   return (
     <main className={styles.catalog}>
       <div className={styles.catalog__top}>
@@ -38,6 +50,6 @@ const Catalog: React.FC = () => {
       <PaginationControl pageCount={5} />
     </main>
   );
-};
+}
 
 export default Catalog;
