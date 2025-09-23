@@ -1,14 +1,32 @@
+'use client';
+
 import './dropdown.scss';
 import React from 'react';
 import * as Select from '@radix-ui/react-select';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import { SelectItem } from './SelectItem';
 
 export const DropdownPages: React.FC = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const perPageValue = searchParams.get('perPage') ?? '8';
+
+  const handleChange = (value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('perPage', value);
+    params.set('currentPage', '1');
+
+    router.push(`?${params.toString()}`);
+  };
+
   return (
-    <Select.Root>
-      <Select.Trigger className="SelectTrigger SelectPages" aria-label="sort">
-        <Select.Value placeholder="Select items" />
+    <Select.Root value={perPageValue} onValueChange={handleChange}>
+      <Select.Trigger
+        className="SelectTrigger SelectPages"
+        aria-label="perPage"
+      >
+        <Select.Value />
         <Select.Icon className="SelectIcon">
           <ChevronDownIcon />
         </Select.Icon>

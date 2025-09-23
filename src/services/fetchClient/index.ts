@@ -30,7 +30,7 @@ type PaginatedSearchParams = {
 
 type paginatedApi = {
   totalItems: number;
-  items: ItemCard[];
+  data: ItemCard[];
 };
 
 export async function getPaginatedItems(
