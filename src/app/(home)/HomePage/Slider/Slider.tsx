@@ -38,6 +38,7 @@ export const Slider = () => {
               alt="banner"
             />
           </SwiperSlide>
+
           <SwiperSlide>
             <Image
               src="/img/banner-phones.png"
@@ -46,6 +47,7 @@ export const Slider = () => {
               alt="banner"
             />
           </SwiperSlide>
+
           <SwiperSlide>
             <Image
               src="/img/banner-tablets.png"

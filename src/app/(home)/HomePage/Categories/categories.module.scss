@@ -42,6 +42,7 @@
     @include on-mobile {
       aspect-ratio: auto;
       height: 60vw;
+      min-height: 200px;
     }
   }
 
@@ -87,4 +88,5 @@
 
 .categoryImage {
   transition: transform 0.3s;
+   object-fit: cover;
 }
