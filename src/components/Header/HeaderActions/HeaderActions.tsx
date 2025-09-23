@@ -19,25 +19,25 @@ export const HeaderActions = ({
 }: Props) => {
   return (
     <div className={styles.headerActions}>
-      <div
-        className={classNames(styles.headerActionsFavourites, {
-          [styles.linkIconIsActive]: currentPath === '/favorites',
-        })}
-      >
-        <Link href="/favorites">
+      <Link href="/favorites">
+        <div
+          className={classNames(styles.headerActionsFavourites, {
+            [styles.linkIconIsActive]: currentPath === '/favorites',
+          })}
+        >
           <FavouriteIcon className={styles.headerIcon} />
-        </Link>
-      </div>
+        </div>
+      </Link>
 
-      <div
-        className={classNames(styles.headerActionsCart, {
-          [styles.linkIconIsActive]: currentPath === '/shopcart',
-        })}
-      >
-        <Link href="/shopcart">
+      <Link href="/shopcart">
+        <div
+          className={classNames(styles.headerActionsCart, {
+            [styles.linkIconIsActive]: currentPath === '/shopcart',
+          })}
+        >
           <ShopCart className={styles.headerIcon} />
-        </Link>
-      </div>
+        </div>
+      </Link>
 
       <div className={styles.headerBurgerMenu}>
         {!isOpenedMenu ? (

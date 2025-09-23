@@ -1,15 +1,3 @@
-@mixin on-mobile {
-  @media (max-width: 639px) {
-    @content;
-  }
-}
-
-@mixin on-tablet {
-  @media (min-width: 640px) and (max-width: 1199px) {
-    @content;
-  }
-}
-
 .productCardWrapper {
   box-sizing: border-box;
   display: flex;
@@ -75,7 +63,7 @@
   width: auto;
   height: auto;
 
-  .tag {
+  &Tag {
     display: flex;
     gap: 8px;
     align-items: center;
@@ -95,7 +83,7 @@
     }
   }
 
-  .old {
+  &Old {
     text-decoration: line-through;
     color: #75767f;
     font-weight: 600;
@@ -104,7 +92,7 @@
 
 .divider {
   box-sizing: border-box;
-  width: 208px;
+  width: 100%;
   border: 1px solid #3b3e4a;
 
   @include on-mobile {
@@ -131,7 +119,7 @@
     width: 173px;
   }
 
-  .item {
+  &Item {
     display: flex;
     justify-content: space-between;
     font-size: 12px;
@@ -139,11 +127,11 @@
     font-weight: 600;
   }
 
-  .label {
+  &Label {
     color: #75767f;
   }
 
-  .value {
+  &Value {
     color: #f1f2f9;
   }
 }
@@ -166,33 +154,6 @@
   @include on-tablet {
     width: 173px;
     height: 40px;
-  }
-
-  .addToCart {
-    background-color: #905bff;
-    width: 160px;
-    height: 40px;
-    color: #fff;
-    font-size: 14px;
-    font-weight: 700;
-    cursor: pointer;
-    border: none;
-    outline: none;
-    padding: 0;
-
-    @include on-mobile {
-      width: 100px;
-      height: 40px;
-    }
-
-    @include on-tablet {
-      width: 125px;
-      height: 40px;
-    }
-
-    &:hover {
-      background-color: #5236a0;
-    }
   }
 
   .addToFavourite {
