@@ -1,10 +1,5 @@
 'use client';
-
-import { Select } from 'radix-ui';
-import classNames from 'classnames';
-import { CheckIcon } from '@radix-ui/react-icons';
 import React from 'react';
-
 import styles from './Catalog.module.scss';
 import { PaginationControl } from '@components/ui/Controls/PaginationControl';
 import { DropdownSort } from '@components/ui/Dropdowns/DropdownSort';
@@ -12,28 +7,7 @@ import { DropdownPages } from '@components/ui/Dropdowns/DropdownPages';
 import { SelectColor } from '@components/ui/SelectColor/SelectColor';
 
 const Catalog: React.FC = () => {
-  // const [sortBy, setSortBy] = useState('new');
-  // const [itemsPerPage, setItemsPerPage] = useState(16);
-
-  const SelectItem = React.forwardRef<
-    HTMLDivElement,
-    React.ComponentPropsWithoutRef<typeof Select.Item>
-  >(({ children, className, ...props }, forwardedRef) => {
-    return (
-      <Select.Item
-        className={classNames('SelectItem', className)}
-        {...props}
-        ref={forwardedRef}
-      >
-        <Select.ItemText>{children}</Select.ItemText>
-        <Select.ItemIndicator className="SelectItemIndicator">
-          <CheckIcon />
-        </Select.ItemIndicator>
-      </Select.Item>
-    );
-  });
-
-  SelectItem.displayName = 'SelectItem';
+  // const pageCount = Math.ceil(arr.length / itemsPerPage);
 
   return (
     <main className={styles.catalog}>
@@ -47,13 +21,13 @@ const Catalog: React.FC = () => {
           <div className={styles.catalog__filterGroup}>
             <p className={styles.catalog__filterLabel}>Sort by</p>
 
-            <DropdownSort SelectItem={SelectItem} />
+            <DropdownSort />
           </div>
 
           <div className={styles.catalog__filterGroup}>
             <p className={styles.catalog__filterLabel}>Items on page</p>
 
-            <DropdownPages SelectItem={SelectItem} />
+            <DropdownPages />
           </div>
         </div>
       </div>
