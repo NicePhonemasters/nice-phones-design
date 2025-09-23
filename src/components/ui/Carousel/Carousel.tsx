@@ -11,10 +11,11 @@ import ArrowLeft from '../../../assets/icons/arrow-left.svg';
 import ArrowRight from '../../../assets/icons/arrow-right.svg';
 import styles from './carousel.module.scss';
 import ProductCard from '@components/ProductCard/ProductCard';
+import { Product } from '@components/ProductCard';
 
 type Props = {
   title: string;
-  items: [];
+  items: Product[];
 };
 
 export const Carousel: React.FC<Props> = ({ title, items }) => {
