@@ -1,39 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { CartItem } from '@/types/CartItem';
 
 type CartState = {
   items: CartItem[];
 };
 
-// Тестові товари
-const initialState: CartState = {
-  items: [
-    {
-      id: 1,
-      name: 'iPhone 14 Pro',
-      price: 1200,
-      quantity: 1,
-      itemId: '',
-      image: '',
-    },
-    {
-      id: 2,
-      name: 'Samsung Galaxy S23',
-      price: 950,
-      quantity: 2,
-      itemId: '',
-      image: '',
-    },
-    {
-      id: 3,
-      name: 'Xiaomi Redmi Note 12',
-      price: 300,
-      quantity: 1,
-      itemId: '',
-      image: '',
-    },
-  ],
-};
+const initialState: CartState = { items: [] };
 
 const cartSlice = createSlice({
   name: 'cart',
@@ -53,26 +26,8 @@ const cartSlice = createSlice({
     clearCart(state) {
       state.items = [];
     },
-    increaseQuantity(state, action: PayloadAction<number>) {
-      const item = state.items.find((i) => i.id === action.payload);
-      if (item) {
-        item.quantity += 1;
-      }
-    },
-    decreaseQuantity(state, action: PayloadAction<number>) {
-      const item = state.items.find((i) => i.id === action.payload);
-      if (item && item.quantity > 1) {
-        item.quantity -= 1;
-      }
-    },
   },
 });
 
-export const {
-  addItem,
-  removeItem,
-  clearCart,
-  increaseQuantity,
-  decreaseQuantity,
-} = cartSlice.actions;
+export const { addItem, removeItem, clearCart } = cartSlice.actions;
 export const cartReducer = cartSlice.reducer;

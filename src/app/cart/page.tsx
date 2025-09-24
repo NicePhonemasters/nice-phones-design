@@ -1,27 +1,39 @@
 'use client';
 
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+// import gsap from 'gsap';
 import styles from './Cart.module.scss';
-import { RootState } from '@/store';
-import {
-  removeItem,
-  clearCart,
-  increaseQuantity,
-  decreaseQuantity,
-} from '@/slices/cartSlice';
-import ShopCartItem from '@/components/ui/ShopCartItem/ShopCartItem';
+import { ShopCartItem } from '@components/ui/ShopCartItem/ShopCartItem';
+import { AddButton } from '@components/ui/Buttons/AddButton/AddButton';
 
 const Cart: React.FC = () => {
-  const dispatch = useDispatch();
-  const items = useSelector((state: RootState) => state.cart.items);
+  //*TODO: Узнать у Димы нужна ли эта логика здесь и не стоит ли его перенести в компонент AddButton
 
-  // Рахуємо загальну суму та кількість товарів
-  const totalPrice = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0,
-  );
-  const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
+  // const cartRef = useRef<HTMLDivElement>(null);
+  // const checkoutBtnRef = useRef<HTMLButtonElement>(null);
+
+  // useEffect(() => {
+  //   if (cartRef.current) {
+  //     gsap.fromTo(
+  //       cartRef.current,
+  //       { opacity: 0, y: 50 },
+  //       { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
+  //     );
+  //   }
+
+  //   if (checkoutBtnRef.current) {
+  //     gsap.fromTo(
+  //       checkoutBtnRef.current,
+  //       { scale: 0.8, opacity: 0 },
+  //       {
+  //         scale: 1,
+  //         opacity: 1,
+  //         duration: 0.5,
+  //         delay: 0.5,
+  //         ease: 'back.out(1.7)',
+  //       },
+  //     );
+  //   }
+  // }, []);
 
   return (
     <div className={styles.cartWrapper}>
@@ -29,37 +41,34 @@ const Cart: React.FC = () => {
 
       <div className={styles.mainContent}>
         <div className={styles.itemsList}>
-          {items.length === 0 ? (
-            <p>Cart is empty</p>
-          ) : (
-            items.map((item) => (
-              <ShopCartItem
-                key={item.id}
-                item={item}
-                onIncrease={() => dispatch(increaseQuantity(item.id))}
-                onDecrease={() => dispatch(decreaseQuantity(item.id))}
-                onRemove={() => dispatch(removeItem(item.id))}
-              />
-            ))
-          )}
+          {/* Тут будуть картки товарів */}
+          <ShopCartItem
+            title="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)"
+            price={200}
+          />
+          <ShopCartItem
+            title="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)"
+            price={200}
+          />
+          <ShopCartItem
+            title="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)"
+            price={200}
+          />
+          <ShopCartItem
+            title="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)"
+            price={200}
+          />
         </div>
 
-        {items.length > 0 && (
-          <div className={styles.checkout}>
-            <div className={styles.total}>
-              <span className={styles.totalPrice}>${totalPrice}</span>
-              <span className={styles.totalItems}>
-                Total for {totalItems} {totalItems === 1 ? 'item' : 'items'}
-              </span>
-            </div>
-            <button
-              className={styles.clearBtn}
-              onClick={() => dispatch(clearCart())}
-            >
-              Clear Cart
-            </button>
+        {/* Checkout блок */}
+        <div className={styles.checkout}>
+          <div className={styles.total}>
+            <span className={styles.totalPrice}>SUM</span>
+            <span className={styles.totalItems}>Total for N items</span>
           </div>
-        )}
+          <div className={styles.separator} />
+          <AddButton />
+        </div>
       </div>
     </div>
   );

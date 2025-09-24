@@ -1,37 +1,43 @@
-import React from 'react';
+import Image from 'next/image';
+import classNames from 'classnames';
+import CloseIcon from '../../../assets/icons/close.svg';
+import { OneIconButton } from '../Buttons/OneIconButton';
+import MinusIcon from '../../../assets/icons/minus.svg';
+import PlusIcon from '../../../assets/icons/plus.svg';
 import styles from './shopCartItem.module.scss';
-import { CartItem } from '@/types/CartItem';
 
-type ShopCartItemProps = {
-  item: CartItem;
-  onIncrease: () => void;
-  onDecrease: () => void;
-  onRemove: () => void;
+type Props = {
+  title: string;
+  image?: string;
+  price: number;
 };
 
-const ShopCartItem: React.FC<ShopCartItemProps> = ({
-  item,
-  onIncrease,
-  onDecrease,
-  onRemove,
-}) => {
+export const ShopCartItem = ({ title, image, price }: Props) => {
   return (
     <div className={styles.shopCartItem}>
-      <div className={styles.info}>
-        <h4>{item.name}</h4>
-        <p>Price: ${item.price}</p>
-        <div className={styles.quantityControls}>
-          <button onClick={onDecrease} disabled={item.quantity === 1}>
-            -
-          </button>
-          <span className={styles.quantityValue}>{item.quantity}</span>
-          <button onClick={onIncrease}>+</button>
-        </div>
-        <p>Total: ${item.price * item.quantity}</p>
+      <CloseIcon className={styles.shopCartItemIcon} />
+
+      <Image
+        src={image}
+        alt="Product image"
+        width={80}
+        height={80}
+        className={styles.shopCartItemImage}
+      />
+
+      <p className={classNames(styles.shopCartItemTitle, 'body-text')}>
+        {title}
+      </p>
+
+      <div className={styles.shopCartItemCounter}>
+        <OneIconButton icon={MinusIcon} />
+        <p className={styles.shopCartItemCount}>1</p>
+        <OneIconButton icon={PlusIcon} />
       </div>
-      <button onClick={onRemove}>Remove</button>
+
+      <div>
+        <p className={styles.shopCartItemTotalPrice}>{`$ ${price}`}</p>
+      </div>
     </div>
   );
 };
-
-export default ShopCartItem;

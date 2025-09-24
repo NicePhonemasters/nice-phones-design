@@ -1,6 +1,6 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
+import gsap from 'gsap';
 import styles from './Favourites.module.scss';
 
 const Favourites: React.FC = () => {
