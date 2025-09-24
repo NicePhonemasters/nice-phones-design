@@ -39,11 +39,13 @@ export const ShopCartItem = ({
       </p>
 
       <div className={styles.shopCartItemCounter}>
+
         <OneIconButton
           icon={MinusIcon}
           handleClick={onDecrease}
           disabled={item.quantity === 1 && true}
         />
+
         <p className={styles.shopCartItemCount}>{item.quantity}</p>
         <OneIconButton icon={PlusIcon} handleClick={onIncrease} />
       </div>

@@ -30,6 +30,9 @@
   }
 
   &__subtitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0;
     color: var(--color-secondary);
     font-size: 14px;
@@ -43,5 +46,10 @@
     flex-grow: 1;
     min-height: 400px;
     margin-bottom: 20px;
+  }
+
+  &__btn {
+    background-color: #905BFF;
+    color: var(--color-white);
   }
 }
