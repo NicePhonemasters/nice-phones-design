@@ -1,20 +1,31 @@
+'use client';
 import './dropdown.scss';
 import React from 'react';
 import * as Select from '@radix-ui/react-select';
 import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
+import { useSearchParams, useRouter } from 'next/navigation';
+import { SelectItem } from './SelectItem';
+import { isSortType, SortType } from '@/types/SortType';
 
-type Props = {
-  SelectItem: React.ForwardRefExoticComponent<
-    React.ComponentPropsWithoutRef<typeof Select.Item> &
-      React.RefAttributes<HTMLDivElement>
-  >;
-};
+export const DropdownSort: React.FC = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const sortValue = isSortType(searchParams.get('sortBy'))
+    ? searchParams.get('sortBy')
+    : SortType.YearAsc;
 
-export const DropdownSort: React.FC<Props> = ({ SelectItem }) => {
+  const handleChange = (value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('sortBy', value);
+    params.set('currentPage', '1');
+
+    router.push(`?${params.toString()}`);
+  };
+
   return (
-    <Select.Root>
+    <Select.Root value={sortValue} onValueChange={handleChange}>
       <Select.Trigger className="SelectTrigger SelectSort" aria-label="sort">
-        <Select.Value placeholder="Select sort" />
+        <Select.Value placeholder={sortValue} />
         <Select.Icon className="SelectIcon">
           <ChevronDownIcon />
         </Select.Icon>
@@ -26,10 +37,16 @@ export const DropdownSort: React.FC<Props> = ({ SelectItem }) => {
           </Select.ScrollUpButton>
           <Select.Viewport className="SelectViewport">
             <Select.Group>
-              <SelectItem value="new">Newest</SelectItem>
-              <SelectItem value="old">Oldest</SelectItem>
-              <SelectItem value="priceLow">Price: low to high</SelectItem>
-              <SelectItem value="priceHigh">Price: high to low</SelectItem>
+              {Object.values(SortType).map((sortItem) => {
+                if (sortItem !== SortType.None) {
+                  return (
+                    <SelectItem key={sortItem} value={sortItem}>
+                      {' '}
+                      {sortItem}
+                    </SelectItem>
+                  );
+                }
+              })}
             </Select.Group>
           </Select.Viewport>
           <Select.ScrollDownButton className="SelectScrollButton">

@@ -50,25 +50,25 @@ export const Menu: React.FC<Props> = ({
         </nav>
 
         <div className={styles.menuFooter}>
-          <div className={styles.menuFooterFavourites}>
-            <Link href="/favourites">
+          <Link href="/favourites">
+            <div className={styles.menuFooterFavourites}>
               <FavouriteIcon
                 className={classNames(styles.headerIcon, {
                   [styles.linkIconIsActive]: currentPath === '/favourites',
                 })}
               />
-            </Link>
-          </div>
+            </div>
+          </Link>
 
-          <div className={styles.menuFooterCart}>
-            <Link href="/shopcart">
+          <Link href="/shopcart">
+            <div className={styles.menuFooterCart}>
               <ShopCart
                 className={classNames(styles.headerIcon, {
                   [styles.linkIconIsActive]: currentPath === '/shopcart',
                 })}
               />
-            </Link>
-          </div>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

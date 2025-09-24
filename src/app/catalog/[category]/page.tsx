@@ -1,64 +1,100 @@
-'use client';
-
-import { Select } from 'radix-ui';
-import classNames from 'classnames';
 import React from 'react';
+import { notFound } from 'next/navigation';
+
 import styles from './Catalog.module.scss';
 import { PaginationControl } from '@components/ui/Controls/PaginationControl';
 import { DropdownSort } from '@components/ui/Dropdowns/DropdownSort';
 import { DropdownPages } from '@components/ui/Dropdowns/DropdownPages';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import ProductCard from '@components/ProductCard/ProductCard';
+import { getPaginatedItems } from '@/services/fetchClient';
+import { Categories, isCategory } from '@/types/Categories';
+import { SortType } from '@/types/SortType';
 
-const Catalog: React.FC = () => {
-  //TODO: rework
-  // const [sortBy, setSortBy] = useState('new');
-  // const [itemsPerPage, setItemsPerPage] = useState(16);
+type Props = {
+  params: Promise<{
+    category: string;
+  }>;
+  searchParams: Promise<{
+    [key: string]: string | string[] | undefined;
+  }>;
+};
 
-  const SelectItem = React.forwardRef<
-    HTMLDivElement,
-    React.ComponentPropsWithoutRef<typeof Select.Item>
-  >(({ children, className, ...props }, forwardedRef) => {
-    return (
-      <Select.Item
-        className={classNames('SelectItem', className)}
-        {...props}
-        ref={forwardedRef}
-      >
-        <Select.ItemText>{children}</Select.ItemText>
-        <Select.ItemIndicator className="SelectItemIndicator"></Select.ItemIndicator>
-      </Select.Item>
-    );
+function getCategoryPretty(category: Categories) {
+  switch (category) {
+    case Categories.Accessories:
+      return 'Accessories';
+    case Categories.Phones:
+      return 'Phones';
+    case Categories.Tablets:
+      return 'Tablets';
+  }
+}
+
+async function Catalog({ params, searchParams }: Props) {
+  const { category } = await params;
+  const awaitedSearchParmas = await searchParams;
+
+  if (!isCategory(category)) {
+    notFound();
+    return;
+  }
+
+  const sortBy = awaitedSearchParmas.sortBy ?? SortType.YearDesc;
+  const currentPage = (awaitedSearchParmas.currentPage as string) ?? '1';
+  const perPage = (awaitedSearchParmas.perPage as string) ?? '8';
+
+  const sorting = sortBy as SortType;
+
+  const fetchData = await getPaginatedItems(category as Categories, {
+    sortBy: sorting,
+    currentPage,
+    perPage,
   });
 
-  SelectItem.displayName = 'SelectItem';
+  const products = fetchData.data;
+  const totalItems = fetchData.totalItems;
+  const pageCount = Math.ceil(totalItems / +perPage);
+  const actualCurrentPage =
+    +currentPage > pageCount || +currentPage < 1 || Number.isNaN(currentPage)
+      ? 1
+      : +currentPage;
+
+  const textCategory = getCategoryPretty(category);
+
   return (
     <main className={styles.catalog}>
       <div className={styles.catalog__top}>
         <div>
-          <h1 className={styles.catalog__title}>CategoryName</h1>
-          <p className={styles.catalog__subtitle}>0 models</p>
+          <h1 className={styles.catalog__title}>{textCategory}</h1>
+          <p className={styles.catalog__subtitle}>{`${totalItems} models`}</p>
         </div>
 
         <div className={styles.catalog__filters}>
           <div className={styles.catalog__filterGroup}>
             <p className={styles.catalog__filterLabel}>Sort by</p>
 
-            <DropdownSort SelectItem={SelectItem} />
+            <DropdownSort />
           </div>
 
           <div className={styles.catalog__filterGroup}>
             <p className={styles.catalog__filterLabel}>Items on page</p>
 
-            <DropdownPages SelectItem={SelectItem} />
+            <DropdownPages />
           </div>
         </div>
       </div>
 
-      <div className={styles.catalog__grid}></div>
-      <PaginationControl pageCount={5} />
+      <div className={styles.catalog__grid}>
+        {products.map((product) => {
+          return <ProductCard key={product.id} product={product} />;
+        })}
+      </div>
+      <PaginationControl
+        pageCount={pageCount}
+        currentPage={actualCurrentPage}
+      />
     </main>
   );
-};
+}
 
 export default Catalog;

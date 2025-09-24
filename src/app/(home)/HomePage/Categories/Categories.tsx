@@ -29,19 +29,14 @@ export const Categories = () => {
         },
         y: 80,
         opacity: 0,
-        stagger: 0.2,
         duration: 1,
         ease: 'power3.out',
         force3D: true,
       });
     }, container);
 
-    // оновимо тригери після mount (особливо корисно при переходах)
     ScrollTrigger.refresh();
-
-    return () => {
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
@@ -51,10 +46,12 @@ export const Categories = () => {
     const y = e.clientY - rect.top;
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
+
     const rotateX = ((y - centerY) / centerY) * 10;
     const rotateY = ((x - centerX) / centerX) * 10;
+
     card.style.transform = `rotateX(${-rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
-    card.style.transition = 'transform 0.12s';
+    card.style.transition = 'transform 0.1s';
   };
 
   const handleMouseLeave = (

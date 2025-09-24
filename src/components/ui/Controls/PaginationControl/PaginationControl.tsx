@@ -1,6 +1,7 @@
 'use client';
+
 import { ToggleGroup } from 'radix-ui';
-import { useState } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import PaginationStyles from './PaginationControl.module.scss';
 import ArrowLeft from '@/assets/icons/arrow-left.svg';
 import ArrowRight from '@/assets/icons/arrow-right.svg';
@@ -8,6 +9,7 @@ import { OneIconButton } from '@components/ui/Buttons/OneIconButton';
 
 type Props = {
   pageCount: number;
+  currentPage: number;
 };
 
 function getNaturalNumbers(count: number) {
@@ -20,13 +22,16 @@ function getNaturalNumbers(count: number) {
   return numbers;
 }
 
-export default function PaginationControl({ pageCount }: Props) {
+export default function PaginationControl({ pageCount, currentPage }: Props) {
+  const searchParamsHook = useSearchParams();
+  const routerHook = useRouter();
+
   const pages = getNaturalNumbers(pageCount);
-  const [currentPage, setCurrentPage] = useState(1);
 
   const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    alert('TODO: pagination logic');
+    const params = new URLSearchParams(searchParamsHook.toString());
+    params.set('currentPage', String(page));
+    routerHook.push(`?${params.toString()}`, { scroll: false });
   };
 
   const handleLeftClick = () => {
