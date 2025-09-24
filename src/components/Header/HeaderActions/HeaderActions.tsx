@@ -20,7 +20,7 @@ export const HeaderActions = ({
 }: Props) => {
   return (
     <div className={styles.headerActions}>
-      <Link href="/favourites">
+      <Link href={Links.Favourites}>
         <div
           className={classNames(styles.headerActionsFavourites, {
             [styles.linkIconIsActive]: currentPath === Links.Favourites,
@@ -30,7 +30,7 @@ export const HeaderActions = ({
         </div>
       </Link>
 
-      <Link href="/cart">
+      <Link href={Links.Cart}>
         <div
           className={classNames(styles.headerActionsCart, {
             [styles.linkIconIsActive]: currentPath === Links.Cart,
