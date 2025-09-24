@@ -1,16 +1,27 @@
-import Image from 'next/image';
 import styles from './itemCard-styles/itemCard.module.scss';
 import PhoneGallery from './components/PhoneGallery';
-import { getDetailedItem } from '@/services/fetchClient';
+import { getDetailedItem, getItemCardData } from '@/services/fetchClient';
 import { Categories } from '@/types/Categories';
+import { SelectColor } from '@components/ui/ItemCardUI/SelectColor/SelectColor';
+import { SelectCapacity } from '@components/ui/ItemCardUI/SelectCapacity/SelectCapacity';
+import AddToCartButton from '@components/ui/Buttons/AddToCardButton/AddToCardButton';
+import FavouriteButton from '@components/ui/Buttons/FavouriteButton/FavouriteButton';
+import { Carousel } from '@components/ui/Carousel/Carousel';
+import { CarouselTypes } from '@/types/CarouselTypes';
 
-export default async function ItemCard() {
-  const productId = 'apple-watch-series-4-40mm-silver';
-  const product = await getDetailedItem(Categories.Accessories, productId);
+type Props = {
+  params: Promise<{
+    category: string;
+    productId: string;
+  }>;
+};
 
-  if (!product) {
-    return <p>product not found</p>;
-  }
+export default async function ItemCard({ params }: Props) {
+  const { category, productId } = await params;
+  const product = await getDetailedItem(category as Categories, productId);
+  const itemCard = await getItemCardData(product.id);
+  const currentCapacity = product.capacity.toLocaleLowerCase();
+  const currentColor = product.color;
 
   return (
     <div className={styles.container_item_card}>
@@ -47,11 +58,11 @@ export default async function ItemCard() {
                         ]
                       }
                     >
-                      <Image
-                        src={`/color-btn-${color}.png`}
-                        alt="item-card-item"
-                        width={30}
-                        height={30}
+                      <SelectColor
+                        productNamespace={product.namespaceId}
+                        color={color}
+                        currentCapacity={currentCapacity}
+                        currentColor={currentColor}
                       />
                     </li>
                   ))}
@@ -70,7 +81,12 @@ export default async function ItemCard() {
                       styles['item_card__info-capacity-section-list-item']
                     }
                   >
-                    {cap}
+                    <SelectCapacity
+                      capacity={cap}
+                      currentColor={currentColor}
+                      currentCapacity={currentCapacity}
+                      productNamespace={product.namespaceId}
+                    />
                   </li>
                 ))}
               </ul>
@@ -84,25 +100,16 @@ export default async function ItemCard() {
               </p>
             </div>
             <div className={styles['item_card__info-buy-section']}>
-              <button
-                type="button"
-                className={styles['item_card__info-buy-section-button-buy']}
-              >
-                {/* Add to cart */}
-              </button>
-              <button
-                type="button"
+              <div className={styles['item_card__info-buy-section-button-buy']}>
+                <AddToCartButton item={itemCard} />
+              </div>
+              <div
                 className={
                   styles['item_card__info-buy-section-button-favourites']
                 }
               >
-                <Image
-                  src="/like-icon.png"
-                  alt="heart icon"
-                  width={14}
-                  height={12}
-                />
-              </button>
+                <FavouriteButton item={itemCard} />
+              </div>
             </div>
             <div className={styles['item_card__info-description']}>
               <dl className={styles['item_card__info-description-list']}>
@@ -179,29 +186,7 @@ export default async function ItemCard() {
       <section
         className={`${styles['item-card-section']} ${styles['item-card-favourites']}`}
       >
-        <div className={styles['item-card-favourites__title-and-buttons']}>
-          <h3 className={styles['item-card-favourites__title']}>
-            You may also like
-          </h3>
-          <div className={styles['item-card-favourites__buttons']}>
-            <button
-              className={styles['item-card-favourites__buttons-prev']}
-            ></button>
-            <button
-              className={styles['item-card-favourites__buttons-next']}
-            ></button>
-          </div>
-        </div>
-        <div className={styles['item-card-favourites__slider']}>
-          <div
-            className="placeholder"
-            style={{
-              backgroundColor: 'var(--color-placeholder)',
-              width: '100%',
-              height: '30vh',
-            }}
-          ></div>
-        </div>
+        <Carousel title="You may also like" type={CarouselTypes.recommended} />
       </section>
     </div>
   );

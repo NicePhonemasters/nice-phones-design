@@ -1,5 +1,4 @@
 import { BackNav } from '@components/ui/BackNav/BackNav';
-import { Breadcrumbs } from '@components/ui/Breadcrumbs/Breadcrumbs';
 
 export default function ItemCardLayout({
   children,
@@ -8,7 +7,6 @@ export default function ItemCardLayout({
 }) {
   return (
     <>
-      <Breadcrumbs />
       <BackNav />
       {children}
     </>

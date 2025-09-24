@@ -2,19 +2,29 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 32px;
-    padding-inline: 8px;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
     color: var(--color-white);
-    border: 1px solid var(--color-icons);
     background-color: var(--color-black);
+    padding: 7px 8px 4px;
     cursor: pointer;
 
     &:hover {
         background-color: var(--color-icons);
     }
 
-    &Active {
+    &:active {
         background-color: var(--color-white);
         color: var(--color-black);
     }
+
+    &[data-state='on'] {
+        background-color: var(--color-white);
+        color: var(--color-black);
+    }
+}
+
+.link {
+    text-decoration: none;
 }
