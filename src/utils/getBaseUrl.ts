@@ -1,5 +1,5 @@
 export function getBaseUrl() {
-  if (typeof window === 'undefined') {
+  if (process.env.VERCEL_ENV === 'production') {
     return '';
   }
 

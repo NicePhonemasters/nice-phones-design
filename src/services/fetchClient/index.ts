@@ -10,7 +10,7 @@ const client = {
     const baseUrl = getBaseUrl();
     const incomingHeaders = await headers();
 
-    const response = await fetch(`${baseUrl}/${url}`, {
+    const response = await fetch(`${baseUrl}${url}`, {
       method: 'GET',
       headers: {
         Accept: 'application/json',
