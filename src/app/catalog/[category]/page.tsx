@@ -86,7 +86,7 @@ async function Catalog({ params, searchParams }: Props) {
 
       <div className={styles.catalog__grid}>
         {products.map((product) => {
-          return <ProductCard key={product.id} product={product} />;
+          return <ProductCard key={product.id} item={product} />;
         })}
       </div>
       <PaginationControl

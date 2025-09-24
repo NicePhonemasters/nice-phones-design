@@ -10,7 +10,7 @@ import {
   increaseQuantity,
   decreaseQuantity,
 } from '@/slices/cartSlice';
-import ShopCartItem from '@/components/ui/ShopCartItem/ShopCartItem';
+import { ShopCartItem } from '@components/ui/ShopCartItem/ShopCartItem';
 
 const Cart: React.FC = () => {
   const dispatch = useDispatch();
