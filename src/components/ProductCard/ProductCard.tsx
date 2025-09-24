@@ -6,26 +6,27 @@ import styles from './ProductCard.module.scss';
 import { ItemCard } from '@/types/ItemCard';
 import FavouriteButton from '@components/ui/Buttons/FavouriteButton/FavouriteButton';
 import AddToCartButton from '@components/ui/Buttons/AddToCardButton/AddToCardButton';
-// import FavouriteDefaultIcon from '@/assets/icons/favourite-default.svg';
 
-export default function ProductCard({ product }: { product: ItemCard }) {
+export default function ProductCard({ item }: { item: ItemCard }) {
   return (
     <div className={styles.productCardWrapper}>
       <div className={styles.productCard}>
         <Link
-          href={`/catalog/${product.category}/${product.itemId}`}
+          href={`/catalog/${item.category}/${item.itemId}`}
           className={styles.productCardGeneralLink}
         >
           <div className={styles.imageContainer}>
-            <Image src={product.image} alt={product.name} fill />
+            <Image src={item.image} alt={item.name} fill />
           </div>
-          <p className={classNames(styles.title, 'body-text')}>
-            {product.name}
-          </p>
+          <p className={classNames(styles.title, 'body-text')}>{item.name}</p>
 
           <div className={styles.priceTag}>
-            <p className={styles.priceRegular}>${product.price}</p>
-            <p className={styles.priceOld}>${product.fullPrice}</p>
+            <p className={styles.priceRegular}>${item.price}</p>
+            <p className={styles.priceOld}>${item.fullPrice}</p>
+          </div>
+
+          <div className={styles.title}>
+            <p>{item.name}</p>
           </div>
 
           <div className={styles.divider}></div>
@@ -33,22 +34,22 @@ export default function ProductCard({ product }: { product: ItemCard }) {
           <div className={styles.specs}>
             <div className={styles.specsItem}>
               <span className={styles.specsLabel}>Screen</span>
-              <span className={styles.specsValue}>{product.screen}</span>
+              <span className={styles.specsValue}>{item.screen}</span>
             </div>
             <div className={styles.specsItem}>
               <span className={styles.specsLabel}>Capacity</span>
-              <span className={styles.specsValue}>{product.capacity}</span>
+              <span className={styles.specsValue}>{item.capacity}</span>
             </div>
             <div className={styles.specsItem}>
               <span className={styles.specsLabel}>RAM</span>
-              <span className={styles.specsValue}>{product.ram}</span>
+              <span className={styles.specsValue}>{item.ram}</span>
             </div>
           </div>
         </Link>
         <div className={styles.buttonContainer}>
-          <AddToCartButton item={product} />
+          <AddToCartButton item={item} />
           <div className={styles.addToFavourite}>
-            <FavouriteButton item={product} />
+            <FavouriteButton item={item} />
           </div>
         </div>
       </div>
