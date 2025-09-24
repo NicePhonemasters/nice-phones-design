@@ -48,6 +48,10 @@ export default function Footer() {
     return () => ctx.revert();
   }, []);
 
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className={styles.footer} ref={footerRef}>
       <div className={styles.footerContent}>
@@ -89,10 +93,14 @@ export default function Footer() {
           </ul>
         </nav>
 
-        <div className={styles.footerRight}>
-          <Link href="#header">
+        <div className={styles.footerRight} ref={rightRef}>
+          <button
+            type="button"
+            onClick={handleScrollTop}
+            className={styles.footerTopBtn}
+          >
             <OneIconButton icon={ArrowUp} />
-          </Link>
+          </button>
         </div>
       </div>
     </footer>
