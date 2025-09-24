@@ -1,27 +1,36 @@
-/* eslint-disable react/prop-types */
-'use client';
-import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+import classNames from 'classnames';
 import styles from './selectColor.module.scss';
 
 type Props = {
   color: string;
-  productId?: number;
+  productNamespace: string;
+  currentCapacity: string;
+  currentColor: string;
 };
 
-export const SelectColor: React.FC<Props> = ({ color, productId }) => {
-  const router = useRouter();
+export function SelectColor({
+  color,
+  productNamespace,
+  currentCapacity,
+  currentColor,
+}: Props) {
+  const newColorLink = `${productNamespace}-${currentCapacity}-${color}`;
 
-  const chooseColor = () => {
-    router.push(`/product/${productId}?color=${color}`);
-  };
+  const isSelected = currentColor === color;
 
   return (
-    // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions
-    <div className={styles.colorRoundBorder} onClick={chooseColor}>
+    <Link href={newColorLink}>
       <div
-        className={styles.colorRoundInner}
-        style={{ backgroundColor: color }}
-      />
-    </div>
+        className={classNames(`${styles.colorRoundBorder}`, {
+          [`${styles.colorRoundSelected}`]: isSelected,
+        })}
+      >
+        <div
+          className={styles.colorRoundInner}
+          style={{ backgroundColor: color }}
+        />
+      </div>
+    </Link>
   );
-};
+}
