@@ -1,5 +1,8 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 'use client';
 
+import { useState } from 'react';
 import Image from 'next/image';
 import styles from '../itemCard-styles/itemCard.module.scss';
 import { DetailedItem } from '@/types/DetailedItem';
@@ -9,8 +12,10 @@ interface PhoneGalleryProps {
 }
 
 export default function PhoneGallery({ phone }: PhoneGalleryProps) {
-  const heroImage = phone.images?.[0] || 'img/placeholder.png';
-  const images = phone.images?.map((img) => img) || [];
+  const [heroImage, setHeroImage] = useState(
+    phone.images?.[0] || 'img/placeholder.png',
+  );
+  const images = phone.images || [];
 
   return (
     <>
@@ -26,7 +31,12 @@ export default function PhoneGallery({ phone }: PhoneGalleryProps) {
       </div>
       <ul className={styles['item_card__image-list']}>
         {images.map((image, i) => (
-          <li className={styles['item_card__image-list-item']} key={i}>
+          <li
+            className={styles['item_card__image-list-item']}
+            key={i}
+            onClick={() => setHeroImage(image)}
+            style={{ cursor: 'pointer' }}
+          >
             <Image
               className={styles['item_card__image-small']}
               src={image}

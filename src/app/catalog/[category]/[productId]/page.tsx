@@ -28,9 +28,7 @@ export default async function ItemCard({ params }: Props) {
       <section
         className={`${styles['item_card-section']} ${styles['item_card-section-main']}`}
       >
-        <h3 className={styles['item_card__title']}>
-          {product.name}(iMT9G2FS/A)
-        </h3>
+        <h3 className={styles['item_card__title']}>{product.name}</h3>
         <div className={styles.item_card}>
           <PhoneGallery phone={product} />
           <div className={styles['item_card__info']}>
