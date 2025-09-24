@@ -2,8 +2,13 @@
   box-sizing: border-box;
   flex: 1 1 212px;
   background-color: var(--color-surface-1);
+  border: 2px solid transparent; // <-- добавляем прозрачный бордер
   padding: 32px;
   gap: 8px;
+
+  &:hover {
+    border: 2px solid var(--color-surface-2);
+  }
 
   @include on-tablet {
     min-height: 512px;
@@ -32,6 +37,7 @@
 
 .title {
   color: var(--color-white);
+  height: 45px;
   margin: 0;
   word-break: break-word;
   overflow-wrap: anywhere;

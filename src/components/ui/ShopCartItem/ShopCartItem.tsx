@@ -23,8 +23,9 @@ export const ShopCartItem = ({
 }: Props) => {
   return (
     <div className={styles.shopCartItem}>
-      <CloseIcon className={styles.shopCartItemIcon} onClick={onRemove} />
-
+      <div className={styles.shopCartItemWrapperIcon}>
+        <CloseIcon className={styles.shopCartItemIcon} onClick={onRemove} />
+      </div>
       <Image
         src={item.image}
         alt="Product image"
@@ -38,8 +39,12 @@ export const ShopCartItem = ({
       </p>
 
       <div className={styles.shopCartItemCounter}>
-        <OneIconButton icon={MinusIcon} handleClick={onDecrease} />
-        <p className={styles.shopCartItemCount}>1</p>
+        <OneIconButton
+          icon={MinusIcon}
+          handleClick={onDecrease}
+          disabled={item.quantity === 1 && true}
+        />
+        <p className={styles.shopCartItemCount}>{item.quantity}</p>
         <OneIconButton icon={PlusIcon} handleClick={onIncrease} />
       </div>
 

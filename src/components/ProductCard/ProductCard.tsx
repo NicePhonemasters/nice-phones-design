@@ -25,10 +25,6 @@ export default function ProductCard({ item }: { item: ItemCard }) {
             <p className={styles.priceOld}>${item.fullPrice}</p>
           </div>
 
-          <div className={styles.title}>
-            <p>{item.name}</p>
-          </div>
-
           <div className={styles.divider}></div>
 
           <div className={styles.specs}>
