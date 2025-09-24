@@ -14,7 +14,7 @@
 .title {
   font-size: 32px;
   font-weight: 800;
-  margin-bottom: 32px;
+  margin: 0 0 32px;
   color: var(--color-white);
 
   @include on-tablet {
@@ -54,7 +54,7 @@
   width: 30%;
   max-width: 368px;
   border: 1px solid var(--color-secondary);
-  padding: 16px 24px 24px;
+  padding: 23px 24px;
   flex-shrink: 0;
   box-sizing: border-box;
   text-align: center;
@@ -72,6 +72,7 @@
 }
 
 .total {
+  color: var(--color-white);
   margin-bottom: 32px;
 }
 
