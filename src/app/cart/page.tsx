@@ -6,17 +6,16 @@ import styles from './Cart.module.scss';
 import { RootState } from '@/store';
 import {
   removeItem,
-  clearCart,
   increaseQuantity,
   decreaseQuantity,
 } from '@/slices/cartSlice';
 import { ShopCartItem } from '@components/ui/ShopCartItem/ShopCartItem';
+import { AddButton } from '@components/ui/Buttons/AddButton/AddButton';
 
 const Cart: React.FC = () => {
   const dispatch = useDispatch();
   const items = useSelector((state: RootState) => state.cart.items);
 
-  // Рахуємо загальну суму та кількість товарів
   const totalPrice = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
@@ -38,11 +37,14 @@ const Cart: React.FC = () => {
                 item={item}
                 onIncrease={() => dispatch(increaseQuantity(item.id))}
                 onDecrease={() => dispatch(decreaseQuantity(item.id))}
+                // Не до конца понимаю нормально ли работает удаление
                 onRemove={() => dispatch(removeItem(item.id))}
               />
             ))
           )}
         </div>
+
+        {/* Нужно сделать нормальный вид для пустой корзины */}
 
         {items.length > 0 && (
           <div className={styles.checkout}>
@@ -52,12 +54,8 @@ const Cart: React.FC = () => {
                 Total for {totalItems} {totalItems === 1 ? 'item' : 'items'}
               </span>
             </div>
-            <button
-              className={styles.clearBtn}
-              onClick={() => dispatch(clearCart())}
-            >
-              Clear Cart
-            </button>
+            <div className={styles.separator} />
+            <AddButton />
           </div>
         )}
       </div>

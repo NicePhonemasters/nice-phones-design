@@ -11,27 +11,11 @@ const initialState: CartState = {
   items: [
     {
       id: 1,
-      name: 'iPhone 14 Pro',
+      name: 'iPhone 7',
       price: 1200,
       quantity: 1,
-      itemId: '',
-      image: '',
-    },
-    {
-      id: 2,
-      name: 'Samsung Galaxy S23',
-      price: 950,
-      quantity: 2,
-      itemId: '',
-      image: '',
-    },
-    {
-      id: 3,
-      name: 'Xiaomi Redmi Note 12',
-      price: 300,
-      quantity: 1,
-      itemId: '',
-      image: '',
+      itemId: '1',
+      image: '/img/phones/apple-iphone-7/gold/00.webp',
     },
   ],
 };
