@@ -1,13 +1,13 @@
 .carousel {
-  // margin: 80px 0;
+  margin: 80px 0;
 
-  // @include on-tablet {
-  //   margin: 64px 0;
-  // }
+  @include on-tablet {
+    margin: 64px 0;
+  }
 
-  // @include on-mobile {
-  //   margin: 56px 0;
-  // }
+  @include on-mobile {
+    margin: 56px 0;
+  }
 
   &Top {
     display: flex;
