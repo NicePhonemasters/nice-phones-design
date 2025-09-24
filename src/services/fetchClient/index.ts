@@ -1,3 +1,4 @@
+import { headers } from 'next/headers';
 import { Categories } from '@/types/Categories';
 import { DetailedItem } from '@/types/DetailedItem';
 import { ItemCard } from '@/types/ItemCard';
@@ -7,10 +8,14 @@ import { getBaseUrl } from '@/utils/getBaseUrl';
 const client = {
   async get<T>(url: string) {
     const baseUrl = getBaseUrl();
+    const incomingHeaders = await headers();
 
     const response = await fetch(`${baseUrl}/${url}`, {
       method: 'GET',
-      headers: { Accept: 'application/json' },
+      headers: {
+        Accept: 'application/json',
+        Cookie: incomingHeaders.get('cookie') || '',
+      },
       cache: 'no-store',
     });
 
@@ -30,7 +35,7 @@ type PaginatedSearchParams = {
 
 type paginatedApi = {
   totalItems: number;
-  items: ItemCard[];
+  data: ItemCard[];
 };
 
 export async function getPaginatedItems(

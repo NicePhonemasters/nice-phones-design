@@ -1,14 +1,36 @@
+'use client';
+
 import './dropdown.scss';
 import React from 'react';
 import * as Select from '@radix-ui/react-select';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
 import { SelectItem } from './SelectItem';
+import { PerPagePagination, isPerPagePagination } from '@/types/enums';
 
 export const DropdownPages: React.FC = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+  const rawPerPage = searchParams.get('perPage');
+  const perPageValue = isPerPagePagination(rawPerPage)
+    ? rawPerPage
+    : PerPagePagination.Eight;
+
+  const handleChange = (value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.set('perPage', value);
+    params.set('currentPage', '1');
+
+    router.push(`?${params.toString()}`);
+  };
+
   return (
-    <Select.Root>
-      <Select.Trigger className="SelectTrigger SelectPages" aria-label="sort">
-        <Select.Value placeholder="Select items" />
+    <Select.Root value={String(perPageValue)} onValueChange={handleChange}>
+      <Select.Trigger
+        className="SelectTrigger SelectPages"
+        aria-label="perPage"
+      >
+        <Select.Value />
         <Select.Icon className="SelectIcon">
           <ChevronDownIcon />
         </Select.Icon>
@@ -20,10 +42,12 @@ export const DropdownPages: React.FC = () => {
           </Select.ScrollUpButton>
           <Select.Viewport className="SelectViewport">
             <Select.Group>
-              <SelectItem value="8">8</SelectItem>
-              <SelectItem value="16">16</SelectItem>
-              <SelectItem value="24">24</SelectItem>
-              <SelectItem value="48">48</SelectItem>
+              {Object.values(PerPagePagination).map((perPage) => (
+                <SelectItem key={perPage} value={perPage}>
+                  {' '}
+                  {perPage}
+                </SelectItem>
+              ))}
             </Select.Group>
           </Select.Viewport>
           <Select.ScrollDownButton className="SelectScrollButton">

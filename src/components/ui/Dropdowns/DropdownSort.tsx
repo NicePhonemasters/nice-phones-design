@@ -3,28 +3,29 @@ import './dropdown.scss';
 import React from 'react';
 import * as Select from '@radix-ui/react-select';
 import { ChevronDownIcon, ChevronUpIcon } from '@radix-ui/react-icons';
-import { useSearchParams, useRouter, usePathname } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { SelectItem } from './SelectItem';
-import { SortType } from '@/types/SortType';
+import { isSortType, SortType } from '@/types/SortType';
 
 export const DropdownSort: React.FC = () => {
-  const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
-  const sortValue = searchParams.get('sort') ?? SortType.None;
+  const sortValue = isSortType(searchParams.get('sortBy'))
+    ? searchParams.get('sortBy')
+    : SortType.YearAsc;
 
   const handleChange = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());
-    params.set('sort', value);
-    params.set('page', '1');
+    params.set('sortBy', value);
+    params.set('currentPage', '1');
 
-    router.replace(`${pathname}?${params.toString()}`);
+    router.push(`?${params.toString()}`);
   };
 
   return (
     <Select.Root value={sortValue} onValueChange={handleChange}>
       <Select.Trigger className="SelectTrigger SelectSort" aria-label="sort">
-        <Select.Value placeholder="Select sort" />
+        <Select.Value placeholder={sortValue} />
         <Select.Icon className="SelectIcon">
           <ChevronDownIcon />
         </Select.Icon>
@@ -37,12 +38,14 @@ export const DropdownSort: React.FC = () => {
           <Select.Viewport className="SelectViewport">
             <Select.Group>
               {Object.values(SortType).map((sortItem) => {
-                return (
-                  <SelectItem key={sortItem} value={sortItem}>
-                    {' '}
-                    {sortItem}
-                  </SelectItem>
-                );
+                if (sortItem !== SortType.None) {
+                  return (
+                    <SelectItem key={sortItem} value={sortItem}>
+                      {' '}
+                      {sortItem}
+                    </SelectItem>
+                  );
+                }
               })}
             </Select.Group>
           </Select.Viewport>

@@ -17,6 +17,12 @@ export default function prepareCatalogBackendData(
     (product) => product.category === category,
   );
   const totalItems = categoryData.length;
+  const totalPages = Math.ceil(totalItems / perPage);
+
+  let actualPage = currentPage;
+  if (currentPage > totalPages || currentPage < 1) {
+    actualPage = 1;
+  }
 
   if (sortType !== SortType.None) {
     categoryData.sort((first, second) => {
@@ -38,7 +44,7 @@ export default function prepareCatalogBackendData(
   return {
     totalItems,
     data: [
-      ...categoryData.slice((currentPage - 1) * perPage, currentPage * perPage),
+      ...categoryData.slice((actualPage - 1) * perPage, actualPage * perPage),
     ],
   };
 }
