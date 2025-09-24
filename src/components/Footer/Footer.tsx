@@ -23,24 +23,25 @@ export default function Footer() {
     if (!footerRef.current) return;
 
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        defaults: { ease: 'power3.out', duration: 0.6 },
+      gsap.from(logoRef.current, {
+        y: 30,
+        opacity: 0,
+        rotationX: 15,
+        duration: 0.6,
       });
-
-      tl.from(footerRef.current, { opacity: 0, scale: 0.97 })
-        .from(logoRef.current, { y: 30, opacity: 0, rotationX: 15 }, '-=0.3')
-        .from(
-          navRef.current?.children || [],
-          { y: 20, opacity: 0, stagger: 0.15 },
-          '-=0.4',
-        )
-        .from(rightRef.current, { y: 20, opacity: 0, rotationX: 10 }, '-=0.3');
-
-      ScrollTrigger.create({
-        trigger: footerRef.current,
-        start: 'top bottom-=50',
-        animation: tl,
-        once: true, // важливо!
+      gsap.from(navRef.current?.children || [], {
+        y: 20,
+        opacity: 0,
+        stagger: 0.15,
+        duration: 0.6,
+        delay: 0.2,
+      });
+      gsap.from(rightRef.current, {
+        y: 20,
+        opacity: 0,
+        rotationX: 10,
+        duration: 0.6,
+        delay: 0.4,
       });
     }, footerRef);
 
