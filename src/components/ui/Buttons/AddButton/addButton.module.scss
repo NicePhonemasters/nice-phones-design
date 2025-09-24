@@ -10,7 +10,7 @@
         background-color: var(--color-accent-2);
     }
 
-    &Active {
+    &:active {
         background-color: var(--color-surface-2);
     }
 }

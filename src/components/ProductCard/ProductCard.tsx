@@ -1,18 +1,21 @@
-'use client';
 import Image from 'next/image';
 import React from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
 import styles from './ProductCard.module.scss';
-import { AddButton } from '@components/ui/Buttons/AddButton/AddButton';
 import { ItemCard } from '@/types/ItemCard';
-import FavouriteDefaultIcon from '@/assets/icons/favourite-default.svg';
+import FavouriteButton from '@components/ui/Buttons/FavouriteButton/FavouriteButton';
+import AddToCartButton from '@components/ui/Buttons/AddToCardButton/AddToCardButton';
+// import FavouriteDefaultIcon from '@/assets/icons/favourite-default.svg';
 
 export default function ProductCard({ product }: { product: ItemCard }) {
   return (
     <div className={styles.productCardWrapper}>
       <div className={styles.productCard}>
-        <Link href="/" className={styles.productCardGeneralLink}>
+        <Link
+          href={`/catalog/${product.category}/${product.itemId}`}
+          className={styles.productCardGeneralLink}
+        >
           <div className={styles.imageContainer}>
             <Image src={product.image} alt={product.name} fill />
           </div>
@@ -43,10 +46,10 @@ export default function ProductCard({ product }: { product: ItemCard }) {
           </div>
         </Link>
         <div className={styles.buttonContainer}>
-          <AddButton />
-          <button className={styles.addToFavourite} type="button">
-            <FavouriteDefaultIcon />
-          </button>
+          <AddToCartButton item={product} />
+          <div className={styles.addToFavourite}>
+            <FavouriteButton item={product} />
+          </div>
         </div>
       </div>
     </div>

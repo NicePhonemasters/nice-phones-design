@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import styles from './TwoIconButton.module.scss';
 
 type Props = {
@@ -20,11 +21,15 @@ export default function TwoIconButton({
       onClick={handleClick}
       disabled={disabled}
       className={styles.twoIconButton}
+      data-state={classNames({
+        on: toggled === true,
+        off: toggled === false,
+      })}
     >
       {toggled ? (
-        <IconUnselected alt="icon on" />
-      ) : (
         <IconSelected alt="icon off" />
+      ) : (
+        <IconUnselected alt="icon on" />
       )}
     </button>
   );
