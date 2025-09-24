@@ -49,6 +49,19 @@ export const Carousel = ({ title, type }: Props) => {
           prevEl: '.carouselButtonPrev',
           nextEl: '.carouselButtonNext',
         }}
+        breakpoints={{
+          320: { slidesPerView: 1.2 },
+          460: { slidesPerView: 2 },
+          540: { slidesPerView: 2.2 },
+          640: { slidesPerView: 2.5 },
+          820: { slidesPerView: 2.8 },
+          1024: { slidesPerView: 3.5 },
+          1200: { slidesPerView: 4 },
+          1350: { slidesPerView: 4.5 },
+          1500: { slidesPerView: 5 },
+          1650: { slidesPerView: 5.5 },
+          1800: { slidesPerView: 6 },
+        }}
       >
         {items.length > 0 ? (
           items.map((item) => (

@@ -8,16 +8,7 @@ type CartState = {
 
 // Тестові товари
 const initialState: CartState = {
-  items: [
-    {
-      id: 1,
-      name: 'iPhone 7',
-      price: 1200,
-      quantity: 1,
-      itemId: '1',
-      image: '/img/phones/apple-iphone-7/gold/00.webp',
-    },
-  ],
+  items: [],
 };
 
 const cartSlice = createSlice({
