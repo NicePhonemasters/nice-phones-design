@@ -9,7 +9,7 @@ type FavouritesState = {
 const initialState: FavouritesState = { items: [] };
 
 const favouriteSlice = createSlice({
-  name: 'cart',
+  name: 'favourite',
   initialState,
   reducers: {
     addItem(state, action: PayloadAction<ItemCard>) {
