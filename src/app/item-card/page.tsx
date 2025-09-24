@@ -4,6 +4,7 @@ import PhoneGallery from './components/PhoneGallery';
 import { getDetailedItem } from '@/services/fetchClient';
 import { Categories } from '@/types/Categories';
 import { Carousel } from '@components/ui/Carousel/Carousel';
+import { CarouselTypes } from '@/types/CarouselTypes';
 
 export default async function ItemCard() {
   const productId = 'apple-watch-series-4-40mm-silver';
@@ -193,7 +194,8 @@ export default async function ItemCard() {
             ></button>
           </div>
         </div>
-        <Carousel title="You may also like" items={[]} /> {/* TODO : NEED TO ADD ACTUAL LOGIC HERE */}
+        <Carousel title="You may also like" type={CarouselTypes.recommended} />{' '}
+        {/* TODO : NEED TO ADD ACTUAL LOGIC HERE */}
       </section>
     </div>
   );
