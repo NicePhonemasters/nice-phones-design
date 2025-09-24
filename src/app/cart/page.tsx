@@ -3,17 +3,18 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './Cart.module.scss';
-import { RootState } from '@/store';
 import {
   removeItem,
   increaseQuantity,
   decreaseQuantity,
+  selectCartItems,
 } from '@/slices/cartSlice';
 import { ShopCartItem } from '@components/ui/ShopCartItem/ShopCartItem';
+import { AddButton } from '@components/ui/Buttons/AddButton/AddButton';
 
 const Cart: React.FC = () => {
   const dispatch = useDispatch();
-  const items = useSelector((state: RootState) => state.cart.items);
+  const items = useSelector(selectCartItems);
 
   const totalPrice = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -28,7 +29,13 @@ const Cart: React.FC = () => {
       <div className={styles.mainContent}>
         <div className={styles.itemsList}>
           {items.length === 0 ? (
-            <p>Cart is empty</p>
+            <h2
+              style={{
+                color: 'var(--color-white)',
+              }}
+            >
+              Cart is empty
+            </h2>
           ) : (
             items.map((item) => (
               <ShopCartItem
@@ -36,11 +43,14 @@ const Cart: React.FC = () => {
                 item={item}
                 onIncrease={() => dispatch(increaseQuantity(item.id))}
                 onDecrease={() => dispatch(decreaseQuantity(item.id))}
+                // Не до конца понимаю нормально ли работает удаление
                 onRemove={() => dispatch(removeItem(item.id))}
               />
             ))
           )}
         </div>
+
+        {/* Нужно сделать нормальный вид для пустой корзины */}
 
         {items.length > 0 && (
           <div className={styles.checkout}>
@@ -50,8 +60,8 @@ const Cart: React.FC = () => {
                 Total for {totalItems} {totalItems === 1 ? 'item' : 'items'}
               </span>
             </div>
-            <div className={styles.separator}></div>
-            <button className={styles.checkoutButton}>Checkout</button>
+            <div className={styles.separator} />
+            <AddButton>Checkout</AddButton>
           </div>
         )}
       </div>

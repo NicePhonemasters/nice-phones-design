@@ -7,9 +7,11 @@
   align-items: center;
   color: var(--color-white); 
   cursor: pointer;
-
-
   border: none;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
     
   &:hover {
     background-color: var(--color-icons);

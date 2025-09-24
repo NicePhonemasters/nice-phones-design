@@ -14,7 +14,7 @@ export const Loader = () => {
     const tl = gsap.timeline({
       repeat: -1,
       repeatDelay: 0.5,
-      defaults: { duration: 0.6, ease: 'power2.inOut' },
+      defaults: { duration: 0.4, ease: 'power2.inOut' },
     });
 
     gsap.set(target1Ref.current, { rotation: 45, svgOrigin: '50 50' });

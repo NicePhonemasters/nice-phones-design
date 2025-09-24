@@ -17,9 +17,15 @@
     
     &Icon {
         color: var(--color-icons);
-        width: 16px;
-        height: 16px;
+        width: 24px;
+        height: 24px;
         margin-left: 24px;
+        cursor: pointer;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: var(--color-white);
+        }
         
         @include on-mobile {
             margin-left: 16px;
@@ -29,6 +35,7 @@
     &Image {
         width: 80px;
         height: 80px;
+        object-fit: contain;
     }
 
     &Title {
@@ -49,6 +56,8 @@
 
     &Count {
         color: var(--color-white);
+        text-align: center;
+        width: 18px;
     }
 
     &TotalPrice {

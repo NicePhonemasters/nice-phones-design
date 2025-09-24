@@ -60,11 +60,11 @@ export const Menu: React.FC<Props> = ({
             </div>
           </Link>
 
-          <Link href="/shopcart">
+          <Link href="/cart">
             <div className={styles.menuFooterCart}>
               <ShopCart
                 className={classNames(styles.headerIcon, {
-                  [styles.linkIconIsActive]: currentPath === '/shopcart',
+                  [styles.linkIconIsActive]: currentPath === '/cart',
                 })}
               />
             </div>

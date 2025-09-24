@@ -63,7 +63,7 @@ export const Header = () => {
           <nav className={styles.headerNav}>
             <ul className={styles.headerLists} ref={navRef}>
               {navLinks.map((link) => (
-                <li key={link.path}>
+                <li key={link.path} className={styles.headerListItem}>
                   <Link
                     href={link.path}
                     className={classNames(
