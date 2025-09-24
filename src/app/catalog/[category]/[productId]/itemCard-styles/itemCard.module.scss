@@ -290,12 +290,17 @@
 
   &__info-buy-section-button-buy {
     width: 100%;
+    min-width: 180px;
     height: 48px;
     background-color: var(--color-placeholder);
     font-size: 14px;
     font-weight: 700;
     color: #fff;
     border: none;
+
+    @include on-desktop {
+      min-width: 260px;
+    }
   }
 
   &__info-buy-section-button-favourites {
