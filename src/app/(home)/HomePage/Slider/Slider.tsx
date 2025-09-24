@@ -5,6 +5,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+
 import './slider.scss';
 
 export const Slider = () => {
@@ -18,7 +19,7 @@ export const Slider = () => {
           spaceBetween={10}
           slidesPerView={1}
           loop
-          autoplay={{ delay: 5000 }}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
           navigation={{
             prevEl: '.homeSliderButtonPrev',
             nextEl: '.homeSliderButtonNext',
@@ -29,13 +30,14 @@ export const Slider = () => {
             bulletClass: 'homeSliderDot',
             bulletActiveClass: 'homeSliderDot--active',
           }}
+          slideToClickedSlide={true} // Робить слайди клікабельними
         >
           <SwiperSlide>
             <Image
               src="/img/banner-phones2.png"
               className="homeSliderBanner"
               fill
-              alt="banner"
+              alt="iPhone banner"
             />
           </SwiperSlide>
 
@@ -44,7 +46,7 @@ export const Slider = () => {
               src="/img/banner-phones.png"
               className="homeSliderBanner"
               fill
-              alt="banner"
+              alt="Samsung banner"
             />
           </SwiperSlide>
 
@@ -53,7 +55,7 @@ export const Slider = () => {
               src="/img/banner-tablets.png"
               className="homeSliderBanner"
               fill
-              alt="banner"
+              alt="iPad banner"
             />
           </SwiperSlide>
         </Swiper>

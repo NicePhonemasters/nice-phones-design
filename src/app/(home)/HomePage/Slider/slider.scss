@@ -36,6 +36,11 @@
     color: var(--color-white);
     border: none;
     width: 10%;
+    
+    &:hover {
+      cursor: pointer;
+      background-color: var(--color-icons);
+    }
 
     @include on-mobile {
       display: none;
