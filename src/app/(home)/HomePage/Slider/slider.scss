@@ -36,7 +36,6 @@
     color: var(--color-white);
     border: none;
     width: 10%;
-    cursor: pointer;
 
     @include on-mobile {
       display: none;
