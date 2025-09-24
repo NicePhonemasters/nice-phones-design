@@ -1,9 +1,18 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
+// import { useRouter } from 'next/navigation';
 import { gsap } from 'gsap';
 import styles from './Favourites.module.scss';
 
+import { RootState } from '@/store';
+import ProductCard from '@/components/ProductCard/ProductCard';
+import { ItemCard } from '@/types/ItemCard';
+
 const Favourites: React.FC = () => {
+  // const router = useRouter();
+  const items = useSelector((state: RootState) => state.favourites.items);
+
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const subtitleRef = useRef<HTMLParagraphElement | null>(null);
   const gridRef = useRef<HTMLDivElement | null>(null);
@@ -22,6 +31,20 @@ const Favourites: React.FC = () => {
     return () => ctx.revert();
   }, []);
 
+  if (items.length === 0) {
+    return (
+      <div className={styles.favourites__subtitle}>
+        <h2>Favourites is empty</h2>
+        {/* <button
+          onClick={() => router.push('/catalog')}
+          className={styles.favourites__btn}
+        >
+          Back
+        </button> */}
+      </div>
+    );
+  }
+
   return (
     <div className={styles.favourites}>
       <div className={styles.favourites__top}>
@@ -29,13 +52,15 @@ const Favourites: React.FC = () => {
           Favourites
         </h1>
         <p ref={subtitleRef} className={styles.favourites__subtitle}>
-          0 items
+          {items.length} items
         </p>
       </div>
 
       {/* Грід для карток */}
       <div ref={gridRef} className={styles.favourites__grid}>
-        {/* Тут будуть картки товарів */}
+        {items.map((item: ItemCard) => (
+          <ProductCard key={item.id} item={item} />
+        ))}
       </div>
     </div>
   );

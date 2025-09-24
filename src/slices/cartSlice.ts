@@ -6,7 +6,6 @@ type CartState = {
   items: CartItem[];
 };
 
-// Тестові товари
 const initialState: CartState = {
   items: [],
 };

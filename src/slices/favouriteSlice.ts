@@ -7,7 +7,9 @@ type FavouritesState = {
   items: ItemCard[];
 };
 
-const initialState: FavouritesState = { items: [] };
+const initialState: FavouritesState = {
+  items: [],
+};
 
 const favouriteSlice = createSlice({
   name: 'favourite',
