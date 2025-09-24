@@ -1,0 +1,68 @@
+// @use '../../../styles/mixins.scss';
+
+// .item-card-description {
+//   display: flex;
+//   flex-direction: column;
+//   margin-bottom: 24px;
+
+//   &__title {
+//     display: block;
+//     width: 100%;
+//     color: var(--color-white);
+//     margin: 0 0 32px;
+//     padding-bottom: 16px;
+//     border-bottom: 1px solid var(--color-icons);
+//   }
+
+//   &__subtitle {
+//     font-weight: 700;
+//     font-size: 16px;
+//     line-height: 20px;
+//     color: var(--color-white);
+//     margin: 0 0 16px;
+//   }
+
+//   &__text {
+//     color: #89939A;
+//     font-size: 14px;
+//     font-weight: 600px;
+//     line-height: 21px;
+//     margin: 0 0 32px;
+//   }
+
+//   &__tech-spec-title {
+//     display: block;
+//     width: 100%;
+//     color: var(--color-white);
+//     margin: 0 0 30px;
+//     padding-bottom: 16px;
+//     border-bottom: 1px solid var(--color-icons);
+//   }
+
+//   &__tech-specs-list {
+//     display: flex;
+//     flex-direction: column;
+//     row-gap: 8px;
+//     margin: 0;
+//     padding: 0;
+//   }
+
+//   &__tech-specs-row {
+//     display: flex;
+//     justify-content: space-between;
+//     font-size: 12px;
+//     font-weight: 700;
+//   }
+
+//   &__tech-specs-name {
+//     color: var(--color-secondary);
+//   }
+
+//   &__tech-specs-value {
+//     justify-self: end;
+//     white-space: nowrap;
+//     overflow: hidden;
+//     text-overflow: ellipsis;
+//     color: var(--color-white);
+//   }
+// }

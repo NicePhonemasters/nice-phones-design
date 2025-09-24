@@ -1,4 +1,4 @@
-import './addButton.scss';
+import styles from './addButton.module.scss';
 
 type Props = {
   callback?: () => void;
@@ -7,7 +7,7 @@ type Props = {
 
 export const AddButton = ({ callback, children }: Props) => {
   return (
-    <button className="addButton" onClick={callback}>
+    <button className={styles.addButton} onClick={callback}>
       {children || 'Add to cart'}
     </button>
   );
