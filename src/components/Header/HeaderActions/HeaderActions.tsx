@@ -5,6 +5,7 @@ import ShopCart from '../../../assets/icons/cart-shopping.svg';
 import BurgerMenu from '../../../assets/icons/menu-burger.svg';
 import Close from '../../../assets/icons/close.svg';
 import styles from './headerActions.module.scss';
+import { Links } from '@/types/Links';
 
 type Props = {
   currentPath: string;
@@ -19,20 +20,20 @@ export const HeaderActions = ({
 }: Props) => {
   return (
     <div className={styles.headerActions}>
-      <Link href="/favorites">
+      <Link href={Links.Favourites}>
         <div
           className={classNames(styles.headerActionsFavourites, {
-            [styles.linkIconIsActive]: currentPath === '/favorites',
+            [styles.linkIconIsActive]: currentPath === Links.Favourites,
           })}
         >
           <FavouriteIcon className={styles.headerIcon} />
         </div>
       </Link>
 
-      <Link href="/shopcart">
+      <Link href={Links.Cart}>
         <div
           className={classNames(styles.headerActionsCart, {
-            [styles.linkIconIsActive]: currentPath === '/shopcart',
+            [styles.linkIconIsActive]: currentPath === Links.Cart,
           })}
         >
           <ShopCart className={styles.headerIcon} />

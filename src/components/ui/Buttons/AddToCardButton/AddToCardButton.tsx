@@ -1,10 +1,10 @@
 'use client';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { AddButton } from '../AddButton/AddButton';
 import { ItemCard } from '@/types/ItemCard';
 import { CartItem } from '@/types/CartItem';
-import { addItem } from '@/slices/cartSlice';
+import { addItem, selectCartItems } from '@/slices/cartSlice';
 
 type Props = {
   item: ItemCard;
@@ -12,6 +12,8 @@ type Props = {
 
 export default function AddToCartButton({ item }: Props) {
   const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
+  console.log(cartItems);
 
   const handleClick = () => {
     const cartItem: CartItem = {
