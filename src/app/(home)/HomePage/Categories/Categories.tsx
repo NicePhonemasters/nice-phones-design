@@ -7,6 +7,7 @@ import { useLayoutEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import styles from './categories.module.scss';
+import { Links } from '@/types/Links';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -64,13 +65,17 @@ export const Categories = () => {
 
   const cats = [
     {
-      href: '/phones',
+      href: Links.PhoneCatalog,
       img: '/img/category-phones2.png',
       title: 'Mobile phones',
     },
-    { href: '/tablets', img: '/img/category-tablets2.png', title: 'Tablets' },
     {
-      href: '/accessories',
+      href: Links.TabletCatalog,
+      img: '/img/category-tablets2.png',
+      title: 'Tablets',
+    },
+    {
+      href: Links.AccessoriesCatalog,
       img: '/img/category-accesories2.png',
       title: 'Accessories',
     },
