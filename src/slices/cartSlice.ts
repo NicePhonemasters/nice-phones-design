@@ -6,34 +6,8 @@ type CartState = {
   items: CartItem[];
 };
 
-// Тестові товари
 const initialState: CartState = {
-  items: [
-    {
-      id: 1,
-      name: 'iPhone 14 Pro',
-      price: 1200,
-      quantity: 1,
-      itemId: '',
-      image: '',
-    },
-    {
-      id: 2,
-      name: 'Samsung Galaxy S23',
-      price: 950,
-      quantity: 2,
-      itemId: '',
-      image: '',
-    },
-    {
-      id: 3,
-      name: 'Xiaomi Redmi Note 12',
-      price: 300,
-      quantity: 1,
-      itemId: '',
-      image: '',
-    },
-  ],
+  items: [],
 };
 
 const cartSlice = createSlice({

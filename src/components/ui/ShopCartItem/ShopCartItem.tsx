@@ -39,7 +39,7 @@ export const ShopCartItem = ({
 
       <div className={styles.shopCartItemCounter}>
         <OneIconButton icon={MinusIcon} handleClick={onDecrease} />
-        <p className={styles.shopCartItemCount}>1</p>
+        <p className={styles.shopCartItemCount}>{item.quantity}</p>
         <OneIconButton icon={PlusIcon} handleClick={onIncrease} />
       </div>
 

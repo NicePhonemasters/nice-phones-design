@@ -6,7 +6,6 @@ import styles from './Cart.module.scss';
 import { RootState } from '@/store';
 import {
   removeItem,
-  clearCart,
   increaseQuantity,
   decreaseQuantity,
 } from '@/slices/cartSlice';
@@ -16,7 +15,6 @@ const Cart: React.FC = () => {
   const dispatch = useDispatch();
   const items = useSelector((state: RootState) => state.cart.items);
 
-  // Рахуємо загальну суму та кількість товарів
   const totalPrice = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0,
@@ -52,12 +50,8 @@ const Cart: React.FC = () => {
                 Total for {totalItems} {totalItems === 1 ? 'item' : 'items'}
               </span>
             </div>
-            <button
-              className={styles.clearBtn}
-              onClick={() => dispatch(clearCart())}
-            >
-              Clear Cart
-            </button>
+            <div className={styles.separator}></div>
+            <button className={styles.checkoutButton}>Checkout</button>
           </div>
         )}
       </div>
