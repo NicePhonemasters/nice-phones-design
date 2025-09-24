@@ -5,8 +5,16 @@
     margin-top: 24px;
     overflow: hidden;
     white-space: nowrap;
+    margin-bottom: 24px;
+    @include inline-padding;
 
-    @include inline-padding
+    @include on-tablet {
+        margin-bottom: 40px;
+    }
+
+    @include on-desktop {
+        margin-bottom: 40px;
+    }
 }
 
 .homeIcon {

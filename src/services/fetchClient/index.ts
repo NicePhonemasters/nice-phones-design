@@ -68,3 +68,11 @@ export async function getGeneralCategory(category: Categories) {
 export async function getDetailedItem(category: Categories, itemId: string) {
   return await client.get<DetailedItem>(`/api/${category}/${itemId}`);
 }
+
+export async function getItemCardData(itemId: string) {
+  const urlSearchParams = new URLSearchParams();
+
+  urlSearchParams.set('id', itemId);
+
+  return await client.get<ItemCard>(`/api/items?${urlSearchParams}`);
+}
