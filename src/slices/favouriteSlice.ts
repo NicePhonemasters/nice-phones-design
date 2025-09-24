@@ -8,6 +8,7 @@ type FavouritesState = {
 };
 
 const initialState: FavouritesState = { items: [] };
+console.log(initialState);
 
 const favouriteSlice = createSlice({
   name: 'favourite',

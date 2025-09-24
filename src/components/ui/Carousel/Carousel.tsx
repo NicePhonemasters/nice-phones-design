@@ -51,11 +51,13 @@ export const Carousel = ({ title, type }: Props) => {
         }}
         breakpoints={{
           320: { slidesPerView: 1.2 },
-          460: { slidesPerView: 2 },
-          540: { slidesPerView: 2.2 },
-          640: { slidesPerView: 2.5 },
-          820: { slidesPerView: 2.8 },
-          1024: { slidesPerView: 3.5 },
+          460: { slidesPerView: 1.4 },
+          540: { slidesPerView: 2 },
+          640: { slidesPerView: 2.4 },
+          720: { slidesPerView: 2.8 },
+          820: { slidesPerView: 3.2 },
+          1024: { slidesPerView: 3.6 },
+          1100: { slidesPerView: 3.8 },
           1200: { slidesPerView: 4 },
           1350: { slidesPerView: 4.5 },
           1500: { slidesPerView: 5 },
@@ -70,6 +72,7 @@ export const Carousel = ({ title, type }: Props) => {
             </SwiperSlide>
           ))
         ) : (
+          // Нужно поменять или убрать лоудинг
           <p>Loading...</p>
         )}
       </Swiper>

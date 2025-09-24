@@ -2,20 +2,12 @@
   box-sizing: border-box;
   flex: 1 1 212px;
   background-color: var(--color-surface-1);
-  border: 2px solid transparent; // <-- добавляем прозрачный бордер
+  border: 2px solid transparent;
   padding: 32px;
   gap: 8px;
 
   &:hover {
     border: 2px solid var(--color-surface-2);
-  }
-
-  @include on-tablet {
-    min-height: 512px;
-  }
-
-  @include on-desktop {
-    min-height: 506px;
   }
 }
 

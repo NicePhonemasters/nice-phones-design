@@ -6,10 +6,10 @@ type CartState = {
   items: CartItem[];
 };
 
-// Тестові товари
 const initialState: CartState = {
   items: [],
 };
+console.log(initialState);
 
 const cartSlice = createSlice({
   name: 'cart',

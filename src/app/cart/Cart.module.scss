@@ -94,3 +94,12 @@
   margin: 16px auto;
   width: 100%;
 }
+
+.cartEmptyBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cartEmptyTitle {
+  color: var(--color-secondary);
+}

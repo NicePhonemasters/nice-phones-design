@@ -29,7 +29,9 @@ const Cart: React.FC = () => {
       <div className={styles.mainContent}>
         <div className={styles.itemsList}>
           {items.length === 0 ? (
-            <p>Cart is empty</p>
+            <div className={styles.cartEmptyBlock}>
+              <h3 className={styles.cartEmptyTitle}>Your cart is empty</h3>
+            </div>
           ) : (
             items.map((item) => (
               <ShopCartItem
@@ -37,14 +39,11 @@ const Cart: React.FC = () => {
                 item={item}
                 onIncrease={() => dispatch(increaseQuantity(item.id))}
                 onDecrease={() => dispatch(decreaseQuantity(item.id))}
-                // Не до конца понимаю нормально ли работает удаление
                 onRemove={() => dispatch(removeItem(item.id))}
               />
             ))
           )}
         </div>
-
-        {/* Нужно сделать нормальный вид для пустой корзины */}
 
         {items.length > 0 && (
           <div className={styles.checkout}>
