@@ -6,7 +6,7 @@ import { PaginationControl } from '@components/ui/Controls/PaginationControl';
 import { DropdownSort } from '@components/ui/Dropdowns/DropdownSort';
 import { DropdownPages } from '@components/ui/Dropdowns/DropdownPages';
 import ProductCard from '@components/ProductCard/ProductCard';
-import { getPaginatedItems } from '@/services/fetchClient';
+// import { getPaginatedItems } from '@/services/fetchClient';
 import { Categories, isCategory } from '@/types/Categories';
 import { SortType } from '@/types/SortType';
 
@@ -45,11 +45,15 @@ async function Catalog({ params, searchParams }: Props) {
 
   const sorting = sortBy as SortType;
 
-  const fetchData = await getPaginatedItems(category as Categories, {
-    sortBy: sorting,
-    currentPage,
-    perPage,
-  });
+  const urlSearchParams = new URLSearchParams();
+  urlSearchParams.set('sortBy', sorting);
+  urlSearchParams.set('currentPage', currentPage);
+  urlSearchParams.set('perPage', perPage);
+
+  const fetchResp = await fetch(
+    `/api/${category}?${urlSearchParams.toString()}`,
+  );
+  const fetchData = await fetchResp.json();
 
   const products = fetchData.data;
   const totalItems = fetchData.totalItems;
