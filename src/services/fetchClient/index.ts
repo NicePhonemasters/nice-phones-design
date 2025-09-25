@@ -10,19 +10,17 @@ const client = {
     const baseUrl = getBaseUrl();
     const incomingHeaders = await headers();
 
-    const headersToForward: Record<string, string> = {};
-    incomingHeaders.forEach((value, key) => {
-      headersToForward[key] = value;
-    });
+    const reqHeaders = {
+      Accept: 'application/json',
+    };
 
-    delete headersToForward['host'];
+    if (process.env.VERCEL_TARGET_ENV !== 'production') {
+      reqHeaders['cookie'] = incomingHeaders.get('cookie') || '';
+    }
 
     const response = await fetch(`${baseUrl}${url}`, {
       method: 'GET',
-      headers: {
-        ...headersToForward,
-        Accept: 'application/json',
-      },
+      headers: reqHeaders,
       cache: 'no-store',
     });
 
