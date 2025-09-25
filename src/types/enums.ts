@@ -18,6 +18,7 @@ export enum Colors {
   spaceblack = '#171412',
   skyblue = '#81A9CB',
   rosegold = '#C39CA4',
+  blue = '#062A78',
 }
 
 export enum PerPagePagination {
