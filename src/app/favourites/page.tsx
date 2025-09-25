@@ -1,12 +1,14 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
+import Image from 'next/image';
 import { gsap } from 'gsap';
 import styles from './Favourites.module.scss';
 
 import { RootState } from '@/store';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import { ItemCard } from '@/types/ItemCard';
+import { selectTheme } from '@/slices/themeSlice';
 
 const Favourites: React.FC = () => {
   const items = useSelector((state: RootState) => state.favourites.items);
@@ -14,6 +16,7 @@ const Favourites: React.FC = () => {
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const subtitleRef = useRef<HTMLParagraphElement | null>(null);
   const gridRef = useRef<HTMLDivElement | null>(null);
+  const themeMode = useSelector(selectTheme);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -31,8 +34,19 @@ const Favourites: React.FC = () => {
 
   if (items.length === 0) {
     return (
-      <div className={styles.favourites__subtitle}>
+      <div className={styles.favourites__empty}>
         <h2>Favourites is empty</h2>
+        <div className={styles.favouritesEmptyImage}>
+          <Image
+            src={
+              themeMode === 'light'
+                ? '/img/favourites-empty-black.svg'
+                : '/img/favourites-empty-white.svg'
+            }
+            alt="Favourites empty"
+            fill
+          />
+        </div>
         {/* <button
           onClick={() => router.push('/catalog')}
           className={styles.favourites__btn}
