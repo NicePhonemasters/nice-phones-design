@@ -22,7 +22,6 @@ const client = {
       headers: {
         ...headersToForward,
         Accept: 'application/json',
-        Cookie: incomingHeaders.get('cookie') || '',
       },
       cache: 'no-store',
     });
