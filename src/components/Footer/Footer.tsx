@@ -69,6 +69,7 @@ export default function Footer() {
             <li>
               <Link
                 href="https://github.com/NicePhonemasters/nice-phones-design"
+                target="_blank"
                 className={classNames(styles.footerNavLink, 'uppercase-text')}
               >
                 Github
@@ -76,7 +77,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="contacts"
+                href="/contacts"
                 className={classNames(styles.footerNavLink, 'uppercase-text')}
               >
                 Contacts
@@ -84,7 +85,7 @@ export default function Footer() {
             </li>
             <li>
               <Link
-                href="rights"
+                href="/rights"
                 className={classNames(styles.footerNavLink, 'uppercase-text')}
               >
                 Rights
