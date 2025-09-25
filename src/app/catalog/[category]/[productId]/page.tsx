@@ -8,6 +8,7 @@ import AddToCartButton from '@components/ui/Buttons/AddToCardButton/AddToCardBut
 import FavouriteButton from '@components/ui/Buttons/FavouriteButton/FavouriteButton';
 import { Carousel } from '@components/ui/Carousel/Carousel';
 import { CarouselTypes } from '@/types/CarouselTypes';
+import { BackNav } from '@components/ui/BackNav/BackNav';
 
 type Props = {
   params: Promise<{
@@ -27,6 +28,7 @@ export default async function ItemCard({ params }: Props) {
 
   return (
     <div className={styles.container_item_card}>
+      <BackNav />
       <section
         className={`${styles['item_card-section']} ${styles['item_card-section-main']}`}
       >

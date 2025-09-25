@@ -11,6 +11,7 @@ import {
 } from '@/slices/cartSlice';
 import { ShopCartItem } from '@components/ui/ShopCartItem/ShopCartItem';
 import { AddButton } from '@components/ui/Buttons/AddButton/AddButton';
+import { BackNav } from '@components/ui/BackNav/BackNav';
 
 const Cart: React.FC = () => {
   const dispatch = useDispatch();
@@ -24,6 +25,7 @@ const Cart: React.FC = () => {
 
   return (
     <div className={styles.cartWrapper}>
+      <BackNav />
       <h2 className={styles.title}>Cart</h2>
 
       <div className={styles.mainContent}>
