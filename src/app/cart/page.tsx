@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import styles from './Cart.module.scss';
@@ -11,10 +12,12 @@ import {
 } from '@/slices/cartSlice';
 import { ShopCartItem } from '@components/ui/ShopCartItem/ShopCartItem';
 import { AddButton } from '@components/ui/Buttons/AddButton/AddButton';
+import { selectTheme } from '@/slices/themeSlice';
 
 const Cart: React.FC = () => {
   const dispatch = useDispatch();
   const items = useSelector(selectCartItems);
+  const themeMode = useSelector(selectTheme);
 
   const totalPrice = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -29,13 +32,26 @@ const Cart: React.FC = () => {
       <div className={styles.mainContent}>
         <div className={styles.itemsList}>
           {items.length === 0 ? (
-            <h2
-              style={{
-                color: 'var(--color-white)',
-              }}
-            >
-              Cart is empty
-            </h2>
+            <div className={styles.emptyContainer}>
+              <h2
+                style={{
+                  color: 'var(--color-white)',
+                }}
+              >
+                Cart is empty
+              </h2>
+              <div className={styles.cartEmptyImage}>
+                <Image
+                  src={
+                    themeMode === 'light'
+                      ? '/img/empty-cart-black.svg'
+                      : '/img/empty-cart-white.svg'
+                  }
+                  alt="Cart empty"
+                  fill
+                />
+              </div>
+            </div>
           ) : (
             items.map((item) => (
               <ShopCartItem

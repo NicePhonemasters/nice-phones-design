@@ -8,12 +8,12 @@
 
   @include on-tablet {
     margin-bottom: 64px;
-     @include inline-padding;
+    @include inline-padding;
   }
 
   @include on-mobile {
     margin-bottom: 56px;
-     @include inline-padding;
+    @include inline-padding;
   }
 }
 
@@ -55,9 +55,24 @@
   gap: 16px;
 }
 
+.emptyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: 16px;
+}
+
+.cartEmptyImage {
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
 .checkout {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
   text-align: center;
   box-sizing: border-box;
