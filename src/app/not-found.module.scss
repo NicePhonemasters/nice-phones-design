@@ -1,0 +1,35 @@
+.notFoundPage {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--color-black);
+  color: var(--color-white);
+
+  h1 {
+    font-size: 96px;
+    margin-bottom: 24px;
+    color: var(--color-white);
+  }
+
+  p {
+    font-size: 20px;
+    margin-bottom: 32px;
+  }
+
+  .backHomeBtn {
+    text-decoration: none;
+    color: var(color-white);
+    background-color: var(--color-accent);
+    padding: 12px 24px;
+    border-radius: 8px;
+    transition: 0.3s ease;
+
+    &:hover {
+      background-color: var(--color-white);
+      color: var(color-accent);
+    }
+  }
+}
