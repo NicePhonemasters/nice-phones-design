@@ -43,7 +43,7 @@ export const Slider = () => {
 
           <SwiperSlide>
             <Image
-              src="/img/banner-phones.png"
+              src="/img/banner-phones.jpg"
               className="homeSliderBanner"
               fill
               alt="Samsung banner"
