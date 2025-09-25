@@ -9,7 +9,7 @@ const client = {
     const baseUrl = getBaseUrl();
     console.log(`${baseUrl}`);
 
-    const response = await fetch(`${url}`);
+    const response = await fetch(`${baseUrl}${url}`);
 
     if (!response.ok) {
       throw new Error(`API Error: ${response.status} ${response.statusText}`);
