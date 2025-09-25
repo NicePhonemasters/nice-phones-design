@@ -12,12 +12,16 @@ import { Links } from '@/types/Links';
 gsap.registerPlugin(ScrollTrigger);
 
 type Props = {
-  phones: number;
-  accessories: number;
-  tablets: number;
+  phonesCount: number;
+  tabletsCount: number;
+  accessoriesCount: number;
 };
 
-export const Categories = ({ phones, accessories, tablets }: Props) => {
+export const Categories = ({
+  phonesCount,
+  tabletsCount,
+  accessoriesCount,
+}: Props) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
@@ -74,19 +78,19 @@ export const Categories = ({ phones, accessories, tablets }: Props) => {
       href: Links.PhoneCatalog,
       img: '/img/category-phones2.png',
       title: 'Mobile phones',
-      count: phones,
+      count: phonesCount,
     },
     {
       href: Links.TabletCatalog,
       img: '/img/category-tablets2.png',
       title: 'Tablets',
-      count: tablets,
+      count: tabletsCount,
     },
     {
       href: Links.AccessoriesCatalog,
       img: '/img/category-accesories2.png',
       title: 'Accessories',
-      count: accessories,
+      count: accessoriesCount,
     },
   ];
 

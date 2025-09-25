@@ -3,15 +3,19 @@ import { Slider } from './Slider/Slider';
 import { CarouselTypes } from '@/types/CarouselTypes';
 import { Categories } from '@/app/(home)/HomePage/Categories/Categories';
 import { Carousel } from '@components/ui/Carousel/Carousel';
-import { getCategoryCount } from '@/services/fetchClient';
 import { Categories as ProductCategories } from '@/types/Categories';
+import products from '@/app/api/data/products.json';
 
 export async function HomePage() {
-  const tabletsCount = await getCategoryCount(ProductCategories.Tablets);
-  const phonesCount = await getCategoryCount(ProductCategories.Phones);
-  const accessoriesCount = await getCategoryCount(
-    ProductCategories.Accessories,
-  );
+  const tabletsCount = products.filter(
+    (item) => item.category === ProductCategories.Tablets,
+  ).length;
+  const phonesCount = products.filter(
+    (item) => item.category === ProductCategories.Phones,
+  ).length;
+  const accessoriesCount = products.filter(
+    (item) => item.category === ProductCategories.Accessories,
+  ).length;
 
   return (
     <section className={styles.home}>
@@ -20,9 +24,9 @@ export async function HomePage() {
         <Slider />
         <Carousel title="Brand new models" type={CarouselTypes.new} />
         <Categories
-          phones={phonesCount.categoryItems}
-          tablets={tabletsCount.categoryItems}
-          accessories={accessoriesCount.categoryItems}
+          phonesCount={phonesCount}
+          tabletsCount={tabletsCount}
+          accessoriesCount={accessoriesCount}
         />
         <Carousel title="Hot prices" type={CarouselTypes.sale} />
       </div>
