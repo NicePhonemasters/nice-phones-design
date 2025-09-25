@@ -3,14 +3,17 @@
 import Link from 'next/link';
 import styles from './not-found.module.scss';
 
-export default function NotFoundPage() {
+export default function NotFound() {
   return (
-    <main className={styles.notFoundPage}>
+    <div className={styles.notFoundPage}>
       <h1>404</h1>
-      <p>Oops! The page you are looking for does not exist.</p>
+      <p>
+        Oops! The page you are looking for does not exist. It might have been
+        removed, had its name changed, or is temporarily unavailable.
+      </p>
       <Link href="/" className={styles.backHomeBtn}>
-        Go back home
+        Go Back Home
       </Link>
-    </main>
+    </div>
   );
 }
