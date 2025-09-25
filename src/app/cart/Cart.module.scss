@@ -1,13 +1,19 @@
 .cartWrapper {
-  @include inline-padding;
   margin-bottom: 80px;
+
+  @include on-desktop {
+    margin: 0 auto;
+    max-width: 1200px;
+  }
 
   @include on-tablet {
     margin-bottom: 64px;
+     @include inline-padding;
   }
 
   @include on-mobile {
     margin-bottom: 56px;
+     @include inline-padding;
   }
 }
 
@@ -50,14 +56,17 @@
 }
 
 .checkout {
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+  gap: 24px;
   height: 206px;
   width: 30%;
   max-width: 368px;
   border: 1px solid var(--color-secondary);
   padding: 23px 24px;
-  flex-shrink: 0;
-  box-sizing: border-box;
-  text-align: center;
 
   @include on-tablet {
     height: 190px;
@@ -73,7 +82,6 @@
 
 .total {
   color: var(--color-white);
-  margin-bottom: 32px;
 }
 
 .totalPrice {
@@ -91,6 +99,5 @@
 
 .separator {
   border-top: 1px solid var(--color-secondary);
-  margin: 16px auto;
   width: 100%;
 }

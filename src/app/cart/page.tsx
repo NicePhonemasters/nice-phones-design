@@ -43,7 +43,6 @@ const Cart: React.FC = () => {
                 item={item}
                 onIncrease={() => dispatch(increaseQuantity(item.id))}
                 onDecrease={() => dispatch(decreaseQuantity(item.id))}
-                // Не до конца понимаю нормально ли работает удаление
                 onRemove={() => dispatch(removeItem(item.id))}
               />
             ))

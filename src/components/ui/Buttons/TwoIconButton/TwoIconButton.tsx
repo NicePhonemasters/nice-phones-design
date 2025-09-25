@@ -6,7 +6,7 @@ type Props = {
   iconUnselected: React.ElementType;
   disabled?: boolean;
   toggled: boolean;
-  handleClick: () => void;
+  handleClick: (event?) => void;
 };
 
 export default function TwoIconButton({
