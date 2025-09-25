@@ -61,3 +61,36 @@
   transition: width 0.3s ease;
 }
 
+.headerActionsThemes {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -1px 0 var(--color-surface-2);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-icons);
+  }
+
+  @include on-tablet {
+    width: 48px;
+    height: 48px;
+  }
+  
+    @include on-mobile {
+    width: 48px;
+    height: 48px;
+    box-shadow: -1px 0 var(--color-surface-2);
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.headerActionsLight {
+  color: var(--color-white);
+  width: 20px;
+  height: 20px;
+}
