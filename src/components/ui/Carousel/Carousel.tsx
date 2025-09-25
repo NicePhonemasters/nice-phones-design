@@ -10,6 +10,7 @@ import { CarouselTypes } from '@/types/CarouselTypes';
 import { ItemCard } from '@/types/ItemCard';
 import 'swiper/css';
 import 'swiper/css/navigation';
+import { Loader } from '@components/Loader/Loader';
 
 type Props = {
   title: string;
@@ -72,7 +73,9 @@ export const Carousel = ({ title, type }: Props) => {
             </SwiperSlide>
           ))
         ) : (
-          <p>Loading...</p>
+          <p>
+            <Loader placeType="inline" />
+          </p>
         )}
       </Swiper>
     </section>

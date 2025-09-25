@@ -2,11 +2,13 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { gsap } from 'gsap';
+import { PersistGate } from 'redux-persist/integration/react';
 import styles from './Favourites.module.scss';
 
-import { RootState } from '@/store';
+import { persistor, RootState } from '@/store';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import { ItemCard } from '@/types/ItemCard';
+import { Loader } from '@components/Loader/Loader';
 
 const Favourites: React.FC = () => {
   const items = useSelector((state: RootState) => state.favourites.items);
@@ -44,23 +46,28 @@ const Favourites: React.FC = () => {
   }
 
   return (
-    <div className={styles.favourites}>
-      <div className={styles.favourites__top}>
-        <h1 ref={titleRef} className={styles.favourites__title}>
-          Favourites
-        </h1>
-        <p ref={subtitleRef} className={styles.favourites__subtitle}>
-          {items.length} items
-        </p>
-      </div>
+    <PersistGate
+      persistor={persistor}
+      loading={<Loader placeType="fullscreen" />}
+    >
+      <div className={styles.favourites}>
+        <div className={styles.favourites__top}>
+          <h1 ref={titleRef} className={styles.favourites__title}>
+            Favourites
+          </h1>
+          <p ref={subtitleRef} className={styles.favourites__subtitle}>
+            {items.length} items
+          </p>
+        </div>
 
-      {/* Грід для карток */}
-      <div ref={gridRef} className={styles.favourites__grid}>
-        {items.map((item: ItemCard) => (
-          <ProductCard key={item.id} item={item} />
-        ))}
+        {/* Грід для карток */}
+        <div ref={gridRef} className={styles.favourites__grid}>
+          {items.map((item: ItemCard) => (
+            <ProductCard key={item.id} item={item} />
+          ))}
+        </div>
       </div>
-    </div>
+    </PersistGate>
   );
 };
 
