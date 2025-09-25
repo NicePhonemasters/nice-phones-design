@@ -1,4 +1,3 @@
-import { cookies } from 'next/headers';
 import { Categories } from '@/types/Categories';
 import { DetailedItem } from '@/types/DetailedItem';
 import { ItemCard } from '@/types/ItemCard';
@@ -10,17 +9,7 @@ const client = {
     const baseUrl = getBaseUrl();
     console.log(`${baseUrl}`);
 
-    const reqHeaders = {
-      Accept: 'application/json',
-    };
-
-    reqHeaders['cookie'] = cookies.toString();
-
-    const response = await fetch(`${baseUrl}${url}`, {
-      method: 'GET',
-      headers: reqHeaders,
-      cache: 'no-store',
-    });
+    const response = await fetch(`${url}`);
 
     if (!response.ok) {
       throw new Error(`API Error: ${response.status} ${response.statusText}`);
