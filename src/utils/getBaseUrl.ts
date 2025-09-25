@@ -11,6 +11,8 @@ export function getBaseUrl() {
     vercelUrl = process.env.VERCEL_URL;
   }
 
+  console.log(vercelUrl);
+
   if (vercelUrl) {
     return `https://${vercelUrl}`;
   }
