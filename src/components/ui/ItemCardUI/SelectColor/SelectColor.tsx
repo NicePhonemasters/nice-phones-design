@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import classNames from 'classnames';
 import styles from './selectColor.module.scss';
+import { Colors } from '@/types/enums';
 
 type Props = {
   color: string;
@@ -19,6 +20,8 @@ export function SelectColor({
 
   const isSelected = currentColor === color;
 
+  const enumedColor = Colors[color];
+
   return (
     <Link href={newColorLink}>
       <div
@@ -28,7 +31,7 @@ export function SelectColor({
       >
         <div
           className={styles.colorRoundInner}
-          style={{ backgroundColor: color }}
+          style={{ backgroundColor: enumedColor }}
         />
       </div>
     </Link>

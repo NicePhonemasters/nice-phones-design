@@ -1,5 +1,6 @@
 .cartWrapper {
   margin-bottom: 80px;
+  min-height: 100vh;
 
   @include on-desktop {
     margin: 0 auto;
@@ -53,6 +54,7 @@
   flex: 1;
   min-width: 300px;
   gap: 16px;
+  margin-bottom: 32px;
 }
 
 .checkout {
