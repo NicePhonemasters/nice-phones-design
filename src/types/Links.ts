@@ -5,4 +5,6 @@ export enum Links {
   PhoneCatalog = '/catalog/phones',
   TabletCatalog = '/catalog/tablets',
   AccessoriesCatalog = '/catalog/accessories',
+  Contacts = '/contacts',
+  Rights = '/rights',
 }

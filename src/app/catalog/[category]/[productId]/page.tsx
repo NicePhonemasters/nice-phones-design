@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import styles from './itemCard-styles/itemCard.module.scss';
 import PhoneGallery from './components/PhoneGallery';
 import { getDetailedItem, getItemCardData } from '@/services/fetchClient';
@@ -8,6 +9,7 @@ import AddToCartButton from '@components/ui/Buttons/AddToCardButton/AddToCardBut
 import FavouriteButton from '@components/ui/Buttons/FavouriteButton/FavouriteButton';
 import { Carousel } from '@components/ui/Carousel/Carousel';
 import { CarouselTypes } from '@/types/CarouselTypes';
+import { BackNav } from '@components/ui/BackNav/BackNav';
 
 type Props = {
   params: Promise<{
@@ -16,15 +18,35 @@ type Props = {
   }>;
 };
 
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { category, productId } = await params;
+
+  // Fetch product details
+  const product = await getDetailedItem(category as Categories, productId);
+
+  const title = `${product.name}`;
+  const description = `${product.description}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/catalog/${category}/${productId}`,
+    },
+  };
+}
+
 export default async function ItemCard({ params }: Props) {
   const { category, productId } = await params;
   const product = await getDetailedItem(category as Categories, productId);
-  const itemCard = await getItemCardData(product.id);
+  const itemCardData = await getItemCardData(product.id);
+  const itemCard = itemCardData.itemCard;
   const currentCapacity = product.capacity.toLocaleLowerCase();
   const currentColor = product.color;
 
   return (
     <div className={styles.container_item_card}>
+      <BackNav />
       <section
         className={`${styles['item_card-section']} ${styles['item_card-section-main']}`}
       >

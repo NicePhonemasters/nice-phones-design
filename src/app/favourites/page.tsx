@@ -2,7 +2,6 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import Image from 'next/image';
-// import { useRouter } from 'next/navigation';
 import { gsap } from 'gsap';
 import styles from './Favourites.module.scss';
 
@@ -12,7 +11,6 @@ import { ItemCard } from '@/types/ItemCard';
 import { selectTheme } from '@/slices/themeSlice';
 
 const Favourites: React.FC = () => {
-  // const router = useRouter();
   const items = useSelector((state: RootState) => state.favourites.items);
 
   const titleRef = useRef<HTMLHeadingElement | null>(null);

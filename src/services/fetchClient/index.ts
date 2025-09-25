@@ -7,7 +7,6 @@ import { getBaseUrl } from '@/utils/getBaseUrl';
 const client = {
   async get<T>(url: string) {
     const baseUrl = getBaseUrl();
-    console.log(`${baseUrl}`);
 
     const response = await fetch(`${baseUrl}${url}`);
 
@@ -58,5 +57,13 @@ export async function getItemCardData(itemId: string) {
 
   urlSearchParams.set('id', itemId);
 
-  return await client.get<ItemCard>(`/api/items?${urlSearchParams}`);
+  return await client.get<{
+    itemCard: ItemCard;
+  }>(`/api/items?${urlSearchParams}`);
+}
+
+export async function getCategoryCount(category: Categories) {
+  return await client.get<{
+    categoryItems: number;
+  }>(`/api/count/${category}`);
 }

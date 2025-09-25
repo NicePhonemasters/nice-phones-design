@@ -11,7 +11,17 @@ import { Links } from '@/types/Links';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const Categories = () => {
+type Props = {
+  phonesCount: number;
+  tabletsCount: number;
+  accessoriesCount: number;
+};
+
+export const Categories = ({
+  phonesCount,
+  tabletsCount,
+  accessoriesCount,
+}: Props) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
 
   useLayoutEffect(() => {
@@ -68,16 +78,19 @@ export const Categories = () => {
       href: Links.PhoneCatalog,
       img: '/img/category-phones2.png',
       title: 'Mobile phones',
+      count: phonesCount,
     },
     {
       href: Links.TabletCatalog,
       img: '/img/category-tablets2.png',
       title: 'Tablets',
+      count: tabletsCount,
     },
     {
       href: Links.AccessoriesCatalog,
       img: '/img/category-accesories2.png',
       title: 'Accessories',
+      count: accessoriesCount,
     },
   ];
 
@@ -104,7 +117,9 @@ export const Categories = () => {
                 />
               </div>
               <h4 className={styles.categoryCardTitle}>{cat.title}</h4>
-              <p className={`${styles.categoryCardText} smallText`}>0 models</p>
+              <p
+                className={`${styles.categoryCardText} smallText`}
+              >{`${cat.count} models`}</p>
             </Link>
           </div>
         ))}
