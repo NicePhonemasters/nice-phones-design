@@ -1,7 +1,8 @@
 'use client';
-
+import { useEffect, useState } from 'react';
 import { ToggleGroup } from 'radix-ui';
 import { useSearchParams, useRouter } from 'next/navigation';
+import { getVisiblePages } from './getVisiblePage';
 import PaginationStyles from './PaginationControl.module.scss';
 import ArrowLeft from '@/assets/icons/arrow-left.svg';
 import ArrowRight from '@/assets/icons/arrow-right.svg';
@@ -12,21 +13,17 @@ type Props = {
   currentPage: number;
 };
 
-function getNaturalNumbers(count: number) {
-  const numbers: string[] = [];
-
-  for (let i = 1; i <= count; i++) {
-    numbers.push(i + '');
-  }
-
-  return numbers;
-}
-
 export default function PaginationControl({ pageCount, currentPage }: Props) {
   const searchParamsHook = useSearchParams();
   const routerHook = useRouter();
+  const [screenWidth, setScreenWidth] = useState(1200);
 
-  const pages = getNaturalNumbers(pageCount);
+  useEffect(() => {
+    const updateWidth = () => setScreenWidth(window.innerWidth);
+    window.addEventListener('resize', updateWidth);
+    updateWidth();
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
 
   const handlePageChange = (page: number) => {
     const params = new URLSearchParams(searchParamsHook.toString());
@@ -45,6 +42,12 @@ export default function PaginationControl({ pageCount, currentPage }: Props) {
   const leftButtonDisabled = currentPage === 1;
   const rightButtonDisabled = currentPage === pageCount;
 
+  let maxVisiblePages = 7;
+  if (screenWidth < 768) maxVisiblePages = 3;
+  else if (screenWidth < 1024) maxVisiblePages = 5;
+
+  const visiblePages = getVisiblePages(pageCount, currentPage, maxVisiblePages);
+
   return (
     <div className={PaginationStyles.paginationControl}>
       <div className={PaginationStyles.paginationButton}>
@@ -60,16 +63,22 @@ export default function PaginationControl({ pageCount, currentPage }: Props) {
         type="single"
         value={String(currentPage)}
       >
-        {pages.map((page) => (
-          <ToggleGroup.Item
-            key={page}
-            value={page}
-            className={`${PaginationStyles.toggleButton} buttons-text`}
-            onClick={() => handlePageChange(+page)}
-          >
-            {page}
-          </ToggleGroup.Item>
-        ))}
+        {visiblePages.map((page, i) =>
+          page === '...' ? (
+            <span key={i} className={PaginationStyles.ellipsis}>
+              ...
+            </span>
+          ) : (
+            <ToggleGroup.Item
+              key={page}
+              value={page}
+              className={`${PaginationStyles.toggleButton} buttons-text`}
+              onClick={() => handlePageChange(+page)}
+            >
+              {page}
+            </ToggleGroup.Item>
+          ),
+        )}
       </ToggleGroup.Root>
 
       <div className={PaginationStyles.paginationButton}>

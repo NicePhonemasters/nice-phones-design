@@ -26,6 +26,7 @@ export const ShopCartItem = ({
       <div className={styles.shopCartItemWrapperIcon}>
         <CloseIcon className={styles.shopCartItemIcon} onClick={onRemove} />
       </div>
+
       <Image
         src={item.image}
         alt="Product image"
@@ -39,7 +40,6 @@ export const ShopCartItem = ({
       </p>
 
       <div className={styles.shopCartItemCounter}>
-
         <OneIconButton
           icon={MinusIcon}
           handleClick={onDecrease}
@@ -51,7 +51,9 @@ export const ShopCartItem = ({
       </div>
 
       <div>
-        <p className={styles.shopCartItemTotalPrice}>{`$ ${item.price}`}</p>
+        <p
+          className={styles.shopCartItemTotalPrice}
+        >{`$ ${item.price * item.quantity}`}</p>
       </div>
     </div>
   );

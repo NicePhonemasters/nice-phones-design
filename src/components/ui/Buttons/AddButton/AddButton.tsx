@@ -1,13 +1,26 @@
+import classNames from 'classnames';
 import styles from './addButton.module.scss';
 
 type Props = {
   callback?: () => void;
   children?: React.ReactNode; // додаємо можливість передавати текст чи JSX всередину
+  isInCart?: () => void;
 };
 
-export const AddButton = ({ callback, children }: Props) => {
+export const AddButton = ({ callback, children, isInCart }: Props) => {
   return (
-    <button className={styles.addButton} onClick={callback}>
+    <button
+      className={classNames(styles.addButton, {
+        [styles.addButtonActive]: isInCart,
+      })}
+      onClick={(event) => {
+        //Нужен для того чтобы не открывался товар при добавлении товара
+        event.stopPropagation();
+        event.preventDefault();
+
+        callback();
+      }}
+    >
       {children || 'Add to cart'}
     </button>
   );

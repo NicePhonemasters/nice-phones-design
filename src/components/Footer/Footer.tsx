@@ -68,7 +68,7 @@ export default function Footer() {
           <ul className={styles.footerLists} ref={navRef}>
             <li>
               <Link
-                href="github"
+                href="https://github.com/NicePhonemasters/nice-phones-design"
                 className={classNames(styles.footerNavLink, 'uppercase-text')}
               >
                 Github

@@ -1,11 +1,15 @@
 import classNames from 'classnames';
 import Link from 'next/link';
+import { useSelector } from 'react-redux';
 import FavouriteIcon from '../../../assets/icons/favourite-default.svg';
 import ShopCart from '../../../assets/icons/cart-shopping.svg';
 import BurgerMenu from '../../../assets/icons/menu-burger.svg';
 import Close from '../../../assets/icons/close.svg';
 import styles from './headerActions.module.scss';
 import { Links } from '@/types/Links';
+import { LabelForIcon } from '@components/ui/LabelForIcon/LabelForIcon';
+import { selectCartTotalQuantity } from '@/slices/cartSlice';
+import { selectFavouriteCount } from '@/slices/favouriteSlice';
 
 type Props = {
   currentPath: string;
@@ -18,6 +22,9 @@ export const HeaderActions = ({
   isOpenedMenu,
   setIsOpenedMenu,
 }: Props) => {
+  const cartCount = useSelector(selectCartTotalQuantity);
+  const favouriteCount = useSelector(selectFavouriteCount);
+
   return (
     <div className={styles.headerActions}>
       <Link href={Links.Favourites}>
@@ -26,6 +33,8 @@ export const HeaderActions = ({
             [styles.linkIconIsActive]: currentPath === Links.Favourites,
           })}
         >
+          {favouriteCount !== 0 && <LabelForIcon quantity={favouriteCount} />}
+
           <FavouriteIcon className={styles.headerIcon} />
         </div>
       </Link>
@@ -36,6 +45,7 @@ export const HeaderActions = ({
             [styles.linkIconIsActive]: currentPath === Links.Cart,
           })}
         >
+          {cartCount !== 0 && <LabelForIcon quantity={cartCount} />}
           <ShopCart className={styles.headerIcon} />
         </div>
       </Link>

@@ -13,7 +13,8 @@ type Props = {
 export default function AddToCartButton({ item }: Props) {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
-  console.log(cartItems);
+
+  const isInCart = cartItems.some((i) => i.itemId === item.itemId);
 
   const handleClick = () => {
     const cartItem: CartItem = {
@@ -28,5 +29,9 @@ export default function AddToCartButton({ item }: Props) {
     dispatch(addItem(cartItem));
   };
 
-  return <AddButton callback={handleClick}>{'Add to cart'}</AddButton>;
+  return (
+    <AddButton callback={handleClick} isInCart={isInCart}>
+      {!isInCart ? 'Add to cart' : 'Added to cart'}
+    </AddButton>
+  );
 }

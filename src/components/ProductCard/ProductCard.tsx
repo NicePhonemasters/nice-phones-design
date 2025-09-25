@@ -10,14 +10,15 @@ import AddToCartButton from '@components/ui/Buttons/AddToCardButton/AddToCardBut
 export default function ProductCard({ item }: { item: ItemCard }) {
   return (
     <div className={styles.productCardWrapper}>
-      <div className={styles.productCard}>
-        <Link
-          href={`/catalog/${item.category}/${item.itemId}`}
-          className={styles.productCardGeneralLink}
-        >
+      <Link
+        href={`/catalog/${item.category}/${item.itemId}`}
+        className={styles.productCardGeneralLink}
+      >
+        <div className={styles.productCard}>
           <div className={styles.imageContainer}>
             <Image src={item.image} alt={item.name} fill />
           </div>
+
           <p className={classNames(styles.title, 'body-text')}>{item.name}</p>
 
           <div className={styles.priceTag}>
@@ -41,14 +42,14 @@ export default function ProductCard({ item }: { item: ItemCard }) {
               <span className={styles.specsValue}>{item.ram}</span>
             </div>
           </div>
-        </Link>
-        <div className={styles.buttonContainer}>
-          <AddToCartButton item={item} />
-          <div className={styles.addToFavourite}>
-            <FavouriteButton item={item} />
+          <div className={styles.buttonContainer}>
+            <AddToCartButton item={item} />
+            <div className={styles.addToFavourite}>
+              <FavouriteButton item={item} />
+            </div>
           </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 }

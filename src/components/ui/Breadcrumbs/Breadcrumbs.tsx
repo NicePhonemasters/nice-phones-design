@@ -21,6 +21,10 @@ export const Breadcrumbs = () => {
         {segments.map((segment, i) => {
           const hrefNew = '/' + segments.slice(0, i + 1).join('/');
           const lastLink = i === segments.length - 1;
+          const clearString = segment
+            .split('-')
+            .map((item) => item.charAt(0).toUpperCase() + item.slice(1))
+            .join(' ');
 
           return (
             <React.Fragment key={hrefNew}>
@@ -32,7 +36,7 @@ export const Breadcrumbs = () => {
                     'small-text',
                   )}
                 >
-                  {segment}
+                  {clearString}
                 </span>
               ) : (
                 <Link
@@ -40,7 +44,7 @@ export const Breadcrumbs = () => {
                   key={segment}
                   className={classNames(styles.breadcrumbLink, 'small-text')}
                 >
-                  {segment}
+                  {clearString}
                 </Link>
               )}
             </React.Fragment>

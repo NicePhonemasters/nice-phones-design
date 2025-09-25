@@ -21,6 +21,10 @@
     width: 16px;
     height: 16px;
     color: var(--color-white);
+
+    &:hover {
+        color: var(--color-accent);
+    }
 }
 
 .arrowRight {
@@ -33,6 +37,10 @@
 .breadcrumbLink {
     color: var(--color-white);
     text-decoration: none;
+
+    &:hover {
+        color: var(--color-accent);
+    }
     
     &Active {
       color: var(--color-secondary);

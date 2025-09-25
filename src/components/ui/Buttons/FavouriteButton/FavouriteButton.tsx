@@ -22,7 +22,11 @@ export default function FavouriteButton({ item }: Props) {
 
   const isInFavourites = useSelector(selectIsInFavourites(itemId));
 
-  const handleClick = () => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    //Нужен для того чтобы не открывался товар при добавлении товара
+    event.stopPropagation();
+    event.preventDefault();
+
     if (isInFavourites) {
       dispatch(removeItem(itemId));
     } else {
