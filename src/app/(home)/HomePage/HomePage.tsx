@@ -7,7 +7,7 @@ import { getCategoryCount } from '@/services/fetchClient';
 import { Categories as ProductCategories } from '@/types/Categories';
 
 export async function HomePage() {
-  console.dir(`${process.env}`);
+  console.log(process.env);
   const tabletsCount = await getCategoryCount(ProductCategories.Tablets);
   const phonesCount = await getCategoryCount(ProductCategories.Phones);
   const accessoriesCount = await getCategoryCount(
