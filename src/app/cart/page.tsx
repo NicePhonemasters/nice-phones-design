@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -13,6 +14,7 @@ import {
 } from '@/slices/cartSlice';
 import { ShopCartItem } from '@components/ui/ShopCartItem/ShopCartItem';
 import { AddButton } from '@components/ui/Buttons/AddButton/AddButton';
+import { selectTheme } from '@/slices/themeSlice';
 import { BackNav } from '@components/ui/BackNav/BackNav';
 import { persistor } from '@/store';
 import { Loader } from '@components/Loader/Loader';
@@ -20,6 +22,7 @@ import { Loader } from '@components/Loader/Loader';
 const Cart: React.FC = () => {
   const dispatch = useDispatch();
   const items = useSelector(selectCartItems);
+  const themeMode = useSelector(selectTheme);
 
   const totalPrice = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -36,9 +39,10 @@ const Cart: React.FC = () => {
       >
         <h2 className={styles.title}>Cart</h2>
 
-        <div className={styles.mainContent}>
-          <div className={styles.itemsList}>
-            {items.length === 0 ? (
+      <div className={styles.mainContent}>
+        <div className={styles.itemsList}>
+          {items.length === 0 ? (
+            <div className={styles.emptyContainer}>
               <h2
                 style={{
                   color: 'var(--color-white)',
@@ -46,18 +50,30 @@ const Cart: React.FC = () => {
               >
                 Cart is empty
               </h2>
-            ) : (
-              items.map((item) => (
-                <ShopCartItem
-                  key={item.id}
-                  item={item}
-                  onIncrease={() => dispatch(increaseQuantity(item.id))}
-                  onDecrease={() => dispatch(decreaseQuantity(item.id))}
-                  onRemove={() => dispatch(removeItem(item.id))}
+              <div className={styles.cartEmptyImage}>
+                <Image
+                  src={
+                    themeMode === 'light'
+                      ? '/img/empty-cart-black.svg'
+                      : '/img/empty-cart-white.svg'
+                  }
+                  alt="Cart empty"
+                  fill
                 />
-              ))
-            )}
-          </div>
+              </div>
+            </div>
+          ) : (
+            items.map((item) => (
+              <ShopCartItem
+                key={item.id}
+                item={item}
+                onIncrease={() => dispatch(increaseQuantity(item.id))}
+                onDecrease={() => dispatch(decreaseQuantity(item.id))}
+                onRemove={() => dispatch(removeItem(item.id))}
+              />
+            ))
+          )}
+        </div>
 
           {/* Нужно сделать нормальный вид для пустой корзины */}
 

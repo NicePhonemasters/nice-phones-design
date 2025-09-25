@@ -1,0 +1,22 @@
+.rightsPage {
+  padding: 40px;
+  max-width: 800px;
+  margin: 0 auto;
+  color: var(--color-white);
+  background-color: var(--color-black);
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 24px;
+  }
+
+  pre {
+    background-color: var(--color-surface-2);
+    padding: 20px;
+    border-radius: 12px;
+    white-space: pre-wrap;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--color-white);
+  }
+}
