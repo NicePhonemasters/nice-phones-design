@@ -51,7 +51,7 @@ async function Catalog({ params, searchParams }: Props) {
   urlSearchParams.set('perPage', perPage);
 
   const fetchResp = await fetch(
-    `/api/${category}?${urlSearchParams.toString()}`,
+    `https://nice-phones-design.vercel.app/api/${category}?${urlSearchParams.toString()}`,
   );
   const fetchData = await fetchResp.json();
 
