@@ -61,3 +61,9 @@ export async function getItemCardData(itemId: string) {
     itemCard: ItemCard;
   }>(`/api/items?${urlSearchParams}`);
 }
+
+export async function getCategoryCount(category: Categories) {
+  return await client.get<{
+    categoryItems: number;
+  }>(`/api/${category}/count`);
+}

@@ -1,5 +1,6 @@
 .cartWrapper {
   margin-bottom: 80px;
+  min-height: 100vh;
 
   @include on-desktop {
     margin: 0 auto;

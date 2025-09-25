@@ -21,7 +21,6 @@ export function SelectColor({
   const isSelected = currentColor === color;
 
   const enumedColor = Colors[color];
-  console.log(enumedColor);
 
   return (
     <Link href={newColorLink}>
