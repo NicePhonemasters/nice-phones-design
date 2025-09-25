@@ -13,3 +13,18 @@
   --color-accent-2: #A378FF;
 }
 
+.light-theme {
+  --color-black: #FFFFFF;          /* основной фон */
+  --color-surface-1: #F5F6FA;      /* карточки / блоки */
+  --color-surface-2: #E6E8EF;      /* бордеры / второстепенные элементы */
+  --color-elements: #DADDE6;       /* кнопки / иконки */
+  --color-icons: #8E8E93;          /* стандартные иконки */
+  --color-secondary: #6E6E73;      /* второстепенный текст */
+  --color-white: #1A1A1A;          /* основной текст */
+  --color-accent: #7A3FFF;         /* фиолетовый акцент */
+  --color-green: #27AE60;          /* зелёный (тот же для консистентности) */
+  --color-red: #D64545;            /* красный чуть мягче */
+  --color-placeholder: #B0B3BA;    /* плейсхолдер текста */
+  --color-accent-2: #A378FF;       /* доп. акцент */
+}
+

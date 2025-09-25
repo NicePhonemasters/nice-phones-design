@@ -6,6 +6,7 @@ import ShopCart from '../../../assets/icons/cart-shopping.svg';
 import BurgerMenu from '../../../assets/icons/menu-burger.svg';
 import Close from '../../../assets/icons/close.svg';
 import styles from './headerActions.module.scss';
+import { HeaderActionsThemes } from './HeaderActionsThemes';
 import { Links } from '@/types/Links';
 import { LabelForIcon } from '@components/ui/LabelForIcon/LabelForIcon';
 import { selectCartTotalQuantity } from '@/slices/cartSlice';
@@ -27,6 +28,8 @@ export const HeaderActions = ({
 
   return (
     <div className={styles.headerActions}>
+      <HeaderActionsThemes />
+
       <Link href={Links.Favourites}>
         <div
           className={classNames(styles.headerActionsFavourites, {

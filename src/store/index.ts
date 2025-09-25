@@ -4,8 +4,10 @@ import persistReducer from 'redux-persist/es/persistReducer';
 import persistStore from 'redux-persist/es/persistStore';
 import { favouriteReducer } from '@/slices/favouriteSlice';
 import { cartReducer } from '@/slices/cartSlice';
+import themeReducer from '@/slices/themeSlice';
 
 const rootReducer = combineReducers({
+  theme: themeReducer,
   cart: cartReducer,
   favourites: favouriteReducer,
 });
@@ -13,7 +15,7 @@ const rootReducer = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['cart', 'favourites'],
+  whitelist: ['cart', 'favourites', 'theme'],
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
