@@ -65,5 +65,5 @@ export async function getItemCardData(itemId: string) {
 export async function getCategoryCount(category: Categories) {
   return await client.get<{
     categoryItems: number;
-  }>(`/api/${category}/count`);
+  }>(`/api/count/${category}`);
 }
