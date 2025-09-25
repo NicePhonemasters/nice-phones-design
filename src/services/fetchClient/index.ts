@@ -1,4 +1,4 @@
-import { headers } from 'next/headers';
+import { cookies } from 'next/headers';
 import { Categories } from '@/types/Categories';
 import { DetailedItem } from '@/types/DetailedItem';
 import { ItemCard } from '@/types/ItemCard';
@@ -8,15 +8,12 @@ import { getBaseUrl } from '@/utils/getBaseUrl';
 const client = {
   async get<T>(url: string) {
     const baseUrl = getBaseUrl();
-    const incomingHeaders = await headers();
 
     const reqHeaders = {
       Accept: 'application/json',
     };
 
-    if (process.env.VERCEL_TARGET_ENV !== 'production') {
-      reqHeaders['cookie'] = incomingHeaders.get('cookie') || '';
-    }
+    reqHeaders['cookie'] = cookies.toString();
 
     const response = await fetch(`${baseUrl}${url}`, {
       method: 'GET',
