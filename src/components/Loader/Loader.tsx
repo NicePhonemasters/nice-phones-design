@@ -1,10 +1,15 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
+import classNames from 'classnames';
 import styles from './Loader.module.scss';
 
-export const Loader = () => {
+type Props = {
+  placeType: 'inline' | 'fullscreen';
+};
+
+export const Loader = ({ placeType }: Props) => {
   const target1Ref = useRef<SVGLineElement | null>(null);
   const target2Ref = useRef<SVGLineElement | null>(null);
   const squareRef = useRef<SVGRectElement | null>(null);
@@ -33,7 +38,12 @@ export const Loader = () => {
   }, []);
 
   return (
-    <div className={styles.loaderWrapper}>
+    <div
+      className={classNames({
+        [styles.loaderWrapper]: placeType === 'fullscreen',
+        [styles.loaderWrapperInline]: placeType === 'inline',
+      })}
+    >
       <svg
         id="demo"
         xmlns="http://www.w3.org/2000/svg"
