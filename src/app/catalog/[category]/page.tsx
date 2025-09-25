@@ -6,7 +6,6 @@ import { PaginationControl } from '@components/ui/Controls/PaginationControl';
 import { DropdownSort } from '@components/ui/Dropdowns/DropdownSort';
 import { DropdownPages } from '@components/ui/Dropdowns/DropdownPages';
 import ProductCard from '@components/ProductCard/ProductCard';
-// import { getPaginatedItems } from '@/services/fetchClient';
 import { Categories, isCategory } from '@/types/Categories';
 import { SortType } from '@/types/SortType';
 import { getPaginatedItems } from '@/services/fetchClient';

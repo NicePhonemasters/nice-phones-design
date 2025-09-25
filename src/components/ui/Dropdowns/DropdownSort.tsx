@@ -12,7 +12,7 @@ export const DropdownSort: React.FC = () => {
   const router = useRouter();
   const sortValue = isSortType(searchParams.get('sortBy'))
     ? searchParams.get('sortBy')
-    : SortType.YearAsc;
+    : SortType.YearDesc;
 
   const handleChange = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());

@@ -58,5 +58,7 @@ export async function getItemCardData(itemId: string) {
 
   urlSearchParams.set('id', itemId);
 
-  return await client.get<ItemCard>(`/api/items?${urlSearchParams}`);
+  return await client.get<{
+    itemCard: ItemCard;
+  }>(`/api/items?${urlSearchParams}`);
 }

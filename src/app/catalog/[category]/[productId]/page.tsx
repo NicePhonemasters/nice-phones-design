@@ -19,7 +19,9 @@ type Props = {
 export default async function ItemCard({ params }: Props) {
   const { category, productId } = await params;
   const product = await getDetailedItem(category as Categories, productId);
-  const itemCard = await getItemCardData(product.id);
+  const itemCardData = await getItemCardData(product.id);
+  console.log(itemCardData);
+  const itemCard = itemCardData.itemCard;
   const currentCapacity = product.capacity.toLocaleLowerCase();
   const currentColor = product.color;
 
