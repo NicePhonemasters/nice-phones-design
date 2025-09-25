@@ -33,12 +33,18 @@ export const Slider = () => {
           slideToClickedSlide={true} // Робить слайди клікабельними
         >
           <SwiperSlide>
-            <Image
-              src="/img/banner-phones2.png"
-              className="homeSliderBanner"
-              fill
-              alt="iPhone banner"
-            />
+            <picture>
+              <source
+                media="(max-width: 640px)"
+                srcSet="/img/banner-mobile.png"
+              />
+              <Image
+                src="/img/banner-phones2.png"
+                className="homeSliderBanner"
+                fill
+                alt="iPhone banner"
+              />
+            </picture>
           </SwiperSlide>
 
           <SwiperSlide>
