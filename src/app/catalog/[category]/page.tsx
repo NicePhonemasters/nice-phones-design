@@ -9,6 +9,7 @@ import ProductCard from '@components/ProductCard/ProductCard';
 // import { getPaginatedItems } from '@/services/fetchClient';
 import { Categories, isCategory } from '@/types/Categories';
 import { SortType } from '@/types/SortType';
+import { getPaginatedItems } from '@/services/fetchClient';
 
 type Props = {
   params: Promise<{
@@ -45,17 +46,11 @@ async function Catalog({ params, searchParams }: Props) {
 
   const sorting = sortBy as SortType;
 
-  const urlSearchParams = new URLSearchParams();
-  urlSearchParams.set('sortBy', sorting);
-  urlSearchParams.set('currentPage', currentPage);
-  urlSearchParams.set('perPage', perPage);
-
-  const fetchResp = await fetch(
-    `https://nice-phones-design.vercel.app/api/${category}?${urlSearchParams.toString()}`,
-  );
-  const fetchData = await fetchResp.json();
-
-  console.log(process.env);
+  const fetchData = await getPaginatedItems(category, {
+    sortBy: sorting,
+    currentPage,
+    perPage,
+  });
 
   const products = fetchData.data;
   const totalItems = fetchData.totalItems;
