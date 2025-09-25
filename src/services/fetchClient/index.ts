@@ -8,6 +8,7 @@ import { getBaseUrl } from '@/utils/getBaseUrl';
 const client = {
   async get<T>(url: string) {
     const baseUrl = getBaseUrl();
+    console.log(`${baseUrl}`);
 
     const reqHeaders = {
       Accept: 'application/json',
