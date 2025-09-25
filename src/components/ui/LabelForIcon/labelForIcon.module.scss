@@ -1,0 +1,24 @@
+.labelForIcon {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    color: var(--color-white);
+    background-color: var(--color-red);
+    border: 1px solid var(--color-black);
+    border-radius: 50%;
+    position: absolute;
+    font-size: 9px;
+    font-weight: 700;
+    top: 15px;
+    right: 15px;
+
+    @include on-tablet {
+        width: 14px;
+        height: 14px;
+        top: 10px;
+        right: 8px;
+    }
+}

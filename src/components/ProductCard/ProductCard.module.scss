@@ -1,29 +1,22 @@
 .productCardWrapper {
   box-sizing: border-box;
-  flex: 1 1 212px;
+  flex: 0 1 212px;
   background-color: var(--color-surface-1);
-  border: 2px solid transparent; // <-- добавляем прозрачный бордер
-  padding: 32px;
-  gap: 8px;
-
+  border: 2px solid transparent;
+  align-self: flex-start;
+  height: auto;
+  
   &:hover {
     border: 2px solid var(--color-surface-2);
   }
+}
 
-  @include on-tablet {
-    min-height: 512px;
-  }
-
-  @include on-desktop {
-    min-height: 506px;
-  }
+.productCard {
+  padding: 32px 32px 20px;
 }
 
 .productCardGeneralLink {
-  display: flex;
-  flex-direction: column;
   text-decoration: none ;
-  gap: 8px;
 }
 
 .imageContainer {
@@ -42,6 +35,7 @@
   word-break: break-word;
   overflow-wrap: anywhere;
   flex-shrink: 0;
+  margin: 8px 0 ;
 }
 
 .price {
@@ -69,7 +63,8 @@
 
 .divider {
   width: 100%;
-  border: 1px solid var(--color-elements)
+  border: 1px solid var(--color-elements);
+  margin: 8px 0;
 }
 
 .specs {

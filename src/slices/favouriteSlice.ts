@@ -36,5 +36,8 @@ export const selectIsInFavourites = (itemId: string) => (state: RootState) => {
   return state.favourites.items.some((item) => item.itemId === itemId);
 };
 
+export const selectFavouriteCount = (state: RootState) =>
+  state.favourites.items.length;
+
 export const { addItem, removeItem, clearFavourites } = favouriteSlice.actions;
 export const favouriteReducer = favouriteSlice.reducer;

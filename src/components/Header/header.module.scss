@@ -10,6 +10,10 @@
   @include on-tablet {
     height: 48px;
   }
+  
+  @include on-mobile {
+    height: 48px;
+  }
 }
 
 .headerContainer {
@@ -123,17 +127,6 @@
   @include on-mobile {
     display: none;
   }
-}
-
-.linkIconIsActive::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 3px;
-  width: 100%;
-  background-color: var(--color-white);
-  transition: width 0.3s ease;
 }
 
 .headerBurgerMenu {
