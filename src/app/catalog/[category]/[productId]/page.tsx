@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import styles from './itemCard-styles/itemCard.module.scss';
 import PhoneGallery from './components/PhoneGallery';
 import { getDetailedItem, getItemCardData } from '@/services/fetchClient';
@@ -16,6 +17,24 @@ type Props = {
     productId: string;
   }>;
 };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { category, productId } = await params;
+
+  // Fetch product details
+  const product = await getDetailedItem(category as Categories, productId);
+
+  const title = `${product.name}`;
+  const description = `${product.description}`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/catalog/${category}/${productId}`,
+    },
+  };
+}
 
 export default async function ItemCard({ params }: Props) {
   const { category, productId } = await params;

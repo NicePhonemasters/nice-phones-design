@@ -1,6 +1,7 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
 
+import { Metadata } from 'next';
 import styles from './Catalog.module.scss';
 import { PaginationControl } from '@components/ui/Controls/PaginationControl';
 import { DropdownSort } from '@components/ui/Dropdowns/DropdownSort';
@@ -9,6 +10,7 @@ import ProductCard from '@components/ProductCard/ProductCard';
 import { Categories, isCategory } from '@/types/Categories';
 import { SortType } from '@/types/SortType';
 import { getPaginatedItems } from '@/services/fetchClient';
+import { getBaseUrl } from '@/utils/getBaseUrl';
 
 type Props = {
   params: Promise<{
@@ -28,6 +30,35 @@ function getCategoryPretty(category: Categories) {
     case Categories.Tablets:
       return 'Tablets';
   }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { category } = await params;
+
+  if (!isCategory(category)) {
+    notFound();
+  }
+
+  const textCategory = getCategoryPretty(category);
+
+  // Build title + description
+  const title = `${textCategory}`;
+  const description = `Browse wide variety of different gadgets, grouped by their categoires.`;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `https://${getBaseUrl()}/catalog/${category}`,
+      type: 'website',
+      siteName: 'Nice Gadgets',
+    },
+    alternates: {
+      canonical: `/catalog/${category}`,
+    },
+  };
 }
 
 async function Catalog({ params, searchParams }: Props) {
