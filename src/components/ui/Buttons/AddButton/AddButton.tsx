@@ -4,7 +4,7 @@ import styles from './addButton.module.scss';
 type Props = {
   callback?: () => void;
   children?: React.ReactNode; // додаємо можливість передавати текст чи JSX всередину
-  isInCart?: () => void;
+  isInCart?: boolean;
 };
 
 export const AddButton = ({ callback, children, isInCart }: Props) => {

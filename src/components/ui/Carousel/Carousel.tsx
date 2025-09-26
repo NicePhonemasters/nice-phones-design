@@ -50,6 +50,7 @@ export const Carousel = ({ title, type }: Props) => {
           nextEl: '.carouselButtonNext',
         }}
         breakpoints={{
+          300: { slidesPerView: 1.2 },
           360: { slidesPerView: 1.2 },
           460: { slidesPerView: 1.6 },
           560: { slidesPerView: 1.8 },

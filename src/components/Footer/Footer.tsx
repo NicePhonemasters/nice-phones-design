@@ -5,11 +5,13 @@ import Link from 'next/link';
 import { useLayoutEffect, useRef } from 'react';
 // eslint-disable-next-line import/no-named-as-default
 import gsap from 'gsap';
+import { useSelector } from 'react-redux';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import classNames from 'classnames';
 import ArrowUp from '../../assets/icons/arrow-up.svg';
 import styles from './footer.module.scss';
 import { OneIconButton } from '@components/ui/Buttons/OneIconButton';
+import { selectTheme } from '@/slices/themeSlice';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -18,6 +20,8 @@ export default function Footer() {
   const logoRef = useRef<HTMLAnchorElement | null>(null);
   const navRef = useRef<HTMLUListElement | null>(null);
   const rightRef = useRef<HTMLDivElement | null>(null);
+
+  const theme = useSelector(selectTheme);
 
   useLayoutEffect(() => {
     if (!footerRef.current) return;
@@ -55,15 +59,27 @@ export default function Footer() {
   return (
     <footer className={styles.footer} ref={footerRef}>
       <div className={styles.footerContent}>
-        <Link href="/" ref={logoRef} className={styles.footerLogoLink}>
-          <Image
-            src="/assets/logo.png"
-            width={80}
-            height={26}
-            alt="Nice Gadgets"
-          />
-        </Link>
-
+        {theme === 'dark' ? (
+          <Link href="/" ref={logoRef}>
+            <Image
+              width={80}
+              height={26}
+              src="/assets/logo.png"
+              className={styles.footerLogoLink}
+              alt="Nice Gadgets"
+            />
+          </Link>
+        ) : (
+          <Link href="/" ref={logoRef}>
+            <Image
+              width={80}
+              height={26}
+              src="/assets/logo-light.png"
+              className={styles.headerLogo}
+              alt="Nice Gadgets"
+            />
+          </Link>
+        )}
         <nav className={styles.footerNav}>
           <ul className={styles.footerLists} ref={navRef}>
             <li>

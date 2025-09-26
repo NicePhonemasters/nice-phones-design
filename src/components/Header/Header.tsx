@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -8,12 +6,12 @@ import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
 import gsap from 'gsap';
 
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styles from './header.module.scss';
 import { Menu } from './Menu/Menu';
 import { HeaderActions } from './HeaderActions/HeaderActions';
 import { Links } from '@/types/Links';
-import { selectTheme, toggleTheme } from '@/slices/themeSlice';
+import { selectTheme } from '@/slices/themeSlice';
 
 export const Header = () => {
   const navLinks = [
@@ -23,13 +21,7 @@ export const Header = () => {
     { title: 'Accessories', path: Links.AccessoriesCatalog },
   ];
 
-  const dispatch = useDispatch();
   const theme = useSelector(selectTheme);
-
-  const handleToggle = () => {
-    dispatch(toggleTheme());
-  };
-
   const [isOpenedMenu, setIsOpenedMenu] = useState(false);
   const currentPath = usePathname();
 
@@ -59,7 +51,7 @@ export const Header = () => {
     <>
       <header className={styles.header} id="header">
         <div className={styles.headerContainer}>
-          <div ref={logoRef} onClick={handleToggle}>
+          <div ref={logoRef}>
             {theme === 'dark' ? (
               <Link href="/">
                 <Image

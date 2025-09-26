@@ -1,5 +1,4 @@
 .home {
-  @include inline-padding;
   
   &Title {
     color: var(--color-white);
@@ -13,4 +12,8 @@
       margin: 24px 0;
     }
   }
+}
+
+.containerForPadding {
+  @include inline-padding;
 }
