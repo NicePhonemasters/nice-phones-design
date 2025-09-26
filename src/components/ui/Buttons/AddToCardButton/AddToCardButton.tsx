@@ -26,8 +26,6 @@ export default function AddToCartButton({ item }: Props) {
       image: item.image,
     };
 
-    console.log(cartItem);
-
     dispatch(addItem(cartItem));
   };
 

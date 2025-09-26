@@ -21,7 +21,6 @@ export default function FavouriteButton({ item }: Props) {
   const itemId = item.itemId;
 
   const isInFavourites = useSelector(selectIsInFavourites(itemId));
-  console.log(itemId);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     //Нужен для того чтобы не открывался товар при добавлении товара
