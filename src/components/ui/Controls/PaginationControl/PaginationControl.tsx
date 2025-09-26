@@ -26,7 +26,6 @@ export default function PaginationControl({ pageCount, currentPage }: Props) {
   }, []);
 
   useEffect(() => {
-    // Wait until next frame so React DOM updates are done
     requestAnimationFrame(() => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
@@ -78,8 +77,8 @@ export default function PaginationControl({ pageCount, currentPage }: Props) {
             </span>
           ) : (
             <ToggleGroup.Item
-              key={page}
-              value={page}
+              key={`${page}page`}
+              value={String(page)}
               className={`${PaginationStyles.toggleButton} buttons-text`}
               onClick={() => handlePageChange(+page)}
             >

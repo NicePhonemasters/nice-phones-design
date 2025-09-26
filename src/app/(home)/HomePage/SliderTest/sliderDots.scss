@@ -1,0 +1,26 @@
+// .sliderDots {
+//     display: flex;
+//     justify-content: center;
+//     gap: 8px;
+// }
+
+.sliderDot {
+    background-color: var(--color-elements);
+    width: 35px;
+    height: 4px;
+    cursor: pointer;
+}
+
+.sliderDotActive {
+    background-color: var(--color-white);
+}
+
+.sliderDots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  z-index: 3;     /* чтобы быть поверх слайдов */
+}
