@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import FavouriteIcon from '../../../assets/icons/favourite-default.svg';
 import ShopCart from '../../../assets/icons/cart-shopping.svg';
 import BurgerMenu from '../../../assets/icons/menu-burger.svg';
@@ -11,6 +12,7 @@ import { Links } from '@/types/Links';
 import { LabelForIcon } from '@components/ui/LabelForIcon/LabelForIcon';
 import { selectCartTotalQuantity } from '@/slices/cartSlice';
 import { selectFavouriteCount } from '@/slices/favouriteSlice';
+import { persistor } from '@/store';
 
 type Props = {
   currentPath: string;
@@ -30,28 +32,30 @@ export const HeaderActions = ({
     <div className={styles.headerActions}>
       <HeaderActionsThemes />
 
-      <Link href={Links.Favourites}>
-        <div
-          className={classNames(styles.headerActionsFavourites, {
-            [styles.linkIconIsActive]: currentPath === Links.Favourites,
-          })}
-        >
-          {favouriteCount !== 0 && <LabelForIcon quantity={favouriteCount} />}
+      <PersistGate persistor={persistor} loading={null}>
+        <Link href={Links.Favourites}>
+          <div
+            className={classNames(styles.headerActionsFavourites, {
+              [styles.linkIconIsActive]: currentPath === Links.Favourites,
+            })}
+          >
+            {favouriteCount !== 0 && <LabelForIcon quantity={favouriteCount} />}
 
-          <FavouriteIcon className={styles.headerIcon} />
-        </div>
-      </Link>
+            <FavouriteIcon className={styles.headerIcon} />
+          </div>
+        </Link>
 
-      <Link href={Links.Cart}>
-        <div
-          className={classNames(styles.headerActionsCart, {
-            [styles.linkIconIsActive]: currentPath === Links.Cart,
-          })}
-        >
-          {cartCount !== 0 && <LabelForIcon quantity={cartCount} />}
-          <ShopCart className={styles.headerIcon} />
-        </div>
-      </Link>
+        <Link href={Links.Cart}>
+          <div
+            className={classNames(styles.headerActionsCart, {
+              [styles.linkIconIsActive]: currentPath === Links.Cart,
+            })}
+          >
+            {cartCount !== 0 && <LabelForIcon quantity={cartCount} />}
+            <ShopCart className={styles.headerIcon} />
+          </div>
+        </Link>
+      </PersistGate>
 
       <div className={styles.headerBurgerMenu}>
         {!isOpenedMenu ? (

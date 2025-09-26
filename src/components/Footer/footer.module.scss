@@ -18,7 +18,7 @@
     }
   }
 
-  &Logo {
+  &LogoLink {
     transition: transform 0.3s ease;
 
     &:hover {
@@ -59,7 +59,14 @@
     }
   }
 
-  .footerTopBtn {
+  &Copyright {
+    text-align: center;
+    color: var(--color-secondary);
+    font-size: 14px;
+    padding: 16px 0;
+  }
+
+  &TopBtn {
     all: unset;
     cursor: pointer;
     display: inline-flex;
