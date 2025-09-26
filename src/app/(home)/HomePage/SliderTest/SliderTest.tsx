@@ -66,8 +66,8 @@ export const SliderTest = () => {
                 className={styles.slideContentThird}
               >
                 <p className={styles.slideTitleThird}>
-                  <span className={styles.line}>Shop all</span>{' '}
-                  <span className={styles.line}>watches</span>
+                  <span className={styles.line}>Browse our</span>{' '}
+                  <span className={styles.line}>selection of watches</span>
                 </p>
               </Link>
 
@@ -106,23 +106,3 @@ export const SliderTest = () => {
     </article>
   );
 };
-
-{
-  /* <SwiperSlide>
-             <div className={styles.slideContainerSecond}>
-              <div className={styles.slideSecondContent}>
-                <h2 className={styles.slideSecondTitle}>All Iphone 14 line available in our store</h2>
-                <p className={styles.slideSecondText}>You are a few tap a way to get it now!</p>
-              </div>
-                <div className={styles.slideSecondImageContainer}>
-                  <Image
-                    src='/img/banner-second.png'
-                    fill
-                    alt='banner second'
-                    className={styles.slideSecondImage}
-                  >
-                  </Image>
-                </div>
-            </div>
-          </SwiperSlide> */
-}
