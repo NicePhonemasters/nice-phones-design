@@ -25,7 +25,15 @@ export default function PaginationControl({ pageCount, currentPage }: Props) {
     return () => window.removeEventListener('resize', updateWidth);
   }, []);
 
+  useEffect(() => {
+    // Wait until next frame so React DOM updates are done
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }, [searchParamsHook]);
+
   const handlePageChange = (page: number) => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     const params = new URLSearchParams(searchParamsHook.toString());
     params.set('currentPage', String(page));
     routerHook.push(`?${params.toString()}`, { scroll: false });
