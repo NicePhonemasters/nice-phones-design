@@ -5,11 +5,11 @@ export function getVisiblePages(
 ) {
   const pages: (string | number)[] = [];
 
-  if (pageCount <= maxVisible) {
+  if (pageCount <= maxVisible + 1) {
     return Array.from({ length: pageCount }, (_, i) => (i + 1).toString());
   }
 
-  const half = Math.floor(maxVisible / 2);
+  const half = (maxVisible - 1) / 2;
   let start = currentPage - half;
   let end = currentPage + half;
 

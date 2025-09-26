@@ -111,13 +111,9 @@ export default function Footer() {
         </nav>
 
         <div className={styles.footerRight} ref={rightRef}>
-          <button
-            type="button"
-            onClick={handleScrollTop}
-            className={styles.footerTopBtn}
-          >
-            <OneIconButton icon={ArrowUp} />
-          </button>
+          <div className={styles.footerTopBtn}>
+            <OneIconButton icon={ArrowUp} handleClick={handleScrollTop} />
+          </div>
         </div>
       </div>
     </footer>

@@ -68,7 +68,6 @@ export const SliderTest = () => {
                 <p className={styles.slideTitleThird}>
                   <span className={styles.line}>Shop all</span>{' '}
                   <span className={styles.line}>watches</span>
-                  <IconRight className={styles.slideIconThird} />
                 </p>
               </Link>
 
@@ -84,7 +83,7 @@ export const SliderTest = () => {
             <div className={styles.slideContainerFourth}>
               <Link href="/catalog/tablets" className={styles.sliderLink}>
                 <p className={styles.slideTitleFourth}>
-                  Do you fed up with a small screens?
+                  Are you fed up with small screens?
                 </p>
                 <Image
                   src="/img/banner-fourth.png"
