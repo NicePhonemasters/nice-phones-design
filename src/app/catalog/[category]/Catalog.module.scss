@@ -63,8 +63,20 @@
   }
 
   &__grid {
+    @include on-desktop {
+      --column-amount: 4;
+    }
+
+    @include on-tablet {
+      --column-amount: 2;
+    }
+
+    @include on-mobile {
+      --column-amount: 1;
+    }
+
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    grid-template-columns: repeat(var(--column-amount), minmax(270px, 1fr));
     gap: 20px;
     flex-grow: 1;
     min-height: 400px;

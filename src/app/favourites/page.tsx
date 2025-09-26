@@ -1,21 +1,24 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-// import { useRouter } from 'next/navigation';
+import Image from 'next/image';
 import { gsap } from 'gsap';
+import { PersistGate } from 'redux-persist/integration/react';
 import styles from './Favourites.module.scss';
 
-import { RootState } from '@/store';
+import { persistor, RootState } from '@/store';
 import ProductCard from '@/components/ProductCard/ProductCard';
 import { ItemCard } from '@/types/ItemCard';
+import { Loader } from '@components/Loader/Loader';
+import { selectTheme } from '@/slices/themeSlice';
 
 const Favourites: React.FC = () => {
-  // const router = useRouter();
   const items = useSelector((state: RootState) => state.favourites.items);
 
   const titleRef = useRef<HTMLHeadingElement | null>(null);
   const subtitleRef = useRef<HTMLParagraphElement | null>(null);
   const gridRef = useRef<HTMLDivElement | null>(null);
+  const themeMode = useSelector(selectTheme);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -33,8 +36,19 @@ const Favourites: React.FC = () => {
 
   if (items.length === 0) {
     return (
-      <div className={styles.favourites__subtitle}>
+      <div className={styles.favourites__empty}>
         <h2>Favourites is empty</h2>
+        <div className={styles.favouritesEmptyImage}>
+          <Image
+            src={
+              themeMode === 'light'
+                ? '/img/favourites-empty-black.svg'
+                : '/img/favourites-empty-white.svg'
+            }
+            alt="Favourites empty"
+            fill
+          />
+        </div>
         {/* <button
           onClick={() => router.push('/catalog')}
           className={styles.favourites__btn}
@@ -46,23 +60,28 @@ const Favourites: React.FC = () => {
   }
 
   return (
-    <div className={styles.favourites}>
-      <div className={styles.favourites__top}>
-        <h1 ref={titleRef} className={styles.favourites__title}>
-          Favourites
-        </h1>
-        <p ref={subtitleRef} className={styles.favourites__subtitle}>
-          {items.length} items
-        </p>
-      </div>
+    <PersistGate
+      persistor={persistor}
+      loading={<Loader placeType="fullscreen" />}
+    >
+      <div className={styles.favourites}>
+        <div className={styles.favourites__top}>
+          <h1 ref={titleRef} className={styles.favourites__title}>
+            Favourites
+          </h1>
+          <p ref={subtitleRef} className={styles.favourites__subtitle}>
+            {items.length} items
+          </p>
+        </div>
 
-      {/* Грід для карток */}
-      <div ref={gridRef} className={styles.favourites__grid}>
-        {items.map((item: ItemCard) => (
-          <ProductCard key={item.id} item={item} />
-        ))}
+        {/* Грід для карток */}
+        <div ref={gridRef} className={styles.favourites__grid}>
+          {items.map((item: ItemCard) => (
+            <ProductCard key={item.id} item={item} />
+          ))}
+        </div>
       </div>
-    </div>
+    </PersistGate>
   );
 };
 

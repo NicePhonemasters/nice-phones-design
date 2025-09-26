@@ -1,7 +1,10 @@
 'use client';
 
+import Image from 'next/image';
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+
+import { PersistGate } from 'redux-persist/integration/react';
 import styles from './Cart.module.scss';
 import {
   removeItem,
@@ -11,10 +14,15 @@ import {
 } from '@/slices/cartSlice';
 import { ShopCartItem } from '@components/ui/ShopCartItem/ShopCartItem';
 import { AddButton } from '@components/ui/Buttons/AddButton/AddButton';
+import { selectTheme } from '@/slices/themeSlice';
+import { BackNav } from '@components/ui/BackNav/BackNav';
+import { persistor } from '@/store';
+import { Loader } from '@components/Loader/Loader';
 
 const Cart: React.FC = () => {
   const dispatch = useDispatch();
   const items = useSelector(selectCartItems);
+  const themeMode = useSelector(selectTheme);
 
   const totalPrice = items.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -24,18 +32,36 @@ const Cart: React.FC = () => {
 
   return (
     <div className={styles.cartWrapper}>
-      <h2 className={styles.title}>Cart</h2>
+      <BackNav />
+      <PersistGate
+        persistor={persistor}
+        loading={<Loader placeType="fullscreen" />}
+      >
+        <h2 className={styles.title}>Cart</h2>
 
       <div className={styles.mainContent}>
         <div className={styles.itemsList}>
           {items.length === 0 ? (
-            <h2
-              style={{
-                color: 'var(--color-white)',
-              }}
-            >
-              Cart is empty
-            </h2>
+            <div className={styles.emptyContainer}>
+              <h2
+                style={{
+                  color: 'var(--color-white)',
+                }}
+              >
+                Cart is empty
+              </h2>
+              <div className={styles.cartEmptyImage}>
+                <Image
+                  src={
+                    themeMode === 'light'
+                      ? '/img/empty-cart-black.svg'
+                      : '/img/empty-cart-white.svg'
+                  }
+                  alt="Cart empty"
+                  fill
+                />
+              </div>
+            </div>
           ) : (
             items.map((item) => (
               <ShopCartItem
@@ -49,21 +75,22 @@ const Cart: React.FC = () => {
           )}
         </div>
 
-        {/* Нужно сделать нормальный вид для пустой корзины */}
+          {/* Нужно сделать нормальный вид для пустой корзины */}
 
-        {items.length > 0 && (
-          <div className={styles.checkout}>
-            <div className={styles.total}>
-              <span className={styles.totalPrice}>${totalPrice}</span>
-              <span className={styles.totalItems}>
-                Total for {totalItems} {totalItems === 1 ? 'item' : 'items'}
-              </span>
+          {items.length > 0 && (
+            <div className={styles.checkout}>
+              <div className={styles.total}>
+                <span className={styles.totalPrice}>${totalPrice}</span>
+                <span className={styles.totalItems}>
+                  Total for {totalItems} {totalItems === 1 ? 'item' : 'items'}
+                </span>
+              </div>
+              <div className={styles.separator} />
+              <AddButton>Checkout</AddButton>
             </div>
-            <div className={styles.separator} />
-            <AddButton>Checkout</AddButton>
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      </PersistGate>
     </div>
   );
 };

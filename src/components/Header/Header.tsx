@@ -4,7 +4,7 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import { useState, useEffect, useRef } from 'react';
 import { usePathname } from 'next/navigation';
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 
 import { useSelector } from 'react-redux';
 import styles from './header.module.scss';
